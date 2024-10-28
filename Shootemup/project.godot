@@ -85,5 +85,5 @@ common/max_physics_steps_per_frame=10
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
+renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true

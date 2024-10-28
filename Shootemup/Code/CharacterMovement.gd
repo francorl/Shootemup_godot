@@ -12,15 +12,14 @@ var actual_rate = 0.2
 var timer = 0
 
 var power = false
+var weapon = false
+var weapon_timer = 0
 var power_timer = 0
 
 @onready var absolute_parent = get_parent()
 
-# Controla si el jugador está muerto.
-var die: bool = false
 
-#func _ready():
-	 #Camera.set("position", Vector2(100, 0))
+var die: bool = false
 
 var move_vector := Vector2.ZERO
 
@@ -28,25 +27,26 @@ func _process(delta: float) -> void:
 	move_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	position += move_vector * speed * delta
 
-	# Rotación utilizando el joystick derecho si está activo.
+
 	if joystick_right and joystick_right.is_pressed:
 		rotation = joystick_right.output.angle()
 
 func _physics_process(delta):
 	timer += delta
 
-	if power == true:
+
+	if power:
 		power_timer += delta
 		actual_rate = fire_rate / 2
 		if power_timer >= 10:
 			power = false
+			power_timer = 0
 	else:
 		actual_rate = fire_rate
-		power_timer = 0
 
 	velocity = Vector2.ZERO
 
-	if die == true:
+	if die:
 		if Input.get_action_raw_strength("Respawn"):
 			Respawn()
 		return
@@ -57,7 +57,6 @@ func _physics_process(delta):
 		add_sibling(temp)
 		temp.global_position = get_node("BulletSpawn").global_position
 		
-		# Determinar la dirección de disparo usando joystick o ratón.
 		var shoot_direction = Vector2.ZERO
 		if joystick_right and joystick_right.is_pressed:
 			shoot_direction = joystick_right.output.normalized()
@@ -65,20 +64,44 @@ func _physics_process(delta):
 			shoot_direction = (get_global_mouse_position() - global_position).normalized()
 		
 		temp.set("area_direction", shoot_direction)
+
+	
+		if weapon:
+			weapon_timer += delta
+			var bullet2 = Bullet.instantiate()
+			add_sibling(bullet2)
+			bullet2.global_position = get_node("BulletSpawn").global_position
+
+			
+			var shoot_direction2 = shoot_direction.rotated(deg_to_rad(15)) 
+				
+			bullet2.set("area_direction", shoot_direction2)
+
 		
-		# Rotar el jugador hacia la dirección de disparo.
+			
+			
+			
+			actual_rate = fire_rate / 2
+			
+			if weapon_timer >= 3:
+					weapon = false
+					weapon_timer = 0
+			else:
+					actual_rate = fire_rate
+
+		
 		if joystick_right and joystick_right.is_pressed:
 			rotation = joystick_right.output.angle()
 		else:
 			look_at(get_global_mouse_position())
 
-		# Efecto de sacudida de cámara.
+		
 		Camera.offset = Vector2(randf_range(-1, 1), randf_range(-1, 1))
 		timer = 0
 	else:
 		Camera.offset = Vector2(0, 0)
 
-	# Movimiento.
+	
 	var direction_x = Input.get_axis("Left", "Right")
 	var direction_y = Input.get_axis("Up", "Down")
 	

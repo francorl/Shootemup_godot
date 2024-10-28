@@ -3,6 +3,7 @@ extends Area2D
 @export var Coin: PackedScene
 var coinage
 @export var PowerUp: PackedScene
+@export var Weapon: PackedScene
 @export var power_spawn_rate = 20
 var power_timer = 0
 # This is found in the debug shape of CollisionShape2D for a representation
@@ -20,9 +21,18 @@ func _process(delta):
 	
 	if power_timer >= power_spawn_rate:
 		power_timer = 0
+		#PowerUp
 		var temp = PowerUp.instantiate()
+		
+		#Weapon
+		var new_weapon = Weapon.instantiate()
+		
 		temp.position = self.position + (Vector2(randi_range(-(SquareSizeX), SquareSizeX), randi_range(-(SquareSizeY), SquareSizeY)))
 		add_sibling.call_deferred(temp)
+		
+		
+		new_weapon.position = self.position + (Vector2(randi_range(-(SquareSizeX), SquareSizeX), randi_range(-(SquareSizeY), SquareSizeY)))
+		add_sibling.call_deferred(new_weapon)
 	
 	if coinage == null:
 		_ready()
