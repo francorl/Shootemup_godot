@@ -13,8 +13,14 @@ var timer = 0
 
 var power = false
 var weapon = false
+var respawn = false
+
 var weapon_timer = 0
 var power_timer = 0
+var respawn_timer = 0
+
+
+
 
 @onready var absolute_parent = get_parent()
 
@@ -23,6 +29,10 @@ var die: bool = false
 
 var move_vector := Vector2.ZERO
 
+	
+
+
+
 func _process(delta: float) -> void:
 	move_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	position += move_vector * speed * delta
@@ -30,10 +40,16 @@ func _process(delta: float) -> void:
 
 	if joystick_right and joystick_right.is_pressed:
 		rotation = joystick_right.output.angle()
+		
+		
 
+		
 func _physics_process(delta):
+	
+	
 	timer += delta
 
+#TIMERS
 
 	if power:
 		power_timer += delta
@@ -43,13 +59,26 @@ func _physics_process(delta):
 			power_timer = 0
 	else:
 		actual_rate = fire_rate
-
+		
+		
+	if weapon:
+		weapon_timer += delta
+		if weapon_timer >= 5:
+			weapon = false
+			weapon_timer = 0
+			print("Weapon Deactivated")
+			
+######################################################
 	velocity = Vector2.ZERO
 
 	if die:
-		if Input.get_action_raw_strength("Respawn"):
-			Respawn()
-		return
+		if respawn:
+			respawn_timer += delta
+			if respawn_timer >= 1:
+				if Input.get_action_raw_strength("Respawn"):
+					Respawn()
+					respawn = false
+				return
 
 	# Disparo.
 	if timer >= actual_rate:
@@ -64,9 +93,10 @@ func _physics_process(delta):
 			shoot_direction = (get_global_mouse_position() - global_position).normalized()
 		
 		temp.set("area_direction", shoot_direction)
-
+		
 	
 		if weapon:
+			
 			weapon_timer += delta
 			var bullet2 = Bullet.instantiate()
 			add_sibling(bullet2)
@@ -76,18 +106,15 @@ func _physics_process(delta):
 			var shoot_direction2 = shoot_direction.rotated(deg_to_rad(15)) 
 				
 			bullet2.set("area_direction", shoot_direction2)
-
+			print("Weapon Activated")
+			
+			
+			
 		
 			
 			
 			
-			actual_rate = fire_rate / 2
-			
-			if weapon_timer >= 3:
-					weapon = false
-					weapon_timer = 0
-			else:
-					actual_rate = fire_rate
+		
 
 		
 		if joystick_right and joystick_right.is_pressed:
@@ -118,11 +145,22 @@ func Die():
 	get_node("MeshInstance2D").visible = false
 	Camera.position = Vector2(0, 0)
 	die = true
-	await get_tree().create_timer(1.5).timeout
+	respawn = true
 	position = Vector2(383, 397)
 	joystick_left.visible = false
 	joystick_right.visible = false
+	joystick_right._reset()
 	$"../Retry".show()
 
 func Respawn():
 	get_tree().reload_current_scene()
+
+
+func _on_timer_timeout() -> void:
+	
+	printerr("Timer Stop")
+	weapon = false
+	print("Weapon Deactivated")
+	$Timer.stop()
+	
+	

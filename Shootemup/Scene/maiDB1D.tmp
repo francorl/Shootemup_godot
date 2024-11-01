@@ -57,12 +57,16 @@ joystick_left = NodePath("../Test/UI/Virtual joystick left")
 joystick_right = NodePath("../Test/UI/Virtual joystick right")
 speed = 350.0
 
+[node name="Timer" type="Timer" parent="Character"]
+process_callback = 0
+wait_time = 4.0
+
 [node name="Spawner" parent="." instance=ExtResource("3_m5r3x")]
 position = Vector2(1163, 114)
 small_timer_randomization = true
 
 [node name="Spawner2" parent="." instance=ExtResource("3_m5r3x")]
-position = Vector2(196, 608)
+position = Vector2(-344, 646)
 small_timer_randomization = true
 spawn_interval = 4.0
 
@@ -141,5 +145,7 @@ joystick_mode = 0
 
 [node name="Player" parent="Test" index="1"]
 texture = null
+
+[connection signal="timeout" from="Character/Timer" to="Character" method="_on_timer_timeout"]
 
 [editable path="Test"]

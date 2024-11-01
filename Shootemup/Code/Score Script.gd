@@ -2,12 +2,17 @@ extends Node2D
 
 @onready var Background = get_node("Background")
 
+
+
+
 var Score = 0
 var Coin = 0
 
 func _ready():
 	#Hide Retry UI on Start
 	$Retry.hide()
+	
+	
 	#Get "Respawn" mapping name
 	var respawn_events = InputMap.action_get_events("Respawn")
 	var respawn_event = respawn_events[0]
@@ -19,3 +24,9 @@ func _ready():
 func _process(_delta):
 	# This can always be changed.
 	Background.get_node("Score").set("text", "Score: " + str(Score) + "\nCoins: " + str(Coin))
+	
+		
+
+
+
+	
