@@ -203,7 +203,8 @@ position = Vector2(191, 351)
 
 [node name="Score" type="Label" parent="Test/UI" index="0"]
 top_level = true
-offset_right = 88.0
+offset_left = 79.0
+offset_right = 167.0
 offset_bottom = 45.0
 theme_override_font_sizes/font_size = 30
 text = "Score:"
@@ -212,9 +213,9 @@ text = "Score:"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -190.0
+offset_left = -278.0
 offset_top = 6.0
-offset_right = -140.0
+offset_right = -228.0
 offset_bottom = 29.0
 grow_horizontal = 0
 scale = Vector2(3.72, 3.52)
