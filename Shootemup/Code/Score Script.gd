@@ -19,14 +19,18 @@ func _ready():
 	var button_name = OS.get_keycode_string(respawn_event.physical_keycode)
 	#Update Label to use mapping name
 	var retry_label = $Retry/Label
-	retry_label.text = "Press to retry"
+	retry_label.text = "DALE FRANCO PONETE LAS PILAS"
 
 func _process(_delta):
 	# This can always be changed.
-	Background.get_node("Score").set("text", "Score: " + str(Score) + "\nCoins: " + str(Coin))
+	$Test/UI.get_node("Score").set("text", "Score: " + str(Score) + "\nCoins: " + str(Coin))
 	
 		
 
 
 
 	
+
+
+func _on_menu_pressed() -> void:
+	get_tree().change_scene_to_file ("res://Scene/MENU.tscn")

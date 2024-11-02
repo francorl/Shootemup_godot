@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Twin Stick 2D Shoot Em Up"
-run/main_scene="res://Scene/main_scene.tscn"
+run/main_scene="res://Scene/MENU.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://Image.png"
 config/icon="res://Image.png"
@@ -35,7 +35,7 @@ version_control/plugin_name="Git"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/virtual_joystick/plugin.cfg")
+enabled=PackedStringArray()
 
 [filesystem]
 

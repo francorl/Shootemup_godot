@@ -1,0 +1,129 @@
+[gd_scene load_steps=9 format=3 uid="uid://bow87oeeov2h3"]
+
+[ext_resource type="Script" path="res://Code/jugar.gd" id="1_6xg6t"]
+[ext_resource type="VideoStream" path="res://shootemup/Comp-1_00000_1.ogv" id="2_xhu7t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtm2w"]
+bg_color = Color(0.68, 0, 0.0113332, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au1pu"]
+bg_color = Color(1, 1, 1, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m44fx"]
+bg_color = Color(1, 1, 1, 0.0784314)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ki17"]
+bg_color = Color(1, 1, 1, 0.47451)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w65xe"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jhp1"]
+bg_color = Color(0.678431, 0, 0.0117647, 1)
+
+[node name="JUGAR" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.56, 2)
+script = ExtResource("1_6xg6t")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_left = -347.149
+offset_top = -389.5
+offset_right = 1632.85
+offset_bottom = 698.5
+scale = Vector2(0.355353, 0.74972)
+stream = ExtResource("2_xhu7t")
+autoplay = true
+loop = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.817164, 1)
+color = Color(0.0509804, 0.419608, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = -243.675
+offset_top = -311.0
+offset_right = 1036.33
+offset_bottom = 657.0
+scale = Vector2(0.385409, 0.662895)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -50.0
+offset_right = 51.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="LEVELS" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_gtm2w")
+text = "JUGAR"
+flat = true
+
+[node name="INVENTORY" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0ki17")
+theme_override_styles/normal = SubResource("StyleBoxFlat_w65xe")
+text = "INVENTARIO"
+
+[node name="BACK" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0jhp1")
+text = "VOLVER"
+flat = true
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_volume_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_resolution_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_back_pressed"]
