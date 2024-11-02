@@ -1,8 +1,10 @@
 extends Area2D
 
+#######################################################################
 const SPEED = 800.0
 var area_direction = Vector2(0, 0)
 var debounce = false
+
 
 func _process(delta):
 	self.translate(area_direction * SPEED * delta)
@@ -31,3 +33,7 @@ func hit():
 	get_node("Hit/Sound").play()
 	get_node("Hit").reparent(get_parent().get_parent())
 	self.queue_free()
+	
+	######################################################################
+	
+	

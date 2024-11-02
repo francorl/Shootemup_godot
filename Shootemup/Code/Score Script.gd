@@ -10,7 +10,7 @@ var Coin = 0
 
 func _ready():
 	#Hide Retry UI on Start
-	$Retry.hide()
+	$Test/UI/Retry.hide()
 	
 	
 	#Get "Respawn" mapping name
@@ -18,7 +18,7 @@ func _ready():
 	var respawn_event = respawn_events[0]
 	var button_name = OS.get_keycode_string(respawn_event.physical_keycode)
 	#Update Label to use mapping name
-	var retry_label = $Retry/Label
+	var retry_label = $Test/UI/Retry/Label
 	retry_label.text = "DALE FRANCO PONETE LAS PILAS"
 
 func _process(_delta):

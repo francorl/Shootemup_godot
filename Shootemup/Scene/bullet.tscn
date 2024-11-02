@@ -1,20 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7hm7qkkm1rb0"]
+[gd_scene load_steps=7 format=3 uid="uid://c7hm7qkkm1rb0"]
 
 [ext_resource type="Script" path="res://Code/Bullet.gd" id="1_5vplj"]
 [ext_resource type="AudioStream" uid="uid://dj06uhupptb62" path="res://Sounds/Poof.wav" id="2_negmh"]
+[ext_resource type="Texture2D" uid="uid://bv2lk0pcue87o" path="res://shootemup/spaceMissiles_004.png" id="2_w0kiq"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ff0mn"]
-radius = 3.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5oaa"]
+size = Vector2(11.9998, 8.03026)
 
-[sub_resource type="SphereMesh" id="SphereMesh_1ictf"]
-radius = 3.0
-height = 6.0
-
-[sub_resource type="Gradient" id="Gradient_c4kld"]
-colors = PackedColorArray(1, 0.796078, 0, 1, 1, 1, 0.670588, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ydfon"]
-gradient = SubResource("Gradient_c4kld")
+[sub_resource type="QuadMesh" id="QuadMesh_eaj16"]
+size = Vector2(9, 5)
 
 [sub_resource type="Gradient" id="Gradient_u8k66"]
 colors = PackedColorArray(1, 0.027451, 0.184314, 1, 1, 0.469127, 0.475816, 0)
@@ -23,11 +17,16 @@ colors = PackedColorArray(1, 0.027451, 0.184314, 1, 1, 0.469127, 0.475816, 0)
 script = ExtResource("1_5vplj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ff0mn")
+position = Vector2(0.0152321, -0.0201307)
+rotation = -1.56574
+shape = SubResource("RectangleShape2D_l5oaa")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-mesh = SubResource("SphereMesh_1ictf")
-texture = SubResource("GradientTexture2D_ydfon")
+z_as_relative = false
+rotation = -3.14136
+scale = Vector2(0.923307, 3.05782)
+mesh = SubResource("QuadMesh_eaj16")
+texture = ExtResource("2_w0kiq")
 
 [node name="Poof" type="CPUParticles2D" parent="."]
 emitting = false
