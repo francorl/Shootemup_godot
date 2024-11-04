@@ -1,0 +1,16 @@
+----------------prioridad----------------------------
+*arreglar bullet (rotacion)
+*spaw ramdom de los enemigos 
+*arreglar joystik cuando muere 
+*spaw de los enemigos (que dejen de spawnear cuando moris)
+
+
+--------------------ultimo-----------------------
+*arreglar escala 
+*menus
+*resposibe para pantalla
+
+--------------------refuerzo de proyecto------------------
+*fondo
+*bullet bombas
+*
