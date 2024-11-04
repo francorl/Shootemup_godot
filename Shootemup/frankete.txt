@@ -13,4 +13,4 @@
 --------------------refuerzo de proyecto------------------
 *fondo
 *bullet bombas
-*
+*que cada nivel al final o cuando juntes una cantidad de monedas aparezca un jefe al final, una bolita grande la cual hay que sacárle vida, esquivando mas bolitas estatico o variando y cuando lo matas te da algún tiro exclusivo o arma para la nave para el próximo nivel
