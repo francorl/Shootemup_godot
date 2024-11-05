@@ -126,16 +126,9 @@ text = "VOLVER"
 flat = true
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_play_pressed"]
-<<<<<<< Updated upstream
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_volume_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_resolution_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_option_pressed"]
-=======
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_volume_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_levels_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_resolution_pressed"]
->>>>>>> Stashed changes
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_back_pressed"]
