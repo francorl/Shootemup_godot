@@ -43,6 +43,7 @@ corner_detail = 1
 bg_color = Color(0.678431, 0, 0.0117647, 1)
 
 [node name="JUGAR" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -120,9 +121,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0jhp1")
 text = "VOLVER"
 flat = true
 
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_volume_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_resolution_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_exit_pressed"]

@@ -30,7 +30,3 @@ func _process(_delta):
 
 
 	
-
-
-func _on_menu_pressed() -> void:
-	get_tree().change_scene_to_file ("res://Scene/MENU.tscn")

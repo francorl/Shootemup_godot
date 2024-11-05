@@ -9,6 +9,7 @@
 *arreglar escala 
 *menus
 *resposibe para pantalla
+*que los joystick sean ajustable a la medida
 
 --------------------refuerzo de proyecto------------------
 *fondo
