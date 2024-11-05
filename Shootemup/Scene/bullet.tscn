@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bv2lk0pcue87o" path="res://shootemup/spaceMissiles_004.png" id="2_w0kiq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5oaa"]
-size = Vector2(11.9998, 8.03026)
+size = Vector2(13.9843, 8.03026)
 
 [sub_resource type="QuadMesh" id="QuadMesh_eaj16"]
 size = Vector2(9, 5)
@@ -17,14 +17,12 @@ colors = PackedColorArray(1, 0.027451, 0.184314, 1, 1, 0.469127, 0.475816, 0)
 script = ExtResource("1_5vplj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.0152321, -0.0201307)
-rotation = -1.56574
+scale = Vector2(0.57059, 1.80252)
 shape = SubResource("RectangleShape2D_l5oaa")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 z_as_relative = false
-rotation = -3.14136
-scale = Vector2(0.923307, 3.05782)
+scale = Vector2(0.897185, 2.84041)
 mesh = SubResource("QuadMesh_eaj16")
 texture = ExtResource("2_w0kiq")
 

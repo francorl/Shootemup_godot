@@ -17,6 +17,7 @@ colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 0)
 [node name="Character" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_g1m0b")
 Bullet = ExtResource("2_fsq17")
+fire_rate = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3.5, 0.5)
@@ -37,7 +38,7 @@ scale = Vector2(0.234153, 0.0625593)
 skew = -1.00136e-05
 
 [node name="BulletSpawn" type="Marker2D" parent="."]
-position = Vector2(24, 0)
+position = Vector2(30, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.25, 1.25)

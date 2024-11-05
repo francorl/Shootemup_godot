@@ -20,6 +20,7 @@ var power_timer = 0
 var respawn_timer = 0
 
 
+var shoot_direction = Vector2.ZERO
 
 
 @onready var absolute_parent = get_parent()
@@ -30,7 +31,9 @@ var die: bool = false
 var move_vector := Vector2.ZERO
 
 	
-
+func _ready():
+	
+	Camera.set("position", Vector2(100, 0))
 
 
 func _process(delta: float) -> void:
@@ -38,9 +41,9 @@ func _process(delta: float) -> void:
 	position += move_vector * speed * delta
 
 
+	
 	if joystick_right and joystick_right.is_pressed:
 		rotation = joystick_right.output.angle()
-		
 		
 
 		
@@ -48,6 +51,13 @@ func _physics_process(delta):
 	
 	
 	timer += delta
+	
+	if joystick_right and joystick_right.is_pressed:
+		
+		shoot_direction = joystick_right.output.normalized()
+	else:
+		shoot_direction = (get_global_mouse_position() - global_position).normalized()
+
 
 #TIMERS
 
@@ -69,6 +79,8 @@ func _physics_process(delta):
 			print("Weapon Deactivated")
 			
 ######################################################
+
+
 	velocity = Vector2.ZERO
 
 	if die:
@@ -82,61 +94,28 @@ func _physics_process(delta):
 
 	# Disparo.
 	if timer >= actual_rate:
-		var temp = Bullet.instantiate()
-		add_sibling(temp)
-		temp.global_position = get_node("BulletSpawn").global_position
-		
-		var shoot_direction = Vector2.ZERO
-		if joystick_right and joystick_right.is_pressed:
-			shoot_direction = joystick_right.output.normalized()
-		else:
-			shoot_direction = (get_global_mouse_position() - global_position).normalized()
-		
-		temp.set("area_direction", shoot_direction)
-		
-	
+		timer = 0
+		var bullet_instance = Bullet.instantiate()
+		add_sibling(bullet_instance)
+		bullet_instance.global_position = get_node("BulletSpawn").global_position
+		bullet_instance.set("area_direction", shoot_direction)  # Pasar la dirección de disparo
+
 		if weapon:
-			
-			weapon_timer += delta
-			var bullet2 = Bullet.instantiate()
-			add_sibling(bullet2)
-			bullet2.global_position = get_node("BulletSpawn").global_position
-
-			
-			var shoot_direction2 = shoot_direction.rotated(deg_to_rad(15)) 
-				
-			bullet2.set("area_direction", shoot_direction2)
+		
+			var bullet_instance2 = Bullet.instantiate()
+			add_sibling(bullet_instance2)
+			bullet_instance2.global_position = get_node("BulletSpawn").global_position
+			bullet_instance2.set("area_direction", shoot_direction.rotated(deg_to_rad(15)))
 			print("Weapon Activated")
-			
-			
-			
-		
-			
-			
-			
-		
-
-		
-		if joystick_right and joystick_right.is_pressed:
-			rotation = joystick_right.output.angle()
-		else:
-			look_at(get_global_mouse_position())
 
 		
 		Camera.offset = Vector2(randf_range(-1, 1), randf_range(-1, 1))
-		timer = 0
 	else:
 		Camera.offset = Vector2(0, 0)
+	
 
 	
-	var direction_x = Input.get_axis("Left", "Right")
-	var direction_y = Input.get_axis("Up", "Down")
-	
-	if direction_x:
-		velocity.x = direction_x * SPEED
-	if direction_y:
-		velocity.y = direction_y * SPEED
-
+	self.look_at(get_global_mouse_position())
 	move_and_slide()
 
 func Die():
@@ -162,5 +141,3 @@ func _on_timer_timeout() -> void:
 	weapon = false
 	print("Weapon Deactivated")
 	$Timer.stop()
-	
-	

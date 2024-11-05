@@ -10,18 +10,17 @@ func _process(delta):
 	self.translate(area_direction * SPEED * delta)
 
 func _on_body_entered(body):
-	# Stops an error that crashes the game.
+
 	if debounce == true:
 		return
 	debounce = true
-	# make sure walls aren't destroyed!
+
 	if body.is_in_group("Enemy"):
 		body.hit()
 		self.hit()
 	else:
 		poof()
 
-# make the bullet disappear with a poof :D
 func poof():
 	get_node("Poof").set_emitting(true)
 	get_node("Poof/Sound").play()
