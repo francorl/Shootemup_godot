@@ -1,7 +1,7 @@
 ----------------prioridad----------------------------
 -arreglar bullet (rotacion) *
--spaw ramdom de los enemigos *
--arreglar joystick cuando muere 
+-spaw ramdom de los enemigos (ver)
+-arreglar joystick cuando muere *
 -spaw de los enemigos (que dejen de spawnear cuando moris)
 -que los enemigos cuando mueran suelten power ups
 
