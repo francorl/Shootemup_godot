@@ -37,6 +37,7 @@ corner_radius_bottom_left = 10
 corner_detail = 1
 
 [node name="Menu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -96,6 +97,7 @@ theme_override_constants/separation = 15
 
 [node name="PLAY" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxFlat_jut15")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okq4p")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lr3vv")
@@ -104,6 +106,7 @@ text = "JUGAR"
 
 [node name="OPTIONS" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxFlat_jut15")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okq4p")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lr3vv")
@@ -112,6 +115,7 @@ text = "OPCIONES"
 
 [node name="EXIT" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxFlat_jut15")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okq4p")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lr3vv")

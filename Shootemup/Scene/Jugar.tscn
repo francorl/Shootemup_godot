@@ -43,6 +43,7 @@ corner_detail = 1
 bg_color = Color(0.678431, 0, 0.0117647, 1)
 
 [node name="JUGAR" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

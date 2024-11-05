@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyqku4b80noy4"]
+[gd_scene load_steps=19 format=3 uid="uid://dyqku4b80noy4"]
 
 [ext_resource type="Script" path="res://Code/Score Script.gd" id="1_6ltk3"]
 [ext_resource type="PackedScene" uid="uid://bg7rpiubrhh1b" path="res://Scene/character.tscn" id="1_7r2wr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqq6h8h061orv" path="res://Scene/spawn_area.tscn" id="5_2hk0k"]
 [ext_resource type="PackedScene" uid="uid://bq2sqb1u1l5ve" path="res://addons/virtual_joystick/test/test.tscn" id="6_cvvaw"]
 [ext_resource type="VideoStream" path="res://shootemup/Comp-1_00000_1.ogv" id="7_grw53"]
+[ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="8_giy53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsddx"]
 
@@ -60,10 +61,6 @@ corner_detail = 1
 [node name="Main Scene" type="Node2D"]
 script = ExtResource("1_6ltk3")
 
-[node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 offset_left = -1776.0
 offset_top = -973.0
@@ -111,7 +108,7 @@ position = Vector2(1442, 498)
 Enemy = ExtResource("3_6oemb")
 
 [node name="Spawn Area" parent="." instance=ExtResource("5_2hk0k")]
-position = Vector2(396, 391)
+position = Vector2(396, 392)
 scale = Vector2(2.96, 1)
 power_spawn_rate = 10
 
@@ -214,14 +211,43 @@ offset_bottom = 45.0
 theme_override_font_sizes/font_size = 30
 text = "Score:"
 
-[node name="MENU" type="Button" parent="Test/UI" index="2"]
+[node name="Virtual joystick left" parent="Test/UI" index="2"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -150.0
+offset_bottom = 150.0
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+
+[node name="Virtual joystick right" parent="Test/UI" index="3"]
+anchors_preset = 6
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -150.0
+offset_right = -150.0
+offset_bottom = 150.0
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+joystick_mode = 0
+
+[node name="Player" parent="Test" index="1"]
+texture = null
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Node" type="Node" parent="CanvasLayer"]
+script = ExtResource("8_giy53")
+
+[node name="MENU" type="Button" parent="CanvasLayer/Node"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -278.0
-offset_top = 6.0
-offset_right = -228.0
-offset_bottom = 29.0
+offset_left = -216.0
+offset_top = 10.0
+offset_right = -166.0
+offset_bottom = 33.0
 grow_horizontal = 0
 scale = Vector2(3.72, 3.52)
 theme_override_styles/focus = SubResource("StyleBoxFlat_4s2ex")
@@ -230,26 +256,31 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_m0lgl")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cnnrk")
 text = "MENU"
 
-[node name="Virtual joystick left" parent="Test/UI" index="3"]
-anchors_preset = 4
+[node name="Popup" type="Popup" parent="CanvasLayer/Node/MENU"]
+process_mode = 3
+transparent_bg = true
+mode = 4
+initial_position = 1
+size = Vector2i(602, 221)
+transparent = true
+
+[node name="Button" type="Button" parent="CanvasLayer/Node/MENU/Popup"]
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -150.0
-offset_bottom = 150.0
+offset_left = -30.5
+offset_top = -11.5
+offset_right = 30.5
+offset_bottom = 11.5
+grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "VOLVER"
 
-[node name="Virtual joystick right" parent="Test/UI" index="4"]
-anchors_preset = 6
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -150.0
-offset_bottom = 150.0
-grow_vertical = 2
-joystick_mode = 0
-
-[node name="Player" parent="Test" index="1"]
-texture = null
-
-[connection signal="pressed" from="Test/UI/MENU" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Node/MENU" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Node/MENU" to="CanvasLayer/Node" method="_on_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Node/MENU/Popup/Button" to="CanvasLayer/Node" method="_on_button_pressed"]
 
 [editable path="Test"]
