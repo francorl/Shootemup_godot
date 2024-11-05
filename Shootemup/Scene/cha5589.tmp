@@ -37,7 +37,7 @@ scale = Vector2(0.234153, 0.0625593)
 skew = -1.00136e-05
 
 [node name="BulletSpawn" type="Marker2D" parent="."]
-position = Vector2(46, 0)
+position = Vector2(36, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.25, 1.25)

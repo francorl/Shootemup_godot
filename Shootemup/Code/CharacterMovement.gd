@@ -1,34 +1,42 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-@export var Bullet: PackedScene
-@onready var Camera = get_node("Camera2D")
 
+
+@onready var Camera = get_node("Camera2D")
+@onready var absolute_parent = get_parent()
+
+@export var Bullet: PackedScene
 @export var joystick_left: VirtualJoystick
 @export var joystick_right: VirtualJoystick
 @export var speed: float = 100
 @export var fire_rate = 0.2
-var actual_rate = 0.2
-var timer = 0
+
+const SPEED = 300.0
+
 
 var power = false
 var weapon = false
 var respawn = false
-
-var weapon_timer = 0
-var power_timer = 0
-var respawn_timer = 0
+var die: bool = false
 
 
 var shoot_direction = Vector2.ZERO
-
-
-@onready var absolute_parent = get_parent()
-
-
-var die: bool = false
-
 var move_vector := Vector2.ZERO
+var weapon_timer = 0
+var power_timer = 0
+var respawn_timer = 0
+var actual_rate = 0.2
+var timer = 0
+
+
+
+
+
+
+
+
+
+
 
 	
 func _ready():
@@ -56,7 +64,9 @@ func _physics_process(delta):
 		
 		shoot_direction = joystick_right.output.normalized()
 	else:
-		shoot_direction = (get_global_mouse_position() - global_position).normalized()
+		shoot_direction = Vector2(cos(rotation), sin(rotation)).normalized()
+		#Descomentar para PC con mouse
+		#shoot_direction = (get_global_mouse_position() - global_position).normalized()
 		
 
 #TIMERS
@@ -81,7 +91,7 @@ func _physics_process(delta):
 ######################################################
 
 
-	velocity = Vector2.ZERO
+
 
 	if die:
 		if respawn:
@@ -91,6 +101,7 @@ func _physics_process(delta):
 					Respawn()
 					respawn = false
 				return
+########################################################
 
 	# Disparo.
 	if timer >= actual_rate:
@@ -116,8 +127,8 @@ func _physics_process(delta):
 		Camera.offset = Vector2(0, 0)
 	
 
-	
-	self.look_at(get_global_mouse_position())
+	#Descomentar para PC con mouse
+	#self.look_at(get_global_mouse_position())
 	move_and_slide()
 
 func Die():

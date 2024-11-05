@@ -1,7 +1,7 @@
 extends Area2D
 
 #######################################################################
-const bullet_speed = 500.0
+const bullet_speed = 800.0
 var area_direction = Vector2.ZERO
 var debounce = false
 
