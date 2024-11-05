@@ -6,7 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://chluf4qb455d5" path="res://Scene/spawner.tscn" id="3_m5r3x"]
 [ext_resource type="PackedScene" uid="uid://dqq6h8h061orv" path="res://Scene/spawn_area.tscn" id="5_2hk0k"]
 [ext_resource type="PackedScene" uid="uid://bq2sqb1u1l5ve" path="res://addons/virtual_joystick/test/test.tscn" id="6_cvvaw"]
+<<<<<<< Updated upstream
 [ext_resource type="VideoStream" path="res://shootemup/Comp-1_00000_1.ogv" id="7_grw53"]
+=======
+[ext_resource type="PackedScene" uid="uid://rxrmy77myb60" path="res://Scene/enemy.tscn" id="7_g7d5p"]
+>>>>>>> Stashed changes
 [ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="8_giy53"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwp0b"]
@@ -64,6 +68,25 @@ corner_detail = 1
 [node name="Main Scene" type="Node2D"]
 script = ExtResource("1_6ltk3")
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1395.0
+offset_top = -771.0
+offset_right = 2445.0
+offset_bottom = 1389.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.984999, 1.065)
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
+buffering_msec = 1000
+
 [node name="SCORE" type="CanvasLayer" parent="."]
 
 [node name="Score" type="Label" parent="SCORE"]
@@ -114,16 +137,6 @@ text = "texto en Score Script.gd -> retry_label.text = \"Press to retry\" "
 label_settings = SubResource("LabelSettings_lwp0b")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-offset_left = -1776.0
-offset_top = -973.0
-offset_right = 144.0
-offset_bottom = 115.0
-scale = Vector2(2.28662, 2.52945)
-stream = ExtResource("7_grw53")
-autoplay = true
-loop = true
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
@@ -232,9 +245,9 @@ scale = Vector2(1.5, 1.5)
 anchors_preset = 6
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -450.0
+offset_left = -457.0
 offset_top = -150.0
-offset_right = -150.0
+offset_right = -157.0
 offset_bottom = 150.0
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
@@ -247,10 +260,10 @@ script = ExtResource("8_giy53")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -176.0
-offset_top = 2.0
-offset_right = -15.0
-offset_bottom = 71.0
+offset_left = -338.0
+offset_top = 42.0
+offset_right = -177.0
+offset_bottom = 111.0
 grow_horizontal = 0
 scale = Vector2(0.879999, 0.966753)
 theme_override_font_sizes/font_size = 50
@@ -263,10 +276,31 @@ text = "PAUSA"
 [node name="Popup" type="Popup" parent="Test/UI/Node/PAUSA"]
 process_mode = 3
 transparent_bg = true
-mode = 4
 initial_position = 1
-size = Vector2i(8281, 16384)
+size = Vector2i(2500, 1250)
+always_on_top = true
 transparent = true
+content_scale_aspect = 4
+
+[node name="BackgP" type="ColorRect" parent="Test/UI/Node/PAUSA/Popup"]
+process_mode = 3
+top_level = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -255.0
+offset_right = -185.0
+offset_bottom = -216.32
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(7.56001, 13.844)
+size_flags_horizontal = 6
+size_flags_vertical = 3
+localize_numeral_system = false
+color = Color(0.737255, 0.737255, 0.737255, 0.415686)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Test/UI/Node/PAUSA/Popup"]
 process_mode = 3
@@ -281,6 +315,9 @@ offset_right = 60.5
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Test/UI/Node/PAUSA/Popup/VBoxContainer"]
+color = Color(0.925353, 0.925353, 0.925353, 1)
 
 [node name="VOLVER" type="Button" parent="Test/UI/Node/PAUSA/Popup/VBoxContainer"]
 layout_mode = 2

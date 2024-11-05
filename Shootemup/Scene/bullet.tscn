@@ -26,7 +26,11 @@ shape = SubResource("RectangleShape2D_l5oaa")
 z_as_relative = false
 position = Vector2(-1.43627, 0)
 rotation = -1.57351
+<<<<<<< Updated upstream
 scale = Vector2(0.353059, 2.33111)
+=======
+scale = Vector2(0.482952, 2.3153)
+>>>>>>> Stashed changes
 mesh = SubResource("QuadMesh_eaj16")
 texture = ExtResource("2_w0kiq")
 
