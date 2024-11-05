@@ -141,7 +141,7 @@ func Die():
 	position = Vector2(383, 397)
 	joystick_left.visible = false
 	joystick_right.visible = false
-	#joystick_right.reset
+	joystick_right.reset
 	$"../RETRY/Retry".show()
 
 func Respawn():

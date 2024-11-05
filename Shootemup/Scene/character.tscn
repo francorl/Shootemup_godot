@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Code/CharacterMovement.gd" id="1_g1m0b"]
 [ext_resource type="PackedScene" uid="uid://c7hm7qkkm1rb0" path="res://Scene/bullet.tscn" id="2_fsq17"]
 [ext_resource type="AudioStream" uid="uid://bant2odl7yq3y" path="res://Sounds/Player_Kill.wav" id="3_3vefl"]
-[ext_resource type="Texture2D" uid="uid://lq40vccqbxk7" path="res://shootemup/spaceShips_001.png" id="3_tcw64"]
+[ext_resource type="Texture2D" uid="uid://lq40vccqbxk7" path="res://shootemup/spaceShips_001.png" id="3_xxxac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mps6q"]
 size = Vector2(4.97533, 16.7342)
@@ -28,7 +28,7 @@ shape = SubResource("RectangleShape2D_mps6q")
 rotation = 1.56639
 scale = Vector2(1.73939, 1.74104)
 mesh = SubResource("QuadMesh_yw87l")
-texture = ExtResource("3_tcw64")
+texture = ExtResource("3_xxxac")
 
 [node name="Gun" type="Sprite2D" parent="MeshInstance2D"]
 position = Vector2(0.0430555, -9.76416)
