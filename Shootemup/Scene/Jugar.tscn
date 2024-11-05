@@ -93,22 +93,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -50.0
-offset_right = 51.0
-offset_bottom = 50.0
+offset_left = -65.2127
+offset_top = -74.5
+offset_right = 235.787
+offset_bottom = 162.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.44, 0.687)
 theme_override_constants/separation = 15
 
 [node name="LEVELS" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_gtm2w")
 text = "JUGAR"
 flat = true
 
 [node name="INVENTORY" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0ki17")
@@ -117,14 +120,15 @@ text = "INVENTARIO"
 
 [node name="BACK" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_0jhp1")
 text = "VOLVER"
 flat = true
 
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_volume_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_resolution_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_exit_pressed"]

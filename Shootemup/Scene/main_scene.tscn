@@ -9,6 +9,11 @@
 [ext_resource type="VideoStream" path="res://shootemup/Comp-1_00000_1.ogv" id="7_grw53"]
 [ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="8_giy53"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_lwp0b"]
+line_spacing = 0.0
+font_size = 50
+shadow_size = 8
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsddx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_umdlp"]
@@ -22,8 +27,6 @@ size = Vector3(20, 20, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_usd3b"]
 size = Vector3(20, 20, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_lwp0b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4s2ex"]
 bg_color = Color(1, 1, 1, 0)
@@ -60,6 +63,57 @@ corner_detail = 1
 
 [node name="Main Scene" type="Node2D"]
 script = ExtResource("1_6ltk3")
+
+[node name="SCORE" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="SCORE"]
+top_level = true
+offset_left = 79.0
+offset_right = 167.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+text = "Score:"
+
+[node name="RETRY" type="CanvasLayer" parent="."]
+
+[node name="Retry" type="ColorRect" parent="RETRY"]
+visible = false
+top_level = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1753.0
+offset_top = -1049.0
+offset_right = -1688.0
+offset_bottom = -1010.32
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(55.92, 54.724)
+size_flags_horizontal = 6
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="RETRY/Retry"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.7296
+offset_top = -2.80246
+offset_right = 2854.27
+offset_bottom = 134.198
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.0208364, 0.0264162)
+theme_override_font_sizes/font_size = 500
+text = "texto en Score Script.gd -> retry_label.text = \"Press to retry\" "
+label_settings = SubResource("LabelSettings_lwp0b")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 offset_left = -1776.0
@@ -165,53 +219,7 @@ mesh = SubResource("BoxMesh_usd3b")
 [node name="Test" parent="." instance=ExtResource("6_cvvaw")]
 position = Vector2(191, 351)
 
-[node name="Retry" type="ColorRect" parent="Test/UI" index="0"]
-top_level = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1753.0
-offset_top = -1049.0
-offset_right = -1688.0
-offset_bottom = -1010.32
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(55.92, 54.724)
-size_flags_horizontal = 6
-size_flags_vertical = 3
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="Test/UI/Retry"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -18.623
-offset_top = -2.32735
-offset_right = 401.377
-offset_bottom = 20.6726
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.0881699, 0.0755162)
-theme_override_font_sizes/font_size = 32
-text = "texto en Score Script.gd -> retry_label.text = \"Press to retry\" "
-label_settings = SubResource("LabelSettings_lwp0b")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Score" type="Label" parent="Test/UI" index="1"]
-top_level = true
-offset_left = 79.0
-offset_right = 167.0
-offset_bottom = 45.0
-theme_override_font_sizes/font_size = 30
-text = "Score:"
-
-[node name="Virtual joystick left" parent="Test/UI" index="2"]
+[node name="Virtual joystick left" parent="Test/UI" index="0"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -220,7 +228,7 @@ offset_bottom = 150.0
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 
-[node name="Virtual joystick right" parent="Test/UI" index="3"]
+[node name="Virtual joystick right" parent="Test/UI" index="1"]
 anchors_preset = 6
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -232,55 +240,69 @@ grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 joystick_mode = 0
 
-[node name="Player" parent="Test" index="1"]
-texture = null
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Node" type="Node" parent="CanvasLayer"]
+[node name="Node" type="Node" parent="Test/UI" index="2"]
 script = ExtResource("8_giy53")
 
-[node name="MENU" type="Button" parent="CanvasLayer/Node"]
+[node name="PAUSA" type="Button" parent="Test/UI/Node"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -216.0
-offset_top = 10.0
-offset_right = -166.0
-offset_bottom = 33.0
+offset_left = -176.0
+offset_top = 2.0
+offset_right = -15.0
+offset_bottom = 71.0
 grow_horizontal = 0
-scale = Vector2(3.72, 3.52)
+scale = Vector2(0.879999, 0.966753)
+theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_4s2ex")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fld8v")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_m0lgl")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cnnrk")
-text = "MENU"
+text = "PAUSA"
 
-[node name="Popup" type="Popup" parent="CanvasLayer/Node/MENU"]
+[node name="Popup" type="Popup" parent="Test/UI/Node/PAUSA"]
 process_mode = 3
 transparent_bg = true
 mode = 4
 initial_position = 1
-size = Vector2i(602, 221)
+size = Vector2i(8281, 16409)
 transparent = true
 
-[node name="Button" type="Button" parent="CanvasLayer/Node/MENU/Popup"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Test/UI/Node/PAUSA/Popup"]
+process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.5
-offset_top = -11.5
-offset_right = 30.5
-offset_bottom = 11.5
+offset_left = -60.5
+offset_top = -25.0
+offset_right = 60.5
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "VOLVER"
 
-[connection signal="pressed" from="CanvasLayer/Node/MENU" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/Node/MENU" to="CanvasLayer/Node" method="_on_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/Node/MENU/Popup/Button" to="CanvasLayer/Node" method="_on_button_pressed"]
+[node name="VOLVER" type="Button" parent="Test/UI/Node/PAUSA/Popup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "VOLVER"
+flat = true
+
+[node name="MENU" type="Button" parent="Test/UI/Node/PAUSA/Popup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "MENU"
+flat = true
+
+[node name="Player" parent="Test" index="1"]
+texture = null
+
+[connection signal="pressed" from="Test/UI/Node/PAUSA" to="Test/UI/Node" method="_on_pausa_pressed"]
+[connection signal="pressed" from="Test/UI/Node/PAUSA/Popup/VBoxContainer/VOLVER" to="Test/UI/Node" method="_on_volver_pressed"]
+[connection signal="pressed" from="Test/UI/Node/PAUSA/Popup/VBoxContainer/MENU" to="Test/UI/Node" method="_on_menu_pressed"]
 
 [editable path="Test"]

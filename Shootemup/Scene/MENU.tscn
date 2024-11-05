@@ -47,6 +47,8 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4.56, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_c6u0u")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
@@ -82,22 +84,20 @@ scale = Vector2(0.385409, 0.662895)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -50.0
-offset_right = 51.0
-offset_bottom = 50.0
+anchors_preset = -1
+offset_left = -55.8199
+offset_top = -78.0
+offset_right = 195.18
+offset_bottom = 159.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.439881, 0.687)
 theme_override_constants/separation = 15
 
 [node name="PLAY" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_jut15")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okq4p")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lr3vv")
@@ -106,7 +106,7 @@ text = "JUGAR"
 
 [node name="OPTIONS" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_jut15")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okq4p")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lr3vv")
@@ -115,7 +115,7 @@ text = "OPCIONES"
 
 [node name="EXIT" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_jut15")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okq4p")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lr3vv")

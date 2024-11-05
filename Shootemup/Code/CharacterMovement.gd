@@ -129,7 +129,7 @@ func Die():
 	joystick_left.visible = false
 	joystick_right.visible = false
 	joystick_right._reset()
-	$"../Test/UI/Retry".show()
+	$"../RETRY/Retry".show()
 
 func Respawn():
 	get_tree().reload_current_scene()
