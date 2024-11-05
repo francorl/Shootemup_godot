@@ -14,15 +14,17 @@ size = Vector2(9, 5)
 colors = PackedColorArray(1, 0.027451, 0.184314, 1, 1, 0.469127, 0.475816, 0)
 
 [node name="Bullet" type="Area2D"]
+scale = Vector2(2.785, 2.785)
 script = ExtResource("1_5vplj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.57059, 1.80252)
+scale = Vector2(0.82043, 0.612132)
 shape = SubResource("RectangleShape2D_l5oaa")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 z_as_relative = false
-scale = Vector2(0.897185, 2.84041)
+rotation = -1.57351
+scale = Vector2(0.324885, 1.59772)
 mesh = SubResource("QuadMesh_eaj16")
 texture = ExtResource("2_w0kiq")
 

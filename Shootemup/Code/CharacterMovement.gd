@@ -57,7 +57,7 @@ func _physics_process(delta):
 		shoot_direction = joystick_right.output.normalized()
 	else:
 		shoot_direction = (get_global_mouse_position() - global_position).normalized()
-
+		
 
 #TIMERS
 
@@ -98,14 +98,16 @@ func _physics_process(delta):
 		var bullet_instance = Bullet.instantiate()
 		add_sibling(bullet_instance)
 		bullet_instance.global_position = get_node("BulletSpawn").global_position
-		bullet_instance.set("area_direction", shoot_direction)  # Pasar la dirección de disparo
-
+		bullet_instance.set("area_direction", shoot_direction)  
+		bullet_instance.rotation = shoot_direction.angle()
+		
 		if weapon:
 		
 			var bullet_instance2 = Bullet.instantiate()
 			add_sibling(bullet_instance2)
 			bullet_instance2.global_position = get_node("BulletSpawn").global_position
 			bullet_instance2.set("area_direction", shoot_direction.rotated(deg_to_rad(15)))
+			bullet_instance2.rotation = shoot_direction.rotated(deg_to_rad(15)).angle() 
 			print("Weapon Activated")
 
 		

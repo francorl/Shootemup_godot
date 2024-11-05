@@ -1,13 +1,14 @@
 extends Area2D
 
 #######################################################################
-const SPEED = 800.0
-var area_direction = Vector2(0, 0)
+const bullet_speed = 500.0
+var area_direction = Vector2.ZERO
 var debounce = false
 
 
+
 func _process(delta):
-	self.translate(area_direction * SPEED * delta)
+	position += area_direction * bullet_speed * delta
 
 func _on_body_entered(body):
 
