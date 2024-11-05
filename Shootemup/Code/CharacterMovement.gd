@@ -9,16 +9,10 @@ extends CharacterBody2D
 @export var joystick_left: VirtualJoystick
 @export var joystick_right: VirtualJoystick
 @export var speed: float = 100
-<<<<<<< Updated upstream
 @export var fire_rate = 0.2
 
 const SPEED = 300.0
 
-=======
-@export var fire_rate = 0.3
-var actual_rate = 0.2
-var timer = 0
->>>>>>> Stashed changes
 
 var power = false
 var weapon = false
@@ -147,7 +141,7 @@ func Die():
 	position = Vector2(383, 397)
 	joystick_left.visible = false
 	joystick_right.visible = false
-	joystick_right.reset
+	#joystick_right.reset
 	$"../RETRY/Retry".show()
 
 func Respawn():

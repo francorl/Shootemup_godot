@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://1invvvgwk8kd"]
 
 [ext_resource type="Script" path="res://Code/menu.gd" id="1_c6u0u"]
-[ext_resource type="VideoStream" path="res://shootemup/Stars-4k-HDR-｜-OLED.ogv" id="2_7tyjr"]
+[ext_resource type="VideoStream" path="res://shootemup/Comp-1_00000_1.ogv" id="2_rkkcd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jut15"]
 bg_color = Color(1, 1, 1, 0)
@@ -53,13 +53,12 @@ script = ExtResource("1_c6u0u")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 0
-offset_left = -347.807
-offset_top = -469.0
-offset_right = 3492.19
-offset_bottom = 1691.0
-scale = Vector2(0.184639, 0.443659)
-stream = ExtResource("2_7tyjr")
-volume_db = -80.0
+offset_left = -353.728
+offset_top = -392.5
+offset_right = 1626.27
+offset_bottom = 695.5
+scale = Vector2(0.359649, 0.74)
+stream = ExtResource("2_rkkcd")
 autoplay = true
 loop = true
 
