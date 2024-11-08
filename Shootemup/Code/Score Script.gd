@@ -18,7 +18,7 @@ func _ready():
 	
 	var retry_label = $RETRY/Retry/Label
 	retry_label.text = "Press to retry"
-	
+	StarsBackground.emitting = true
 	
 
 func _process(_delta):

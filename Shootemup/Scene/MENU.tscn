@@ -52,6 +52,7 @@ size_flags_vertical = 4
 script = ExtResource("1_c6u0u")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -353.728
 offset_top = -392.5

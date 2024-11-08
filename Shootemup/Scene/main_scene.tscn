@@ -1,12 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dyqku4b80noy4"]
+[gd_scene load_steps=17 format=3 uid="uid://dyqku4b80noy4"]
 
 [ext_resource type="Script" path="res://Code/Score Script.gd" id="1_6ltk3"]
 [ext_resource type="PackedScene" uid="uid://bg7rpiubrhh1b" path="res://Scene/character.tscn" id="1_7r2wr"]
-[ext_resource type="PackedScene" uid="uid://ct05s8vrgf6io" path="res://Scene/bigger_enemy.tscn" id="3_6oemb"]
 [ext_resource type="PackedScene" uid="uid://chluf4qb455d5" path="res://Scene/spawner.tscn" id="3_m5r3x"]
 [ext_resource type="PackedScene" uid="uid://dqq6h8h061orv" path="res://Scene/spawn_area.tscn" id="5_2hk0k"]
-[ext_resource type="PackedScene" uid="uid://bq2sqb1u1l5ve" path="res://addons/virtual_joystick/test/test.tscn" id="6_cvvaw"]
-[ext_resource type="VideoStream" path="res://shootemup/Comp-1_00000_1.ogv" id="7_grw53"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_81rpe"]
 [ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="8_giy53"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwp0b"]
@@ -115,59 +113,35 @@ label_settings = SubResource("LabelSettings_lwp0b")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-offset_left = -1776.0
-offset_top = -973.0
-offset_right = 144.0
-offset_bottom = 115.0
-scale = Vector2(2.28662, 2.52945)
-stream = ExtResource("7_grw53")
-autoplay = true
-loop = true
-
-[node name="Background" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Character" parent="." node_paths=PackedStringArray("joystick_left", "joystick_right") instance=ExtResource("1_7r2wr")]
-position = Vector2(383, 397)
+position = Vector2(949, 472)
 joystick_left = NodePath("../Test/UI/Virtual joystick left")
 joystick_right = NodePath("../Test/UI/Virtual joystick right")
 speed = 350.0
 
 [node name="Spawner" parent="." instance=ExtResource("3_m5r3x")]
-position = Vector2(1359, 33)
+position = Vector2(1359, 236)
 scale = Vector2(-1.54055, -1.50609)
 small_timer_randomization = true
 
 [node name="Spawner2" parent="." instance=ExtResource("3_m5r3x")]
-position = Vector2(-670, 503)
+position = Vector2(435, 268)
 small_timer_randomization = true
 spawn_interval = 4.0
 
 [node name="Spawner3" parent="." instance=ExtResource("3_m5r3x")]
-position = Vector2(-685, 67)
+position = Vector2(1686, 989)
 small_timer_randomization = true
 spawn_interval = 2.0
-
-[node name="Spawner5" parent="." instance=ExtResource("3_m5r3x")]
-position = Vector2(-133, 600)
-small_timer_randomization = true
-spawn_interval = 2.0
-
-[node name="Spawner4" parent="." instance=ExtResource("3_m5r3x")]
-position = Vector2(1442, 498)
-Enemy = ExtResource("3_6oemb")
 
 [node name="Spawn Area" parent="." instance=ExtResource("5_2hk0k")]
-position = Vector2(396, 392)
+visible = false
+position = Vector2(994, 531)
 scale = Vector2(2.96, 1)
 power_spawn_rate = 10
 
 [node name="Object" type="StaticBody2D" parent="."]
-position = Vector2(1661, 399)
+position = Vector2(1952, 538)
 scale = Vector2(1.22182, 62.2642)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object"]
@@ -178,7 +152,7 @@ shape = SubResource("RectangleShape2D_dsddx")
 mesh = SubResource("BoxMesh_umdlp")
 
 [node name="Object2" type="StaticBody2D" parent="."]
-position = Vector2(-858, 399)
+position = Vector2(-31, 543)
 scale = Vector2(1.29688, 66.937)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object2"]
@@ -189,7 +163,7 @@ shape = SubResource("RectangleShape2D_dsddx")
 mesh = SubResource("BoxMesh_kcvye")
 
 [node name="Object3" type="StaticBody2D" parent="."]
-position = Vector2(365, 135)
+position = Vector2(947, 311)
 scale = Vector2(87.1794, 3.08347)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object3"]
@@ -203,7 +177,7 @@ scale = Vector2(1.46073, 1)
 mesh = SubResource("BoxMesh_kmj8k")
 
 [node name="Object4" type="StaticBody2D" parent="."]
-position = Vector2(371, 509)
+position = Vector2(953, 616)
 scale = Vector2(81.8994, 3.08347)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object4"]
@@ -216,10 +190,12 @@ position = Vector2(0.481935, 175.127)
 scale = Vector2(1.55904, 1)
 mesh = SubResource("BoxMesh_usd3b")
 
-[node name="Test" parent="." instance=ExtResource("6_cvvaw")]
+[node name="Test" type="Node2D" parent="."]
 position = Vector2(191, 351)
 
-[node name="Virtual joystick left" parent="Test/UI" index="0"]
+[node name="UI" type="CanvasLayer" parent="Test"]
+
+[node name="Virtual joystick left" parent="Test/UI" instance=ExtResource("6_81rpe")]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -228,29 +204,32 @@ offset_bottom = 150.0
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 
-[node name="Virtual joystick right" parent="Test/UI" index="1"]
+[node name="Virtual joystick right" parent="Test/UI" instance=ExtResource("6_81rpe")]
 anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -450.0
 offset_top = -150.0
 offset_right = -150.0
 offset_bottom = 150.0
+grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
-joystick_mode = 0
+use_input_actions = false
 
-[node name="Node" type="Node" parent="Test/UI" index="2"]
+[node name="Node" type="Node" parent="Test/UI"]
 script = ExtResource("8_giy53")
 
 [node name="PAUSA" type="Button" parent="Test/UI/Node"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -176.0
-offset_top = 2.0
-offset_right = -15.0
-offset_bottom = 71.0
+offset_left = -275.0
+offset_top = 24.0
+offset_right = -114.0
+offset_bottom = 93.0
 grow_horizontal = 0
 scale = Vector2(0.879999, 0.966753)
 theme_override_font_sizes/font_size = 50
@@ -265,8 +244,23 @@ process_mode = 3
 transparent_bg = true
 mode = 4
 initial_position = 1
-size = Vector2i(8281, 16384)
+size = Vector2i(2500, 1200)
 transparent = true
+
+[node name="ColorRect" type="ColorRect" parent="Test/UI/Node/PAUSA/Popup"]
+custom_minimum_size = Vector2(20, 20)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -210.41
+offset_right = 200.0
+offset_bottom = 189.59
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.960784, 0.960784, 0.423529)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Test/UI/Node/PAUSA/Popup"]
 process_mode = 3
@@ -298,11 +292,6 @@ theme_override_font_sizes/font_size = 50
 text = "MENU"
 flat = true
 
-[node name="Player" parent="Test" index="1"]
-texture = null
-
 [connection signal="pressed" from="Test/UI/Node/PAUSA" to="Test/UI/Node" method="_on_pausa_pressed"]
 [connection signal="pressed" from="Test/UI/Node/PAUSA/Popup/VBoxContainer/VOLVER" to="Test/UI/Node" method="_on_volver_pressed"]
 [connection signal="pressed" from="Test/UI/Node/PAUSA/Popup/VBoxContainer/MENU" to="Test/UI/Node" method="_on_menu_pressed"]
-
-[editable path="Test"]

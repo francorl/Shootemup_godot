@@ -56,6 +56,7 @@ scale = Vector2(4.56, 2)
 script = ExtResource("1_6xg6t")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -347.149
 offset_top = -389.5
