@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="METAL SPACE"
-run/main_scene="res://Scene/MENU.tscn"
+run/main_scene="res://Scene/UI/Menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://Image.png"
 config/icon="res://Image.png"
@@ -19,7 +19,7 @@ config/icon="res://Image.png"
 [autoload]
 
 GlobalVariables="*res://Code/GlobalVariables.gd"
-StarsBackground="*res://Scene/StarsBackground.tscn"
+StarsBackground="*res://Scene/Background/StarsBackground.tscn"
 
 [display]
 

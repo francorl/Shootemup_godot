@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bow87oeeov2h3"]
 
-[ext_resource type="Script" path="res://Code/jugar.gd" id="1_6xg6t"]
-[ext_resource type="FontFile" uid="uid://dr1gbc8kub15k" path="res://Fuente/Fuente Proyecto.otf" id="3_1gxfr"]
+[ext_resource type="Script" path="res://Code/jugar.gd" id="1_vso3m"]
+[ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_2md7k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtm2w"]
 bg_color = Color(0.68, 0, 0.0113332, 1)
@@ -53,7 +53,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4.56, 2)
-script = ExtResource("1_6xg6t")
+script = ExtResource("1_vso3m")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -93,15 +93,16 @@ theme_override_constants/separation = 15
 
 [node name="LEVELS" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_1gxfr")
+theme_override_fonts/font = ExtResource("2_2md7k")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_gtm2w")
-text = "JUGAR"
+text = "NIVELES
+"
 flat = true
 
 [node name="INVENTORY" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_1gxfr")
+theme_override_fonts/font = ExtResource("2_2md7k")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
@@ -111,16 +112,16 @@ text = "INVENTARIO"
 
 [node name="BACK" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_1gxfr")
+theme_override_fonts/font = ExtResource("2_2md7k")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_0jhp1")
 text = "VOLVER"
 flat = true
 
+[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_volume_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVELS" to="." method="_on_volume_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/INVENTORY" to="." method="_on_resolution_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_exit_pressed"]

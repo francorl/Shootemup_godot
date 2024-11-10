@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dqq6h8h061orv"]
 
 [ext_resource type="Script" path="res://Code/Collectable Spawner.gd" id="1_ll6wc"]
-[ext_resource type="PackedScene" uid="uid://c16xjmwoohnsq" path="res://Scene/collectible.tscn" id="2_m7l25"]
-[ext_resource type="PackedScene" uid="uid://bsu8nbvtd4bvq" path="res://Scene/powerable.tscn" id="3_sqet1"]
-[ext_resource type="PackedScene" uid="uid://gj4enlupky5w" path="res://Scene/weapon.tscn" id="4_u2sfu"]
+[ext_resource type="PackedScene" uid="uid://c16xjmwoohnsq" path="res://Scene/Player/Coin.tscn" id="2_m7l25"]
+[ext_resource type="PackedScene" uid="uid://bsu8nbvtd4bvq" path="res://Scene/Player/PowerUp.tscn" id="3_sqet1"]
+[ext_resource type="PackedScene" uid="uid://gj4enlupky5w" path="res://Scene/Player/DoubleShoot.tscn" id="4_u2sfu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl177"]
 size = Vector2(800, 800)

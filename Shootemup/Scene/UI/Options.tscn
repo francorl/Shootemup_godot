@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cm0kxypfeo4cw"]
 
-[ext_resource type="Script" path="res://Code/options.gd" id="1_pl40l"]
-[ext_resource type="FontFile" uid="uid://dr1gbc8kub15k" path="res://Fuente/Fuente Proyecto.otf" id="2_8j6ct"]
+[ext_resource type="Script" path="res://Code/options.gd" id="1_3o6lq"]
+[ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_pbbso"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au1pu"]
 bg_color = Color(1, 1, 1, 0)
@@ -46,7 +46,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4.56, 2)
-script = ExtResource("1_pl40l")
+script = ExtResource("1_3o6lq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -86,7 +86,7 @@ theme_override_constants/separation = 15
 
 [node name="VOLUME" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_8j6ct")
+theme_override_fonts/font = ExtResource("2_pbbso")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
@@ -96,7 +96,7 @@ text = "VOLUMEN"
 
 [node name="DIFFICULT" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_8j6ct")
+theme_override_fonts/font = ExtResource("2_pbbso")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
@@ -106,7 +106,7 @@ text = "DIFICULTAD"
 
 [node name="BACK" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_8j6ct")
+theme_override_fonts/font = ExtResource("2_pbbso")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
@@ -118,6 +118,6 @@ text = "VOLVER"
 [connection signal="pressed" from="ColorRect/VBoxContainer/VOLUME" to="." method="_on_resolution_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/DIFFICULT" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/DIFFICULT" to="." method="_on_resolution_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_resolution_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_back_pressed"]

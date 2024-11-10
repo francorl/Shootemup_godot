@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://uh0kit1oiv1q"]
 
 [ext_resource type="Texture2D" uid="uid://c4ueuan1n6el2" path="res://Image.png" id="1_wjfaa"]
-[ext_resource type="Shader" path="res://Scene/HUMO.gdshader" id="2_tvxp1"]
+[ext_resource type="Shader" path="res://Scene/Shaders/HUMO.gdshader" id="2_tvxp1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4qxn"]
 shader = ExtResource("2_tvxp1")
