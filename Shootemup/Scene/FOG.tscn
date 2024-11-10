@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://djwefuclkotl4"]
+
+[ext_resource type="Texture2D" uid="uid://cng7qfesgiri3" path="res://Assets/puff.png" id="1_dee1p"]
+
+[sub_resource type="Gradient" id="Gradient_yxyyk"]
+offsets = PackedFloat32Array(0.0494297, 0.913043, 1)
+colors = PackedColorArray(0.226562, 0.217086, 0.217086, 1, 0.133333, 0.12549, 0.12549, 1, 0.133333, 0.12549, 0.12549, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2fwgj"]
+gradient = SubResource("Gradient_yxyyk")
+
+[sub_resource type="Curve" id="Curve_xvkqe"]
+_data = [Vector2(0, 0.290223), 0.0, 3.6562, 0, 0, Vector2(0.682482, 1), -0.0677277, -0.0677277, 0, 0, Vector2(1, 0.554545), -0.29932, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qqxdd"]
+curve = SubResource("Curve_xvkqe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pli3t"]
+emission_shape_scale = Vector3(0, 0, 0)
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+initial_velocity_min = -10.0
+initial_velocity_max = -10.0
+angular_velocity_min = -80.0
+angular_velocity_max = 80.0
+gravity = Vector3(80, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_qqxdd")
+color_ramp = SubResource("GradientTexture2D_2fwgj")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[node name="Fog" type="Node2D"]
+
+[node name="SmokeParticles2D" type="GPUParticles2D" parent="."]
+process_priority = 1
+process_physics_priority = 1
+z_index = 1
+position = Vector2(105, 27)
+scale = Vector2(28.08, 1)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_pli3t")
+texture = ExtResource("1_dee1p")
+lifetime = 20.0
+preprocess = 0.6
+fixed_fps = 60
+interpolate = false
+fract_delta = false
+
+[node name="SmokeParticles2D2" type="GPUParticles2D" parent="."]
+process_priority = 1
+process_physics_priority = 1
+z_index = 1
+position = Vector2(234, 1500)
+scale = Vector2(28.08, 1)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_pli3t")
+texture = ExtResource("1_dee1p")
+lifetime = 20.0
+preprocess = 0.6
+fixed_fps = 60
+interpolate = false
+fract_delta = false

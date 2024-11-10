@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dyqku4b80noy4"]
+[gd_scene load_steps=20 format=3 uid="uid://dyqku4b80noy4"]
 
 [ext_resource type="Script" path="res://Code/Score Script.gd" id="1_6ltk3"]
 [ext_resource type="PackedScene" uid="uid://bg7rpiubrhh1b" path="res://Scene/character.tscn" id="1_7r2wr"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_81rpe"]
 [ext_resource type="Texture2D" uid="uid://c4ueuan1n6el2" path="res://Image.png" id="7_nsgdp"]
 [ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="8_giy53"]
-[ext_resource type="Texture2D" uid="uid://cng7qfesgiri3" path="res://Assets/puff.png" id="11_wg13m"]
+[ext_resource type="PackedScene" uid="uid://djwefuclkotl4" path="res://Scene/FOG.tscn" id="11_xc6p2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwp0b"]
 line_spacing = 0.0
@@ -57,38 +57,6 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 1
-
-[sub_resource type="Gradient" id="Gradient_b56np"]
-offsets = PackedFloat32Array(0.0494297, 0.913043, 1)
-colors = PackedColorArray(0.226562, 0.217086, 0.217086, 1, 0.133333, 0.12549, 0.12549, 1, 0.133333, 0.12549, 0.12549, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2fwgj"]
-gradient = SubResource("Gradient_b56np")
-
-[sub_resource type="Curve" id="Curve_oj0m5"]
-_data = [Vector2(0, 0.290223), 0.0, 3.6562, 0, 0, Vector2(0.682482, 1), -0.0677277, -0.0677277, 0, 0, Vector2(1, 0.554545), -0.29932, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_qqxdd"]
-curve = SubResource("Curve_oj0m5")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fj8cj"]
-emission_shape_scale = Vector3(0, 0, 0)
-emission_shape = 1
-emission_sphere_radius = 0.01
-spread = 180.0
-initial_velocity_min = -10.0
-initial_velocity_max = -10.0
-angular_velocity_min = -80.0
-angular_velocity_max = 80.0
-gravity = Vector3(80, 0, 0)
-scale_min = 2.0
-scale_max = 2.0
-scale_curve = SubResource("CurveTexture_qqxdd")
-color_ramp = SubResource("GradientTexture2D_2fwgj")
-collision_mode = 1
-collision_friction = 0.0
-collision_bounce = 0.0
 
 [node name="Main Scene" type="Node2D"]
 script = ExtResource("1_6ltk3")
@@ -406,40 +374,16 @@ theme_override_font_sizes/font_size = 50
 text = "MENU"
 flat = true
 
-[node name="SmokeParticles2D" type="GPUParticles2D" parent="."]
-process_priority = 1
-process_physics_priority = 1
-z_index = 1
-position = Vector2(-73, -127)
-scale = Vector2(28.08, 1)
-amount = 1000
-process_material = SubResource("ParticleProcessMaterial_fj8cj")
-texture = ExtResource("11_wg13m")
-lifetime = 20.0
-preprocess = 0.6
-fixed_fps = 60
-interpolate = false
-fract_delta = false
+[node name="Fog" parent="." instance=ExtResource("11_xc6p2")]
 
-[node name="SmokeParticles2D2" type="GPUParticles2D" parent="."]
-process_priority = 1
-process_physics_priority = 1
-z_index = 1
-position = Vector2(-16, 1190)
-scale = Vector2(28.08, 1)
-amount = 1000
-process_material = SubResource("ParticleProcessMaterial_fj8cj")
-texture = ExtResource("11_wg13m")
-lifetime = 20.0
-preprocess = 0.6
-fixed_fps = 60
-interpolate = false
-fract_delta = false
+[node name="SmokeParticles2D" parent="Fog" index="0"]
+position = Vector2(-28, -117)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(2164, -194)
+[node name="SmokeParticles2D2" parent="Fog" index="1"]
+position = Vector2(-6.00002, 1148)
 
 [connection signal="pressed" from="Test/UI/Node/PAUSA" to="Test/UI/Node" method="_on_pausa_pressed"]
 [connection signal="pressed" from="Test/UI/Node/PAUSA/Popup/VBoxContainer/VOLVER" to="Test/UI/Node" method="_on_volver_pressed"]
 [connection signal="pressed" from="Test/UI/Node/PAUSA/Popup/VBoxContainer/MENU" to="Test/UI/Node" method="_on_menu_pressed"]
+
+[editable path="Fog"]
