@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var Background = get_node("Background")
+#@onready var Background = get_node("Background")
 
 
 

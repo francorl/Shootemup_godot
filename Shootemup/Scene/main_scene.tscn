@@ -1,13 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://dyqku4b80noy4"]
+[gd_scene load_steps=22 format=3 uid="uid://dyqku4b80noy4"]
 
 [ext_resource type="Script" path="res://Code/Score Script.gd" id="1_6ltk3"]
 [ext_resource type="PackedScene" uid="uid://bg7rpiubrhh1b" path="res://Scene/character.tscn" id="1_7r2wr"]
 [ext_resource type="FontFile" uid="uid://dr1gbc8kub15k" path="res://Fuente/Fuente Proyecto.otf" id="2_g0a7e"]
 [ext_resource type="PackedScene" uid="uid://chluf4qb455d5" path="res://Scene/spawner.tscn" id="3_m5r3x"]
 [ext_resource type="PackedScene" uid="uid://dqq6h8h061orv" path="res://Scene/spawn_area.tscn" id="5_2hk0k"]
+[ext_resource type="Script" path="res://Code/SpawnerBoss.gd" id="5_dwpdu"]
 [ext_resource type="Shader" path="res://Scene/HUMO.gdshader" id="6_4txii"]
 [ext_resource type="Shader" path="res://Scene/HUMO DE COTE.gdshader" id="6_6k8gj"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_81rpe"]
+[ext_resource type="PackedScene" uid="uid://b0bg7jeyskhrv" path="res://Scene/boss.tscn" id="6_fed4v"]
 [ext_resource type="Texture2D" uid="uid://c4ueuan1n6el2" path="res://Image.png" id="7_nsgdp"]
 [ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="8_giy53"]
 [ext_resource type="PackedScene" uid="uid://djwefuclkotl4" path="res://Scene/FOG.tscn" id="11_xc6p2"]
@@ -136,10 +138,16 @@ position = Vector2(1686, 989)
 small_timer_randomization = true
 spawn_interval = 2.0
 
+[node name="SpawnerBoss" parent="." instance=ExtResource("3_m5r3x")]
+position = Vector2(1008, 324)
+script = ExtResource("5_dwpdu")
+Enemy = ExtResource("6_fed4v")
+small_timer_randomization = true
+spawn_interval = 2.0
+
 [node name="Spawn Area" parent="." instance=ExtResource("5_2hk0k")]
-visible = false
-position = Vector2(994, 531)
-scale = Vector2(2.96, 1)
+position = Vector2(970, 526)
+scale = Vector2(2.44689, 1.38889)
 power_spawn_rate = 10
 
 [node name="Object" type="StaticBody2D" parent="."]
@@ -153,6 +161,7 @@ shape = SubResource("RectangleShape2D_dsddx")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Object"]
 
 [node name="TextureRect4" type="TextureRect" parent="Object"]
+visible = false
 material = SubResource("ShaderMaterial_317ol")
 offset_left = -86.7558
 offset_top = -11.7242
@@ -162,6 +171,7 @@ scale = Vector2(0.181551, 0.0549947)
 texture = ExtResource("7_nsgdp")
 
 [node name="TextureRect5" type="TextureRect" parent="Object"]
+visible = false
 material = SubResource("ShaderMaterial_317ol")
 offset_left = -9.00292
 offset_top = -10.1824
@@ -183,6 +193,7 @@ shape = SubResource("RectangleShape2D_dsddx")
 position = Vector2(-154.216, 2.55464)
 
 [node name="TextureRect4" type="TextureRect" parent="Object2"]
+visible = false
 material = SubResource("ShaderMaterial_317ol")
 offset_left = -71.7106
 offset_top = -9.55223
@@ -192,6 +203,7 @@ scale = Vector2(0.181551, 0.0472856)
 texture = ExtResource("7_nsgdp")
 
 [node name="TextureRect5" type="TextureRect" parent="Object2"]
+visible = false
 material = SubResource("ShaderMaterial_317ol")
 offset_left = 9.3161
 offset_top = -10.3231
@@ -206,7 +218,7 @@ position = Vector2(947, 311)
 scale = Vector2(87.1794, 3.08347)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object3"]
-position = Vector2(0.433741, -117.076)
+position = Vector2(-0.0573532, -117.076)
 scale = Vector2(1.54177, -0.254585)
 shape = SubResource("RectangleShape2D_dsddx")
 
@@ -240,7 +252,7 @@ position = Vector2(953, 616)
 scale = Vector2(81.8994, 3.08347)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object4"]
-position = Vector2(0.530128, 176.425)
+position = Vector2(-0.769236, 154.047)
 scale = Vector2(1.59901, 0.0789613)
 shape = SubResource("RectangleShape2D_dsddx")
 
@@ -275,6 +287,7 @@ position = Vector2(191, 351)
 [node name="UI" type="CanvasLayer" parent="Test"]
 
 [node name="Virtual joystick left" parent="Test/UI" instance=ExtResource("6_81rpe")]
+visible = false
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -284,6 +297,7 @@ grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 
 [node name="Virtual joystick right" parent="Test/UI" instance=ExtResource("6_81rpe")]
+visible = false
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -375,9 +389,10 @@ text = "MENU"
 flat = true
 
 [node name="Fog" parent="." instance=ExtResource("11_xc6p2")]
+visible = false
 
 [node name="SmokeParticles2D" parent="Fog" index="0"]
-position = Vector2(-28, -117)
+position = Vector2(60, -82)
 
 [node name="SmokeParticles2D2" parent="Fog" index="1"]
 position = Vector2(-6.00002, 1148)
