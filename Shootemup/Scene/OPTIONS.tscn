@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cm0kxypfeo4cw"]
 
 [ext_resource type="Script" path="res://Code/options.gd" id="1_pl40l"]
-[ext_resource type="VideoStream" path="res://shootemup/Comp-1_00000_1.ogv" id="2_tsnio"]
+[ext_resource type="FontFile" uid="uid://dr1gbc8kub15k" path="res://Fuente/Fuente Proyecto.otf" id="2_8j6ct"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au1pu"]
 bg_color = Color(1, 1, 1, 0)
@@ -48,17 +48,6 @@ grow_vertical = 2
 scale = Vector2(4.56, 2)
 script = ExtResource("1_pl40l")
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-layout_mode = 0
-offset_left = -347.149
-offset_top = -389.5
-offset_right = 1632.85
-offset_bottom = 698.5
-scale = Vector2(0.355353, 0.74972)
-stream = ExtResource("2_tsnio")
-autoplay = true
-loop = true
-
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -86,16 +75,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -50.0
-offset_right = 51.0
-offset_bottom = 50.0
+offset_left = -79.436
+offset_top = -63.0
+offset_right = 352.564
+offset_bottom = 174.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.44, 0.687)
 theme_override_constants/separation = 15
 
 [node name="VOLUME" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8j6ct")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0ki17")
@@ -104,6 +96,8 @@ text = "VOLUMEN"
 
 [node name="DIFFICULT" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8j6ct")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0ki17")
@@ -112,6 +106,8 @@ text = "DIFICULTAD"
 
 [node name="BACK" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8j6ct")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0ki17")

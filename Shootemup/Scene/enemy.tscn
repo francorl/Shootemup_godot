@@ -1,19 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://rxrmy77myb60"]
+[gd_scene load_steps=8 format=3 uid="uid://rxrmy77myb60"]
 
 [ext_resource type="Script" path="res://Code/Enemy.gd" id="1_shqbb"]
+[ext_resource type="Texture2D" uid="uid://bv5msgvutl3ur" path="res://shootemup/Alien_1.png" id="2_c6ygp"]
 [ext_resource type="AudioStream" uid="uid://br1gutaatb6bu" path="res://Sounds/Kill.wav" id="2_q7vin"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4i0x"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_xkpvd"]
-radius = 10.0
-height = 20.0
-
-[sub_resource type="Gradient" id="Gradient_0mm5n"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rf4mn"]
-gradient = SubResource("Gradient_0mm5n")
+[sub_resource type="QuadMesh" id="QuadMesh_wxkij"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r4kwt"]
 radius = 12.0
@@ -27,15 +20,20 @@ motion_mode = 1
 script = ExtResource("1_shqbb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.24, 1.4)
 shape = SubResource("CircleShape2D_d4i0x")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-mesh = SubResource("SphereMesh_xkpvd")
-texture = SubResource("GradientTexture2D_rf4mn")
+rotation = 1.5708
+scale = Vector2(69.64, 57.64)
+mesh = SubResource("QuadMesh_wxkij")
+texture = ExtResource("2_c6ygp")
 
 [node name="AreaDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetector"]
+position = Vector2(-5, 0)
+scale = Vector2(1.4, 1.2)
 shape = SubResource("CircleShape2D_r4kwt")
 
 [node name="Kill" type="CPUParticles2D" parent="."]

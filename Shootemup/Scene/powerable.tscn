@@ -1,27 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsu8nbvtd4bvq"]
+[gd_scene load_steps=5 format=3 uid="uid://bsu8nbvtd4bvq"]
 
 [ext_resource type="Script" path="res://Code/powerable.gd" id="1_w7icu"]
+[ext_resource type="Texture2D" uid="uid://b7v2im3pciobs" path="res://shootemup/Power UP/Power UP doble disparo.png" id="2_tdscm"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_5ikb6"]
-
-[sub_resource type="Gradient" id="Gradient_c6ss2"]
-colors = PackedColorArray(0.111197, 0.111197, 0.111197, 1, 0.180392, 1, 0.152941, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_frole"]
-gradient = SubResource("Gradient_c6ss2")
+[sub_resource type="QuadMesh" id="QuadMesh_ehs8n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5u2yj"]
+radius = 10.7143
 
 [node name="Powerable" type="Area2D"]
 script = ExtResource("1_w7icu")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(-8.9407e-07, 2.02656e-06)
-scale = Vector2(20.0227, 20)
-mesh = SubResource("SphereMesh_5ikb6")
-texture = SubResource("GradientTexture2D_frole")
+scale = Vector2(60, 60)
+mesh = SubResource("QuadMesh_ehs8n")
+texture = ExtResource("2_tdscm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.68, 1.64)
 shape = SubResource("CircleShape2D_5u2yj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

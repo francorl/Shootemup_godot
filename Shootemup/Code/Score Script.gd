@@ -1,6 +1,6 @@
 extends Node2D
 
-#@onready var Background = get_node("Background")
+@onready var Background = get_node("Background")
 
 
 
@@ -17,14 +17,14 @@ func _ready():
 	var button_name = OS.get_keycode_string(respawn_event.physical_keycode)
 	
 	var retry_label = $RETRY/Retry/Label
-	retry_label.text = "Press to retry"
+	retry_label.text = "TE MORISTE "
 	StarsBackground.emitting = true
 	
 
 func _process(_delta):
 	$SCORE.get_node("Score").set("text", "Score: " + str(Score) + "\nCoins: " + str(Coin))
 	
-
+		
 
 
 
