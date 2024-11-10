@@ -1,18 +1,19 @@
-[gd_scene load_steps=22 format=3 uid="uid://dyqku4b80noy4"]
+[gd_scene load_steps=23 format=3 uid="uid://dyqku4b80noy4"]
 
-[ext_resource type="Script" path="res://Code/Score Script.gd" id="1_6ltk3"]
-[ext_resource type="PackedScene" uid="uid://bg7rpiubrhh1b" path="res://Scene/character.tscn" id="1_7r2wr"]
-[ext_resource type="FontFile" uid="uid://dr1gbc8kub15k" path="res://Fuente/Fuente Proyecto.otf" id="2_g0a7e"]
-[ext_resource type="PackedScene" uid="uid://chluf4qb455d5" path="res://Scene/spawner.tscn" id="3_m5r3x"]
-[ext_resource type="PackedScene" uid="uid://dqq6h8h061orv" path="res://Scene/spawn_area.tscn" id="5_2hk0k"]
-[ext_resource type="Script" path="res://Code/SpawnerBoss.gd" id="5_dwpdu"]
-[ext_resource type="Shader" path="res://Scene/HUMO.gdshader" id="6_4txii"]
-[ext_resource type="Shader" path="res://Scene/HUMO DE COTE.gdshader" id="6_6k8gj"]
-[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_81rpe"]
-[ext_resource type="PackedScene" uid="uid://b0bg7jeyskhrv" path="res://Scene/boss.tscn" id="6_fed4v"]
-[ext_resource type="Texture2D" uid="uid://c4ueuan1n6el2" path="res://Image.png" id="7_nsgdp"]
-[ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="8_giy53"]
-[ext_resource type="PackedScene" uid="uid://djwefuclkotl4" path="res://Scene/FOG.tscn" id="11_xc6p2"]
+[ext_resource type="Script" path="res://Code/Score Script.gd" id="1_bjeuc"]
+[ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_h1ose"]
+[ext_resource type="PackedScene" uid="uid://bg7rpiubrhh1b" path="res://Scene/Player/Character.tscn" id="3_u7f8w"]
+[ext_resource type="PackedScene" uid="uid://chluf4qb455d5" path="res://Scene/Background/Spawner.tscn" id="4_fw31k"]
+[ext_resource type="Script" path="res://Code/SpawnerBoss.gd" id="5_2bu8s"]
+[ext_resource type="PackedScene" uid="uid://b0bg7jeyskhrv" path="res://Scene/Enemy/Boss.tscn" id="6_tlbnx"]
+[ext_resource type="PackedScene" uid="uid://dqq6h8h061orv" path="res://Scene/Background/Spawn_Area.tscn" id="7_35orc"]
+[ext_resource type="Shader" path="res://Scene/Shaders/HUMO DE COTE.gdshader" id="8_3jtp4"]
+[ext_resource type="Texture2D" uid="uid://c4ueuan1n6el2" path="res://Image.png" id="9_vnls3"]
+[ext_resource type="Shader" path="res://Scene/Shaders/HUMO.gdshader" id="10_wljfb"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="11_ekxqp"]
+[ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="12_55skv"]
+[ext_resource type="Texture2D" uid="uid://dj4absx05ry2q" path="res://shootemup/pause_25dp_E8EAED.png" id="13_88ii8"]
+[ext_resource type="PackedScene" uid="uid://djwefuclkotl4" path="res://Scene/Shaders/Fog.tscn" id="14_3qolf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwp0b"]
 line_spacing = 0.0
@@ -22,10 +23,10 @@ shadow_size = 8
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsddx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_317ol"]
-shader = ExtResource("6_6k8gj")
+shader = ExtResource("8_3jtp4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_40y0y"]
-shader = ExtResource("6_4txii")
+shader = ExtResource("10_wljfb")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4s2ex"]
 bg_color = Color(1, 1, 1, 0)
@@ -61,7 +62,7 @@ corner_radius_bottom_left = 10
 corner_detail = 1
 
 [node name="Main Scene" type="Node2D"]
-script = ExtResource("1_6ltk3")
+script = ExtResource("1_bjeuc")
 
 [node name="SCORE" type="CanvasLayer" parent="."]
 
@@ -71,7 +72,7 @@ offset_left = 79.0
 offset_top = 30.0
 offset_right = 238.0
 offset_bottom = 75.0
-theme_override_fonts/font = ExtResource("2_g0a7e")
+theme_override_fonts/font = ExtResource("2_h1ose")
 theme_override_font_sizes/font_size = 30
 text = "SCORE:"
 
@@ -110,42 +111,42 @@ offset_bottom = 134.198
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.0208364, 0.0264162)
-theme_override_fonts/font = ExtResource("2_g0a7e")
+theme_override_fonts/font = ExtResource("2_h1ose")
 theme_override_font_sizes/font_size = 500
 text = "texto en Score Script.gd -> retry_label.text = \"Press to retry\" "
 label_settings = SubResource("LabelSettings_lwp0b")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character" parent="." node_paths=PackedStringArray("joystick_left", "joystick_right") instance=ExtResource("1_7r2wr")]
+[node name="Character" parent="." node_paths=PackedStringArray("joystick_left", "joystick_right") instance=ExtResource("3_u7f8w")]
 position = Vector2(949, 472)
 joystick_left = NodePath("../Test/UI/Virtual joystick left")
 joystick_right = NodePath("../Test/UI/Virtual joystick right")
 speed = 350.0
 
-[node name="Spawner" parent="." instance=ExtResource("3_m5r3x")]
+[node name="Spawner" parent="." instance=ExtResource("4_fw31k")]
 position = Vector2(1359, 236)
 scale = Vector2(-1.54055, -1.50609)
 small_timer_randomization = true
 
-[node name="Spawner2" parent="." instance=ExtResource("3_m5r3x")]
+[node name="Spawner2" parent="." instance=ExtResource("4_fw31k")]
 position = Vector2(435, 268)
 small_timer_randomization = true
 spawn_interval = 4.0
 
-[node name="Spawner3" parent="." instance=ExtResource("3_m5r3x")]
+[node name="Spawner3" parent="." instance=ExtResource("4_fw31k")]
 position = Vector2(1686, 989)
 small_timer_randomization = true
 spawn_interval = 2.0
 
-[node name="SpawnerBoss" parent="." instance=ExtResource("3_m5r3x")]
+[node name="SpawnerBoss" parent="." instance=ExtResource("4_fw31k")]
 position = Vector2(1008, 324)
-script = ExtResource("5_dwpdu")
-Enemy = ExtResource("6_fed4v")
+script = ExtResource("5_2bu8s")
+Enemy = ExtResource("6_tlbnx")
 small_timer_randomization = true
 spawn_interval = 2.0
 
-[node name="Spawn Area" parent="." instance=ExtResource("5_2hk0k")]
+[node name="Spawn Area" parent="." instance=ExtResource("7_35orc")]
 position = Vector2(970, 526)
 scale = Vector2(2.44689, 1.38889)
 power_spawn_rate = 10
@@ -168,7 +169,7 @@ offset_top = -11.7242
 offset_right = 419.244
 offset_bottom = 410.276
 scale = Vector2(0.181551, 0.0549947)
-texture = ExtResource("7_nsgdp")
+texture = ExtResource("9_vnls3")
 
 [node name="TextureRect5" type="TextureRect" parent="Object"]
 visible = false
@@ -178,7 +179,7 @@ offset_top = -10.1824
 offset_right = 496.997
 offset_bottom = 411.818
 scale = Vector2(0.181551, 0.0472856)
-texture = ExtResource("7_nsgdp")
+texture = ExtResource("9_vnls3")
 flip_h = true
 
 [node name="Object2" type="StaticBody2D" parent="."]
@@ -200,7 +201,7 @@ offset_top = -9.55223
 offset_right = 434.289
 offset_bottom = 412.448
 scale = Vector2(0.181551, 0.0472856)
-texture = ExtResource("7_nsgdp")
+texture = ExtResource("9_vnls3")
 
 [node name="TextureRect5" type="TextureRect" parent="Object2"]
 visible = false
@@ -210,7 +211,7 @@ offset_top = -10.3231
 offset_right = 515.316
 offset_bottom = 411.677
 scale = Vector2(0.181551, 0.0472856)
-texture = ExtResource("7_nsgdp")
+texture = ExtResource("9_vnls3")
 flip_h = true
 
 [node name="Object3" type="StaticBody2D" parent="."]
@@ -234,7 +235,7 @@ offset_top = -164.749
 offset_right = 494.304
 offset_bottom = 257.251
 scale = Vector2(0.0482649, 0.107812)
-texture = ExtResource("7_nsgdp")
+texture = ExtResource("9_vnls3")
 
 [node name="TextureRect2" type="TextureRect" parent="Object3"]
 visible = false
@@ -245,7 +246,7 @@ offset_right = 518.309
 offset_bottom = 347.73
 rotation = 3.14159
 scale = Vector2(0.0482649, 0.107812)
-texture = ExtResource("7_nsgdp")
+texture = ExtResource("9_vnls3")
 
 [node name="Object4" type="StaticBody2D" parent="."]
 position = Vector2(953, 616)
@@ -268,7 +269,7 @@ offset_top = 129.4
 offset_right = 493.999
 offset_bottom = 551.4
 scale = Vector2(0.0482649, 0.107812)
-texture = ExtResource("7_nsgdp")
+texture = ExtResource("9_vnls3")
 
 [node name="TextureRect2" type="TextureRect" parent="Object4"]
 visible = false
@@ -279,14 +280,14 @@ offset_right = 518.004
 offset_bottom = 641.879
 rotation = 3.14159
 scale = Vector2(0.0482649, 0.107812)
-texture = ExtResource("7_nsgdp")
+texture = ExtResource("9_vnls3")
 
 [node name="Test" type="Node2D" parent="."]
 position = Vector2(191, 351)
 
 [node name="UI" type="CanvasLayer" parent="Test"]
 
-[node name="Virtual joystick left" parent="Test/UI" instance=ExtResource("6_81rpe")]
+[node name="Virtual joystick left" parent="Test/UI" instance=ExtResource("11_ekxqp")]
 visible = false
 anchors_preset = 4
 anchor_top = 0.5
@@ -296,7 +297,7 @@ offset_bottom = 150.0
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 
-[node name="Virtual joystick right" parent="Test/UI" instance=ExtResource("6_81rpe")]
+[node name="Virtual joystick right" parent="Test/UI" instance=ExtResource("11_ekxqp")]
 visible = false
 anchors_preset = 6
 anchor_left = 1.0
@@ -313,25 +314,24 @@ scale = Vector2(1.5, 1.5)
 use_input_actions = false
 
 [node name="Node" type="Node" parent="Test/UI"]
-script = ExtResource("8_giy53")
+script = ExtResource("12_55skv")
 
 [node name="PAUSA" type="Button" parent="Test/UI/Node"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -275.0
+offset_left = -315.0
 offset_top = 24.0
-offset_right = -114.0
-offset_bottom = 93.0
+offset_right = -215.0
+offset_bottom = 124.0
 grow_horizontal = 0
-scale = Vector2(0.879999, 0.966753)
-theme_override_fonts/font = ExtResource("2_g0a7e")
+theme_override_fonts/font = ExtResource("2_h1ose")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_4s2ex")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fld8v")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_m0lgl")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cnnrk")
-text = "PAUSA"
+icon = ExtResource("13_88ii8")
 
 [node name="Popup" type="Popup" parent="Test/UI/Node/PAUSA"]
 process_mode = 3
@@ -339,7 +339,20 @@ transparent_bg = true
 mode = 4
 initial_position = 1
 size = Vector2i(2500, 1200)
+visible = true
 transparent = true
+
+[node name="Label" type="Label" parent="Test/UI/Node/PAUSA/Popup"]
+offset_left = 1150.0
+offset_top = 420.0
+offset_right = 1390.0
+offset_bottom = 470.0
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("2_h1ose")
+theme_override_font_sizes/font_size = 50
+text = "PAUSA
+"
+horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="Test/UI/Node/PAUSA/Popup"]
 custom_minimum_size = Vector2(20, 20)
@@ -374,7 +387,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("2_g0a7e")
+theme_override_fonts/font = ExtResource("2_h1ose")
 theme_override_font_sizes/font_size = 50
 text = "VOLVER"
 flat = true
@@ -383,12 +396,12 @@ flat = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("2_g0a7e")
+theme_override_fonts/font = ExtResource("2_h1ose")
 theme_override_font_sizes/font_size = 50
 text = "MENU"
 flat = true
 
-[node name="Fog" parent="." instance=ExtResource("11_xc6p2")]
+[node name="Fog" parent="." instance=ExtResource("14_3qolf")]
 visible = false
 
 [node name="SmokeParticles2D" parent="Fog" index="0"]

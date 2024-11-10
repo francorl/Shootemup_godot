@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b0bg7jeyskhrv"]
 
 [ext_resource type="Script" path="res://Code/EnemyBoss.gd" id="1_hg1od"]
-[ext_resource type="PackedScene" uid="uid://c16xjmwoohnsq" path="res://Scene/collectible.tscn" id="2_2jo15"]
+[ext_resource type="PackedScene" uid="uid://c16xjmwoohnsq" path="res://Scene/Player/Coin.tscn" id="2_2jo15"]
 [ext_resource type="AudioStream" uid="uid://br1gutaatb6bu" path="res://Sounds/Kill.wav" id="2_u0jx8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4i0x"]

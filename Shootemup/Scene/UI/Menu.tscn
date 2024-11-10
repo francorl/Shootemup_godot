@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://1invvvgwk8kd"]
 
-[ext_resource type="Script" path="res://Code/menu.gd" id="1_c6u0u"]
-[ext_resource type="FontFile" uid="uid://dr1gbc8kub15k" path="res://Fuente/Fuente Proyecto.otf" id="3_6weq8"]
+[ext_resource type="Script" path="res://Code/menu.gd" id="1_7mg68"]
+[ext_resource type="FontFile" uid="uid://cikx7o6snrdhd" path="res://Fuente/Dune_Rise.ttf" id="2_70ftq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jut15"]
 bg_color = Color(1, 1, 1, 0)
@@ -49,7 +49,7 @@ grow_vertical = 2
 scale = Vector2(4.56, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("1_c6u0u")
+script = ExtResource("1_7mg68")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -86,7 +86,7 @@ theme_override_constants/separation = 15
 [node name="PLAY" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_6weq8")
+theme_override_fonts/font = ExtResource("2_70ftq")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_jut15")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okq4p")
@@ -96,7 +96,7 @@ text = "JUGAR"
 
 [node name="OPTIONS" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6weq8")
+theme_override_fonts/font = ExtResource("2_70ftq")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_jut15")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okq4p")
@@ -106,7 +106,7 @@ text = "OPCIONES"
 
 [node name="EXIT" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6weq8")
+theme_override_fonts/font = ExtResource("2_70ftq")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxFlat_jut15")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okq4p")
