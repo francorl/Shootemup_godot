@@ -1,10 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyqku4b80noy4"]
+[gd_scene load_steps=21 format=3 uid="uid://dyqku4b80noy4"]
 
 [ext_resource type="Script" path="res://Code/Score Script.gd" id="1_6ltk3"]
 [ext_resource type="PackedScene" uid="uid://bg7rpiubrhh1b" path="res://Scene/character.tscn" id="1_7r2wr"]
 [ext_resource type="PackedScene" uid="uid://chluf4qb455d5" path="res://Scene/spawner.tscn" id="3_m5r3x"]
+[ext_resource type="Script" path="res://Code/SpawnerBoss.gd" id="4_1lq6l"]
+[ext_resource type="PackedScene" uid="uid://b0bg7jeyskhrv" path="res://Scene/boss.tscn" id="4_m70vs"]
 [ext_resource type="PackedScene" uid="uid://dqq6h8h061orv" path="res://Scene/spawn_area.tscn" id="5_2hk0k"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_81rpe"]
+[ext_resource type="Shader" path="res://Scene/main_scene.fog.gdshader" id="7_fhqrl"]
 [ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="8_giy53"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwp0b"]
@@ -58,6 +61,11 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ba8ky"]
+shader = ExtResource("7_fhqrl")
+shader_parameter/outerRadius = 1.0
+shader_parameter/MainAlpha = 1.0
 
 [node name="Main Scene" type="Node2D"]
 script = ExtResource("1_6ltk3")
@@ -120,12 +128,12 @@ joystick_right = NodePath("../Test/UI/Virtual joystick right")
 speed = 350.0
 
 [node name="Spawner" parent="." instance=ExtResource("3_m5r3x")]
-position = Vector2(1359, 236)
+position = Vector2(1344, 236)
 scale = Vector2(-1.54055, -1.50609)
 small_timer_randomization = true
 
 [node name="Spawner2" parent="." instance=ExtResource("3_m5r3x")]
-position = Vector2(435, 268)
+position = Vector2(-197, 181)
 small_timer_randomization = true
 spawn_interval = 4.0
 
@@ -134,10 +142,20 @@ position = Vector2(1686, 989)
 small_timer_randomization = true
 spawn_interval = 2.0
 
+[node name="Spawner4" parent="." instance=ExtResource("3_m5r3x")]
+position = Vector2(361, 763)
+small_timer_randomization = true
+spawn_interval = 50.0
+
+[node name="SpawnerBoss" parent="." instance=ExtResource("3_m5r3x")]
+position = Vector2(626, 354)
+script = ExtResource("4_1lq6l")
+Enemy = ExtResource("4_m70vs")
+spawn_interval = 1000.0
+
 [node name="Spawn Area" parent="." instance=ExtResource("5_2hk0k")]
-visible = false
-position = Vector2(994, 531)
-scale = Vector2(2.96, 1)
+position = Vector2(652, 543)
+scale = Vector2(3.15183, 1.56098)
 power_spawn_rate = 10
 
 [node name="Object" type="StaticBody2D" parent="."]
@@ -152,8 +170,8 @@ shape = SubResource("RectangleShape2D_dsddx")
 mesh = SubResource("BoxMesh_umdlp")
 
 [node name="Object2" type="StaticBody2D" parent="."]
-position = Vector2(-31, 543)
-scale = Vector2(1.29688, 66.937)
+position = Vector2(-658, 586)
+scale = Vector2(1.29688, 72.137)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object2"]
 scale = Vector2(1, 1.07051)
@@ -163,8 +181,8 @@ shape = SubResource("RectangleShape2D_dsddx")
 mesh = SubResource("BoxMesh_kcvye")
 
 [node name="Object3" type="StaticBody2D" parent="."]
-position = Vector2(947, 311)
-scale = Vector2(87.1794, 3.08347)
+position = Vector2(890, 228)
+scale = Vector2(117.979, 3.08347)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object3"]
 position = Vector2(0.433741, -117.076)
@@ -177,8 +195,8 @@ scale = Vector2(1.46073, 1)
 mesh = SubResource("BoxMesh_kmj8k")
 
 [node name="Object4" type="StaticBody2D" parent="."]
-position = Vector2(953, 616)
-scale = Vector2(81.8994, 3.08347)
+position = Vector2(953, 694)
+scale = Vector2(111.474, 3.08347)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object4"]
 position = Vector2(0.530128, 176.425)
@@ -191,11 +209,14 @@ scale = Vector2(1.55904, 1)
 mesh = SubResource("BoxMesh_usd3b")
 
 [node name="Test" type="Node2D" parent="."]
+visible = false
 position = Vector2(191, 351)
 
 [node name="UI" type="CanvasLayer" parent="Test"]
 
 [node name="Virtual joystick left" parent="Test/UI" instance=ExtResource("6_81rpe")]
+visible = false
+z_index = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -205,6 +226,8 @@ grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 
 [node name="Virtual joystick right" parent="Test/UI" instance=ExtResource("6_81rpe")]
+visible = false
+z_index = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -291,6 +314,22 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 text = "MENU"
 flat = true
+
+[node name="Fog" type="ParallaxBackground" parent="."]
+layer = 2
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Fog"]
+scale = Vector2(2.01283, 1.15711)
+
+[node name="ColorRect" type="ColorRect" parent="Fog/ParallaxLayer"]
+z_index = 1
+material = SubResource("ShaderMaterial_ba8ky")
+offset_left = -751.18
+offset_top = -913.481
+offset_right = -441.18
+offset_bottom = -733.481
+scale = Vector2(7.58811, 14.1361)
 
 [connection signal="pressed" from="Test/UI/Node/PAUSA" to="Test/UI/Node" method="_on_pausa_pressed"]
 [connection signal="pressed" from="Test/UI/Node/PAUSA/Popup/VBoxContainer/VOLVER" to="Test/UI/Node" method="_on_volver_pressed"]

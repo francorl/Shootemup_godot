@@ -1,25 +1,82 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg7rpiubrhh1b"]
+[gd_scene load_steps=20 format=3 uid="uid://bg7rpiubrhh1b"]
 
 [ext_resource type="Script" path="res://Code/CharacterMovement.gd" id="1_g1m0b"]
 [ext_resource type="PackedScene" uid="uid://c7hm7qkkm1rb0" path="res://Scene/bullet.tscn" id="2_fsq17"]
 [ext_resource type="AudioStream" uid="uid://bant2odl7yq3y" path="res://Sounds/Player_Kill.wav" id="3_3vefl"]
 [ext_resource type="Texture2D" uid="uid://lq40vccqbxk7" path="res://shootemup/spaceShips_001.png" id="3_xxxac"]
+[ext_resource type="PackedScene" uid="uid://5rklwbn3gx6f" path="res://Scene/trail.tscn" id="5_nvr1n"]
+[ext_resource type="Script" path="res://Scene/trail.gd" id="6_sj0pd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mps6q"]
-size = Vector2(4.97533, 16.7342)
+size = Vector2(4.97533, 11.8759)
 
 [sub_resource type="QuadMesh" id="QuadMesh_yw87l"]
 size = Vector2(25, 25)
 
+[sub_resource type="Gradient" id="Gradient_4gnqw"]
+offsets = PackedFloat32Array(0, 0.0926829, 0.229268, 0.502439, 0.926829, 0.931707)
+colors = PackedColorArray(0, 0, 0, 1, 0.934474, 0.552585, 0, 1, 0.868769, 0.513732, 0, 1, 0.526274, 0.311203, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vk8kd"]
+gradient = SubResource("Gradient_4gnqw")
+
+[sub_resource type="Curve" id="Curve_nb7tr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tg3r5"]
+curve = SubResource("Curve_nb7tr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3p7us"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 0, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 400, 1)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+gravity = Vector3(-180, 0, 0)
+scale_min = 0.0
+scale_max = 9.28
+scale_curve = SubResource("CurveTexture_tg3r5")
+color_ramp = SubResource("GradientTexture1D_vk8kd")
+turbulence_enabled = true
+turbulence_noise_scale = 1.08
+
 [sub_resource type="Gradient" id="Gradient_mtu4j"]
 colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 0)
 
+[sub_resource type="Gradient" id="Gradient_ow0ve"]
+offsets = PackedFloat32Array(0, 0.385366, 1)
+colors = PackedColorArray(1, 0.609755, 0, 1, 1, 0.236436, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aji2t"]
+gradient = SubResource("Gradient_ow0ve")
+
+[sub_resource type="Curve" id="Curve_7bj67"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.995708, 0.241758), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1ec6k"]
+curve = SubResource("Curve_7bj67")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2lu0y"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 50, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_1ec6k")
+color_ramp = SubResource("GradientTexture1D_aji2t")
+
 [node name="Character" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(1, 0)
 script = ExtResource("1_g1m0b")
 Bullet = ExtResource("2_fsq17")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.5, 0.5)
+position = Vector2(1.00002, 0.499984)
 rotation = -1.5708
 scale = Vector2(5.42677, 1.8525)
 shape = SubResource("RectangleShape2D_mps6q")
@@ -35,6 +92,13 @@ position = Vector2(0.0430555, -9.76416)
 rotation = -1.56554
 scale = Vector2(0.234153, 0.0625593)
 skew = -1.00136e-05
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MeshInstance2D"]
+visible = false
+z_index = -1
+position = Vector2(-0.0405317, 9.18982)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_3p7us")
 
 [node name="BulletSpawn" type="Marker2D" parent="."]
 position = Vector2(46, 0)
@@ -59,3 +123,20 @@ color_ramp = SubResource("Gradient_mtu4j")
 
 [node name="Sound" type="AudioStreamPlayer" parent="Explosive"]
 stream = ExtResource("3_3vefl")
+
+[node name="ShootExplosion" type="GPUParticles2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(25, -2)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_2lu0y")
+lifetime = 0.25
+explosiveness = 0.75
+
+[node name="Trail" parent="." instance=ExtResource("5_nvr1n")]
+show_behind_parent = true
+top_level = true
+z_index = -1
+width = 20.0
+script = ExtResource("6_sj0pd")
+MAX_LENGTH = 40

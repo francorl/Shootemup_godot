@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var Background = get_node("Background")
+#@onready var Background = get_node("Background")
 
 
 
@@ -24,7 +24,7 @@ func _ready():
 func _process(_delta):
 	$SCORE.get_node("Score").set("text", "Score: " + str(Score) + "\nCoins: " + str(Coin))
 	
-		
+
 
 
 

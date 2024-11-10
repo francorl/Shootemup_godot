@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var Camera = get_node("Camera2D")
 @onready var absolute_parent = get_parent()
 
+
+
 @export var Bullet: PackedScene
 @export var joystick_left: VirtualJoystick
 @export var joystick_right: VirtualJoystick
@@ -64,9 +66,9 @@ func _physics_process(delta):
 		
 		shoot_direction = joystick_right.output.normalized()
 	else:
-		shoot_direction = Vector2(cos(rotation), sin(rotation)).normalized()
+		#shoot_direction = Vector2(cos(rotation), sin(rotation)).normalized()
 		#Descomentar para PC con mouse
-		#shoot_direction = (get_global_mouse_position() - global_position).normalized()
+		shoot_direction = (get_global_mouse_position() - global_position).normalized()
 		
 
 #TIMERS
@@ -128,7 +130,7 @@ func _physics_process(delta):
 	
 
 	#Descomentar para PC con mouse
-	#self.look_at(get_global_mouse_position())
+	self.look_at(get_global_mouse_position())
 	move_and_slide()
 
 func Die():
