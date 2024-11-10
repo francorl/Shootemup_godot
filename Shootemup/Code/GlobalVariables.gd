@@ -1,8 +1,17 @@
 extends Node
 
+#Score Script
+var Score = 0
+var Coin = 0
+##############
 
+#Timers
 var weapon = false
 var start_timer = false
+#########################
+
+#Boss Spawn Coins
+
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,12 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg7rpiubrhh1b"]
+[gd_scene load_steps=16 format=3 uid="uid://bg7rpiubrhh1b"]
 
 [ext_resource type="Script" path="res://Code/CharacterMovement.gd" id="1_g1m0b"]
 [ext_resource type="PackedScene" uid="uid://c7hm7qkkm1rb0" path="res://Scene/bullet.tscn" id="2_fsq17"]
 [ext_resource type="AudioStream" uid="uid://bant2odl7yq3y" path="res://Sounds/Player_Kill.wav" id="3_3vefl"]
-[ext_resource type="Texture2D" uid="uid://cs5gqs0m4fkqp" path="res://shootemup/nave_3.png" id="3_o4ynm"]
+[ext_resource type="Texture2D" uid="uid://wgacrggqcqf7" path="res://shootemup/ship_I.png" id="3_5ab0o"]
+[ext_resource type="PackedScene" uid="uid://5rklwbn3gx6f" path="res://Scene/trail.tscn" id="5_jpwqu"]
+[ext_resource type="Script" path="res://Scene/trail.gd" id="6_2ioy0"]
+[ext_resource type="PackedScene" path="res://Scene/ShootExplosion.tscn" id="7_iadsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mps6q"]
-size = Vector2(4.97533, 16.7342)
+size = Vector2(4.97533, 14.0351)
 
 [sub_resource type="QuadMesh" id="QuadMesh_yw87l"]
 size = Vector2(25, 25)
@@ -48,16 +51,16 @@ script = ExtResource("1_g1m0b")
 Bullet = ExtResource("2_fsq17")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.5, 0.5)
+position = Vector2(-0.999971, 0.499991)
 rotation = -1.5708
 scale = Vector2(5.42677, 1.8525)
 shape = SubResource("RectangleShape2D_mps6q")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 rotation = -1.5708
-scale = Vector2(5.25939, 4.46104)
+scale = Vector2(2.54466, 2.09171)
 mesh = SubResource("QuadMesh_yw87l")
-texture = ExtResource("3_o4ynm")
+texture = ExtResource("3_5ab0o")
 
 [node name="Gun" type="Sprite2D" parent="MeshInstance2D"]
 position = Vector2(0.0430555, -9.76416)
@@ -90,9 +93,20 @@ color_ramp = SubResource("Gradient_mtu4j")
 stream = ExtResource("3_3vefl")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
 z_index = -1
 position = Vector2(-17, -3.42727e-07)
 rotation = -1.26745
 scale = Vector2(1.73939, 1.74104)
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_3p7us")
+
+[node name="Trail" parent="." instance=ExtResource("5_jpwqu")]
+top_level = true
+z_index = -1
+width = 15.0
+script = ExtResource("6_2ioy0")
+MAX_LENGTH = 50
+
+[node name="ShootExplosion" parent="." instance=ExtResource("7_iadsl")]
+position = Vector2(16, -1)
