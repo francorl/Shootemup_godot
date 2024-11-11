@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0bg7jeyskhrv"]
+[gd_scene load_steps=11 format=3 uid="uid://b0bg7jeyskhrv"]
 
 [ext_resource type="Script" path="res://Code/EnemyBoss.gd" id="1_hg1od"]
 [ext_resource type="PackedScene" uid="uid://c16xjmwoohnsq" path="res://Scene/Player/Coin.tscn" id="2_2jo15"]
 [ext_resource type="AudioStream" uid="uid://br1gutaatb6bu" path="res://Sounds/Kill.wav" id="2_u0jx8"]
+[ext_resource type="Texture2D" uid="uid://b84o2bhwvgtt1" path="res://shootemup/Alien_2.png" id="4_2j5sb"]
+[ext_resource type="Texture2D" uid="uid://bc4w3oide148k" path="res://shootemup/Alien_2_cerrado.png" id="5_84io6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4i0x"]
 
@@ -10,20 +12,26 @@
 radius = 10.0
 height = 20.0
 
-[sub_resource type="Gradient" id="Gradient_0mm5n"]
-offsets = PackedFloat32Array(0.970464, 0.97992, 1)
-colors = PackedColorArray(1, 0, 0, 1, 1, 0.783133, 0.783133, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rf4mn"]
-gradient = SubResource("Gradient_0mm5n")
-fill_from = Vector2(0.213675, 0)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_r4kwt"]
 radius = 12.0
 
 [sub_resource type="Gradient" id="Gradient_j60ij"]
 offsets = PackedFloat32Array(0, 0.503311, 1)
 colors = PackedColorArray(0.742612, 0, 0.133068, 1, 0.999997, 0.367348, 0.389703, 1, 1, 0.387377, 0.324754, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p16o6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2j5sb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_84io6")
+}],
+"loop": true,
+"name": &"EyeAnim",
+"speed": 2.0
+}]
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(8.16667, 8.25)
@@ -39,8 +47,8 @@ score_value = 100
 shape = SubResource("CircleShape2D_d4i0x")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
 mesh = SubResource("SphereMesh_xkpvd")
-texture = SubResource("GradientTexture2D_rf4mn")
 
 [node name="AreaDetector" type="Area2D" parent="."]
 
@@ -67,5 +75,10 @@ color_ramp = SubResource("Gradient_j60ij")
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="Kill"]
 stream = ExtResource("2_u0jx8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.0294458, 0.0275777)
+sprite_frames = SubResource("SpriteFrames_p16o6")
+animation = &"EyeAnim"
 
 [connection signal="body_entered" from="AreaDetector" to="." method="_on_area_detector_body_entered"]
