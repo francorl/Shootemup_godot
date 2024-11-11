@@ -17,6 +17,9 @@ var player
 # Used to increase the score (Spawners should be the child of a "scene" node)
 @export var score_value = 1
 
+# Animations
+@onready var eyeanimboss = $AnimatedSprite2D
+var animdelay = 0
 
 
 func _ready():
@@ -27,8 +30,8 @@ func _ready():
 	
 func _process(delta):
 	
-	
-	
+	animdelay += 1
+	print(animdelay)
 	# These 3 little lines of code handle movement! Don't ask me why velocity has to be set this way.
 	if player != null:
 		self.look_at(player.get("position"))
@@ -36,6 +39,12 @@ func _process(delta):
 		self.position.x = move_toward(self.position.x, player.get("position").x, speed * delta)
 		self.position.y = move_toward(self.position.y, player.get("position").y, speed * delta)
 	
+	
+	if animdelay == 400:
+		eyeanimboss.play("EyeAnim")
+		animdelay = 0	
+	
+		
 	move_and_slide()
 
 # Destroy the player

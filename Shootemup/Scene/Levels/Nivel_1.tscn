@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dyqku4b80noy4"]
+[gd_scene load_steps=24 format=3 uid="uid://dyqku4b80noy4"]
 
 [ext_resource type="Script" path="res://Code/Score Script.gd" id="1_bjeuc"]
 [ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_h1ose"]
@@ -14,6 +14,21 @@
 [ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="12_55skv"]
 [ext_resource type="Texture2D" uid="uid://dj4absx05ry2q" path="res://shootemup/pause_25dp_E8EAED.png" id="13_88ii8"]
 [ext_resource type="PackedScene" uid="uid://djwefuclkotl4" path="res://Scene/Shaders/Fog.tscn" id="14_3qolf"]
+
+[sub_resource type="Environment" id="Environment_ycaxx"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 1.2
+glow_enabled = true
+glow_levels/1 = 1.5
+glow_levels/2 = 1.5
+glow_levels/3 = 0.0
+glow_levels/5 = 1.5
+glow_intensity = 0.3
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 2.0
+fog_enabled = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwp0b"]
 line_spacing = 0.0
@@ -63,6 +78,9 @@ corner_detail = 1
 
 [node name="Main Scene" type="Node2D"]
 script = ExtResource("1_bjeuc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ycaxx")
 
 [node name="SCORE" type="CanvasLayer" parent="."]
 
