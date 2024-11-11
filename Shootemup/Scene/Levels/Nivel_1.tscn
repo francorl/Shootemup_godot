@@ -339,7 +339,6 @@ transparent_bg = true
 mode = 4
 initial_position = 1
 size = Vector2i(2500, 1200)
-visible = true
 transparent = true
 
 [node name="Label" type="Label" parent="Test/UI/Node/PAUSA/Popup"]
