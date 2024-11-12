@@ -41,7 +41,7 @@ func _process(delta):
 	
 	
 	if animdelay == 400:
-		eyeanimboss.play("EyeAnim")
+		eyeanimboss.play("IdleAnim")
 		animdelay = 0	
 	
 		

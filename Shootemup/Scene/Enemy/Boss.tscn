@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0bg7jeyskhrv"]
+[gd_scene load_steps=12 format=3 uid="uid://b0bg7jeyskhrv"]
 
 [ext_resource type="Script" path="res://Code/EnemyBoss.gd" id="1_hg1od"]
 [ext_resource type="PackedScene" uid="uid://c16xjmwoohnsq" path="res://Scene/Player/Coin.tscn" id="2_2jo15"]
 [ext_resource type="AudioStream" uid="uid://br1gutaatb6bu" path="res://Sounds/Kill.wav" id="2_u0jx8"]
 [ext_resource type="Texture2D" uid="uid://b84o2bhwvgtt1" path="res://shootemup/Alien_2.png" id="4_2j5sb"]
 [ext_resource type="Texture2D" uid="uid://bc4w3oide148k" path="res://shootemup/Alien_2_cerrado.png" id="5_84io6"]
+[ext_resource type="Texture2D" uid="uid://j4e83w7tg5qi" path="res://shootemup/Alien_2_tentaculos.png" id="6_aeld1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4i0x"]
 
@@ -27,9 +28,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_84io6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_aeld1")
 }],
 "loop": true,
-"name": &"EyeAnim",
+"name": &"IdleAnim",
 "speed": 2.0
 }]
 
@@ -44,6 +48,7 @@ Loot = ExtResource("2_2jo15")
 score_value = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_d4i0x")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
@@ -53,6 +58,7 @@ mesh = SubResource("SphereMesh_xkpvd")
 [node name="AreaDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetector"]
+visible = false
 shape = SubResource("CircleShape2D_r4kwt")
 
 [node name="Kill" type="CPUParticles2D" parent="."]
@@ -79,6 +85,7 @@ stream = ExtResource("2_u0jx8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.0294458, 0.0275777)
 sprite_frames = SubResource("SpriteFrames_p16o6")
-animation = &"EyeAnim"
+animation = &"IdleAnim"
+frame_progress = 0.252397
 
 [connection signal="body_entered" from="AreaDetector" to="." method="_on_area_detector_body_entered"]

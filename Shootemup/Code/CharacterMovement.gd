@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var joystick_right: VirtualJoystick
 @export var speed: float = 100
 @export var fire_rate = 0.2
-
+@export var PC = false
 const SPEED = 300.0
 
 
@@ -18,7 +18,7 @@ var power = false
 var weapon = false
 var respawn = false
 var die: bool = false
-
+ 
 
 var shoot_direction = Vector2.ZERO
 var move_vector := Vector2.ZERO
@@ -42,6 +42,21 @@ var timer = 0
 func _ready():
 	
 	Camera.set("position", Vector2(100, 0))
+	
+	if PC:
+		print(PC)
+		joystick_left.use_input_actions = false
+		joystick_right.use_input_actions = false
+		
+		joystick_left.visible = false
+		joystick_right.visible = false
+	else:
+		joystick_left.use_input_actions = true
+		joystick_right.use_input_actions = true
+		
+		joystick_left.visible = true
+		joystick_right.visible = true	
+	
 
 
 func _process(delta: float) -> void:
@@ -64,9 +79,14 @@ func _physics_process(delta):
 		
 		shoot_direction = joystick_right.output.normalized()
 	else:
-		#shoot_direction = Vector2(cos(rotation), sin(rotation)).normalized()
-		#Descomentar para PC con mouse
-		shoot_direction = (get_global_mouse_position() - global_position).normalized()
+		if PC:
+			
+			shoot_direction = (get_global_mouse_position() - global_position).normalized()
+			self.look_at(get_global_mouse_position())
+		else:
+			shoot_direction = Vector2(cos(rotation), sin(rotation)).normalized()
+			
+		
 		
 
 #TIMERS
@@ -127,8 +147,9 @@ func _physics_process(delta):
 		Camera.offset = Vector2(0, 0)
 	
 
-	#Descomentar para PC con mouse
-	self.look_at(get_global_mouse_position())
+
+		
+	
 	move_and_slide()
 
 func Die():
@@ -138,15 +159,16 @@ func Die():
 	Camera.position = Vector2(0, 0)
 	die = true
 	respawn = true
-	position = Vector2(383, 397)
+	position = Vector2(0, 0)
 	joystick_left.visible = false
 	joystick_right.visible = false
-	
+	joystick_left._reset()
+	joystick_right._reset()
 	$"../RETRY/Retry".show()
 
 func Respawn():
 	get_tree().reload_current_scene()
-
+	
 
 func _on_timer_timeout() -> void:
 	
