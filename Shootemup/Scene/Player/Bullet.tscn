@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7hm7qkkm1rb0"]
 
 [ext_resource type="Script" path="res://Code/Bullet.gd" id="1_5vplj"]
-[ext_resource type="Texture2D" uid="uid://bbm6bpe8073g2" path="res://shootemup/disparo_3.png" id="2_cq47w"]
 [ext_resource type="AudioStream" uid="uid://dj06uhupptb62" path="res://Sounds/Poof.wav" id="2_negmh"]
+[ext_resource type="Texture2D" uid="uid://bv2lk0pcue87o" path="res://shootemup/spaceMissiles_004.png" id="2_ymncv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5oaa"]
 size = Vector2(13.9843, 8.03026)
@@ -26,9 +26,9 @@ shape = SubResource("RectangleShape2D_l5oaa")
 z_as_relative = false
 position = Vector2(-1.43627, 0)
 rotation = -1.57351
-scale = Vector2(0.841388, 2.41729)
+scale = Vector2(0.356219, 2.40474)
 mesh = SubResource("QuadMesh_eaj16")
-texture = ExtResource("2_cq47w")
+texture = ExtResource("2_ymncv")
 
 [node name="Poof" type="CPUParticles2D" parent="."]
 emitting = false

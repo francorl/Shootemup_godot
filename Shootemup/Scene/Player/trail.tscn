@@ -10,7 +10,8 @@ point_count = 2
 colors = PackedColorArray(1, 0.137255, 0, 1, 1, 0.952941, 0, 1)
 
 [node name="Trail" type="Line2D"]
-width = 5.0
+width = 50.0
 width_curve = SubResource("Curve_ynk5q")
 gradient = SubResource("Gradient_dmd0t")
 script = ExtResource("1_blw7a")
+MAX_LENGTH = 100

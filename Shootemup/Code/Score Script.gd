@@ -17,8 +17,9 @@ func _ready():
 	var button_name = OS.get_keycode_string(respawn_event.physical_keycode)
 	
 	var retry_label = $RETRY/Retry/Label
-	retry_label.text = "TE MORISTE "
+	retry_label.text = "Has Muerto"
 	StarsBackground.emitting = true
+	
 	
 
 func _process(_delta):
