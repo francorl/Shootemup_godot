@@ -410,6 +410,8 @@ theme_override_font_sizes/font_size = 50
 text = "MENU"
 flat = true
 
+[node name="CanvasModulate" type="CanvasModulate" parent="Test/UI/Node"]
+
 [node name="Fog" parent="." instance=ExtResource("14_3qolf")]
 visible = false
 
