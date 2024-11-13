@@ -81,11 +81,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0jhp1")
 text = "VOLVER"
 flat = true
 
+[connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_1" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_1" to="." method="_on_volume_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_1" to="." method="_on_levels_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_1" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_2" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_2" to="." method="_on_resolution_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_back_pressed"]
