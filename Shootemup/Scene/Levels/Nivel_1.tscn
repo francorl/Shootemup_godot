@@ -349,14 +349,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_m0lgl")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cnnrk")
 icon = ExtResource("13_88ii8")
 
-[node name="Popup" type="Popup" parent="Test/UI/Node/PAUSA"]
-process_mode = 3
-transparent_bg = true
-mode = 4
-initial_position = 1
-size = Vector2i(2500, 1200)
-transparent = true
-
 [node name="CanvasLayer" type="CanvasLayer" parent="Test/UI/Node/PAUSA"]
 
 [node name="Label" type="Label" parent="Test/UI/Node/PAUSA/CanvasLayer"]

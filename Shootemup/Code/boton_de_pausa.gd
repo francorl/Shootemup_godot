@@ -2,12 +2,12 @@ extends Node
 
 func _on_pausa_pressed() -> void:
 	get_tree().paused = true
-	$PAUSA/Popup.visible = true
+	$PAUSA/CanvasLayer.visible = true
 	$PAUSA.visible = false
 
 func _on_volver_pressed() -> void:
 	get_tree().paused = false
-	$PAUSA/Popup.visible = false
+	$PAUSA/CanvasLayer.visible = false
 	$PAUSA.visible = true
 
 
