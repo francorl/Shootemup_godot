@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var speed: float = 100
 @export var fire_rate = 0.2
 @export var PC = false
+@export var Vertical = false
 const SPEED = 300.0
 
 
@@ -64,9 +65,9 @@ func _process(delta: float) -> void:
 	position += move_vector * speed * delta
 
 
-	
-	if joystick_right and joystick_right.is_pressed:
-		rotation = joystick_right.output.angle()
+	if PC == false:
+		if joystick_right and joystick_right.is_pressed:
+			rotation = joystick_right.output.angle()
 		
 
 		
