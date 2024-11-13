@@ -23,7 +23,6 @@ StarsBackground="*res://Scene/Background/StarsBackground.tscn"
 
 [display]
 
-window/handheld/orientation=1
 mouse_cursor/custom_image="res://Crosshair/512/652.png"
 
 [dotnet]
