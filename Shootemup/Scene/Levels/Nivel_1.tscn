@@ -349,8 +349,21 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_m0lgl")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cnnrk")
 icon = ExtResource("13_88ii8")
 
-[node name="Popup" type="Popup" parent="Test/UI/Node/PAUSA"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Test/UI/Node/PAUSA"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Test/UI/Node/PAUSA/CanvasLayer"]
+process_mode = 2
+offset_left = 665.0
+offset_top = 256.0
+offset_right = 705.0
+offset_bottom = 296.0
+scale = Vector2(14.04, 8.92)
+color = Color(0.27451, 0.27451, 0.27451, 0.631373)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Test/UI/Node/PAUSA/CanvasLayer/ColorRect"]
 process_mode = 3
+<<<<<<< Updated upstream
 transparent_bg = true
 mode = 4
 initial_position = 1
@@ -371,34 +384,23 @@ horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="Test/UI/Node/PAUSA/Popup"]
 custom_minimum_size = Vector2(20, 20)
+=======
+layout_mode = 1
+>>>>>>> Stashed changes
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -210.41
-offset_right = 200.0
-offset_bottom = 189.59
+offset_left = -15.1567
+offset_top = -9.23767
+offset_right = 278.843
+offset_bottom = 110.762
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.996078, 0.960784, 0.960784, 0.423529)
+scale = Vector2(0.0999998, 0.171276)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Test/UI/Node/PAUSA/Popup"]
-process_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.5
-offset_top = -25.0
-offset_right = 60.5
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VOLVER" type="Button" parent="Test/UI/Node/PAUSA/Popup/VBoxContainer"]
+[node name="VOLVER" type="Button" parent="Test/UI/Node/PAUSA/CanvasLayer/ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -407,7 +409,7 @@ theme_override_font_sizes/font_size = 50
 text = "VOLVER"
 flat = true
 
-[node name="MENU" type="Button" parent="Test/UI/Node/PAUSA/Popup/VBoxContainer"]
+[node name="MENU" type="Button" parent="Test/UI/Node/PAUSA/CanvasLayer/ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -426,7 +428,7 @@ position = Vector2(60, -82)
 position = Vector2(-6.00002, 1148)
 
 [connection signal="pressed" from="Test/UI/Node/PAUSA" to="Test/UI/Node" method="_on_pausa_pressed"]
-[connection signal="pressed" from="Test/UI/Node/PAUSA/Popup/VBoxContainer/VOLVER" to="Test/UI/Node" method="_on_volver_pressed"]
-[connection signal="pressed" from="Test/UI/Node/PAUSA/Popup/VBoxContainer/MENU" to="Test/UI/Node" method="_on_menu_pressed"]
+[connection signal="pressed" from="Test/UI/Node/PAUSA/CanvasLayer/ColorRect/VBoxContainer/VOLVER" to="Test/UI/Node" method="_on_volver_pressed"]
+[connection signal="pressed" from="Test/UI/Node/PAUSA/CanvasLayer/ColorRect/VBoxContainer/MENU" to="Test/UI/Node" method="_on_menu_pressed"]
 
 [editable path="Fog"]

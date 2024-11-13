@@ -94,11 +94,17 @@ offset_right = 759.162
 offset_bottom = 348.0
 grow_horizontal = 2
 grow_vertical = 2
+
+scale = Vector2(0.439881, 0.687)
+theme_override_constants/separation = 15
+=======
+=======
+
 scale = Vector2(0.278862, 0.487)
 theme_override_constants/separation = 75
-
 [node name="CanvasModulate" type="CanvasModulate" parent="ColorRect/VBoxContainer"]
 visible = false
+color = Color(5.39064e-06, 0.942089, 0.906504, 1)
 scale = Vector2(1, 1)
 color = Color(5.39064e-06, 0.942089, 0.906504, 1)
 
