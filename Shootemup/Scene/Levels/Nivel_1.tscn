@@ -357,7 +357,9 @@ initial_position = 1
 size = Vector2i(2500, 1200)
 transparent = true
 
-[node name="Label" type="Label" parent="Test/UI/Node/PAUSA/Popup"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Test/UI/Node/PAUSA"]
+
+[node name="Label" type="Label" parent="Test/UI/Node/PAUSA/CanvasLayer"]
 offset_left = 1150.0
 offset_top = 420.0
 offset_right = 1390.0
@@ -369,36 +371,36 @@ text = "PAUSA
 "
 horizontal_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="Test/UI/Node/PAUSA/Popup"]
+[node name="ColorRect" type="ColorRect" parent="Test/UI/Node/PAUSA/CanvasLayer"]
 custom_minimum_size = Vector2(20, 20)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -210.41
-offset_right = 200.0
-offset_bottom = 189.59
+offset_left = 474.0
+offset_top = 65.59
+offset_right = 874.0
+offset_bottom = 465.59
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.996078, 0.960784, 0.960784, 0.423529)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Test/UI/Node/PAUSA/Popup"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Test/UI/Node/PAUSA/CanvasLayer"]
 process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.5
-offset_top = -25.0
-offset_right = 60.5
-offset_bottom = 25.0
+offset_left = 527.0
+offset_top = 216.0
+offset_right = 821.0
+offset_bottom = 336.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VOLVER" type="Button" parent="Test/UI/Node/PAUSA/Popup/VBoxContainer"]
+[node name="VOLVER" type="Button" parent="Test/UI/Node/PAUSA/CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -407,7 +409,7 @@ theme_override_font_sizes/font_size = 50
 text = "VOLVER"
 flat = true
 
-[node name="MENU" type="Button" parent="Test/UI/Node/PAUSA/Popup/VBoxContainer"]
+[node name="MENU" type="Button" parent="Test/UI/Node/PAUSA/CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -426,7 +428,7 @@ position = Vector2(60, -82)
 position = Vector2(-6.00002, 1148)
 
 [connection signal="pressed" from="Test/UI/Node/PAUSA" to="Test/UI/Node" method="_on_pausa_pressed"]
-[connection signal="pressed" from="Test/UI/Node/PAUSA/Popup/VBoxContainer/VOLVER" to="Test/UI/Node" method="_on_volver_pressed"]
-[connection signal="pressed" from="Test/UI/Node/PAUSA/Popup/VBoxContainer/MENU" to="Test/UI/Node" method="_on_menu_pressed"]
+[connection signal="pressed" from="Test/UI/Node/PAUSA/CanvasLayer/VBoxContainer/VOLVER" to="Test/UI/Node" method="_on_volver_pressed"]
+[connection signal="pressed" from="Test/UI/Node/PAUSA/CanvasLayer/VBoxContainer/MENU" to="Test/UI/Node" method="_on_menu_pressed"]
 
 [editable path="Fog"]
