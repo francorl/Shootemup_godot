@@ -350,12 +350,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_cnnrk")
 icon = ExtResource("13_88ii8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Test/UI/Node/PAUSA"]
+visible = false
 
 [node name="Label" type="Label" parent="Test/UI/Node/PAUSA/CanvasLayer"]
-offset_left = 1150.0
-offset_top = 420.0
-offset_right = 1390.0
-offset_bottom = 470.0
+offset_left = 898.0
+offset_top = 405.0
+offset_right = 1138.0
+offset_bottom = 455.0
 scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("2_h1ose")
 theme_override_font_sizes/font_size = 50
@@ -370,10 +371,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 474.0
-offset_top = 65.59
-offset_right = 874.0
-offset_bottom = 465.59
+offset_left = 207.0
+offset_top = 38.0
+offset_right = 607.0
+offset_bottom = 438.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.996078, 0.960784, 0.960784, 0.423529)
@@ -385,10 +386,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 527.0
-offset_top = 216.0
-offset_right = 821.0
-offset_bottom = 336.0
+offset_left = 264.0
+offset_top = 256.0
+offset_right = 558.0
+offset_bottom = 376.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -409,8 +410,6 @@ theme_override_fonts/font = ExtResource("2_h1ose")
 theme_override_font_sizes/font_size = 50
 text = "MENU"
 flat = true
-
-[node name="CanvasModulate" type="CanvasModulate" parent="Test/UI/Node"]
 
 [node name="Fog" parent="." instance=ExtResource("14_3qolf")]
 visible = false
