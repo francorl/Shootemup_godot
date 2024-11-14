@@ -1,11 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0bg7jeyskhrv"]
+[gd_scene load_steps=23 format=3 uid="uid://b0bg7jeyskhrv"]
 
 [ext_resource type="Script" path="res://Code/EnemyBoss.gd" id="1_hg1od"]
 [ext_resource type="PackedScene" uid="uid://c16xjmwoohnsq" path="res://Scene/Player/Coin.tscn" id="2_2jo15"]
 [ext_resource type="AudioStream" uid="uid://br1gutaatb6bu" path="res://Sounds/Kill.wav" id="2_u0jx8"]
-[ext_resource type="Texture2D" uid="uid://b84o2bhwvgtt1" path="res://shootemup/Alien_2.png" id="4_2j5sb"]
-[ext_resource type="Texture2D" uid="uid://bc4w3oide148k" path="res://shootemup/Alien_2_cerrado.png" id="5_84io6"]
-[ext_resource type="Texture2D" uid="uid://j4e83w7tg5qi" path="res://shootemup/Alien_2_tentaculos.png" id="6_aeld1"]
+[ext_resource type="Texture2D" uid="uid://bvy5hd88fsi5n" path="res://shootemup/Enemy Boss/EXPLOSION/1 Explocion BOSS.png" id="3_2j804"]
+[ext_resource type="Texture2D" uid="uid://7wytknr7fx0k" path="res://shootemup/Enemy Boss/1.png" id="4_1mciu"]
+[ext_resource type="Texture2D" uid="uid://bocjm2ejsefcb" path="res://shootemup/Enemy Boss/EXPLOSION/2 Explocion BOSS.png" id="4_xfl86"]
+[ext_resource type="Texture2D" uid="uid://bp4umqvqnxrsg" path="res://shootemup/Enemy Boss/EXPLOSION/3 Explocion BOSS.png" id="5_g22oe"]
+[ext_resource type="Texture2D" uid="uid://c71jetifgdymo" path="res://shootemup/Enemy Boss/2.png" id="5_y6703"]
+[ext_resource type="Texture2D" uid="uid://ceuq5nusv0fp8" path="res://shootemup/Enemy Boss/3.png" id="6_qpt67"]
+[ext_resource type="Texture2D" uid="uid://5e0b43g7vysk" path="res://shootemup/Enemy Boss/EXPLOSION/4 Explocion BOSS.png" id="6_vrhgq"]
+[ext_resource type="Texture2D" uid="uid://cido0145renel" path="res://shootemup/Enemy Boss/EXPLOSION/5 Explocion BOSS.png" id="7_gtonn"]
+[ext_resource type="Texture2D" uid="uid://0goapxkitjgq" path="res://shootemup/Enemy Boss/4.png" id="7_ijq6o"]
+[ext_resource type="Texture2D" uid="uid://bp7xhvdshaxbk" path="res://shootemup/Enemy Boss/5.png" id="8_hthku"]
+[ext_resource type="Texture2D" uid="uid://de0iccsc6qlov" path="res://shootemup/Enemy Boss/6.png" id="9_uvrwn"]
+[ext_resource type="Texture2D" uid="uid://bxa6wxmrh1jf3" path="res://shootemup/Enemy Boss/7.png" id="10_f2vin"]
+[ext_resource type="Texture2D" uid="uid://d3uyfxst3lyy3" path="res://shootemup/Enemy Boss/8.png" id="11_wfqbu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4i0x"]
 
@@ -20,21 +30,95 @@ radius = 12.0
 offsets = PackedFloat32Array(0, 0.503311, 1)
 colors = PackedColorArray(0.742612, 0, 0.133068, 1, 0.999997, 0.367348, 0.389703, 1, 1, 0.387377, 0.324754, 0)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbw3g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2j804")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2j804")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2j804")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xfl86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xfl86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xfl86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g22oe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g22oe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g22oe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g22oe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vrhgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vrhgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vrhgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gtonn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gtonn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gtonn")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"DEAD",
+"speed": 12.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_p16o6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_2j5sb")
+"texture": ExtResource("4_1mciu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_84io6")
+"texture": ExtResource("5_y6703")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_aeld1")
+"texture": ExtResource("6_qpt67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ijq6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hthku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uvrwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_f2vin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wfqbu")
 }],
 "loop": true,
 "name": &"IdleAnim",
-"speed": 2.0
+"speed": 5.0
 }]
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
@@ -79,13 +163,21 @@ scale_amount_min = 5.0
 scale_amount_max = 8.0
 color_ramp = SubResource("Gradient_j60ij")
 
+[node name="DEAD" type="AnimatedSprite2D" parent="Kill"]
+visible = false
+scale = Vector2(0.0294458, 0.0275777)
+sprite_frames = SubResource("SpriteFrames_vbw3g")
+animation = &"DEAD"
+frame = 16
+frame_progress = 1.0
+
 [node name="Sound" type="AudioStreamPlayer2D" parent="Kill"]
 stream = ExtResource("2_u0jx8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
 scale = Vector2(0.0294458, 0.0275777)
 sprite_frames = SubResource("SpriteFrames_p16o6")
 animation = &"IdleAnim"
-frame_progress = 0.252397
+speed_scale = 2.0
 
 [connection signal="body_entered" from="AreaDetector" to="." method="_on_area_detector_body_entered"]

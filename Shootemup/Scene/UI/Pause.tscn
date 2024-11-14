@@ -1,0 +1,184 @@
+[gd_scene load_steps=9 format=3 uid="uid://bmll1ra0je8ko"]
+
+[ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="1_m4myl"]
+[ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_vrik0"]
+[ext_resource type="Texture2D" uid="uid://dj4absx05ry2q" path="res://shootemup/pause_25dp_E8EAED.png" id="3_p305k"]
+
+[sub_resource type="Environment" id="Environment_ecciw"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 1.2
+glow_enabled = true
+glow_levels/1 = 1.5
+glow_levels/2 = 1.5
+glow_levels/3 = 0.0
+glow_levels/5 = 1.5
+glow_intensity = 0.3
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 2.0
+fog_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3noe4"]
+bg_color = Color(1, 1, 1, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abepi"]
+bg_color = Color(1, 1, 1, 0.0784314)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rffs5"]
+bg_color = Color(1, 1, 1, 0.47451)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy0od"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_m4myl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ecciw")
+
+[node name="PAUSA" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 797.0
+offset_top = 24.0
+offset_right = 897.0
+offset_bottom = 124.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_vrik0")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxFlat_3noe4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_abepi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rffs5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sy0od")
+icon = ExtResource("3_p305k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PAUSA"]
+visible = false
+
+[node name="Label" type="Label" parent="PAUSA/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -183.0
+offset_right = 150.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("2_vrik0")
+theme_override_font_sizes/font_size = 50
+text = "PAUSA
+"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="PAUSA/CanvasLayer"]
+custom_minimum_size = Vector2(20, 20)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.960784, 0.960784, 0.423529)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PAUSA/CanvasLayer"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -60.0
+offset_right = 147.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VOLVER" type="Button" parent="PAUSA/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_vrik0")
+theme_override_font_sizes/font_size = 50
+text = "VOLVER"
+flat = true
+
+[node name="Label2" type="Label" parent="PAUSA/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vrik0")
+text = "MASTER"
+
+[node name="Masterslider" type="HSlider" parent="PAUSA/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="Label3" type="Label" parent="PAUSA/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vrik0")
+text = "MUSICA"
+
+[node name="MUSICSlider" type="HSlider" parent="PAUSA/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="Label" type="Label" parent="PAUSA/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vrik0")
+text = "SFX"
+
+[node name="SFXSlider3" type="HSlider" parent="PAUSA/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="MENU" type="Button" parent="PAUSA/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_vrik0")
+theme_override_font_sizes/font_size = 50
+text = "MENU"
+flat = true
+
+[connection signal="pressed" from="PAUSA" to="." method="_on_pausa_pressed"]
+[connection signal="pressed" from="PAUSA/CanvasLayer/VBoxContainer/VOLVER" to="." method="_on_volver_pressed"]
+[connection signal="pressed" from="PAUSA/CanvasLayer/VBoxContainer/MENU" to="." method="_on_menu_pressed"]
