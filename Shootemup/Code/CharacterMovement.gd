@@ -64,9 +64,9 @@ func _process(delta: float) -> void:
 	position += move_vector * speed * delta
 
 
-	
-	if joystick_right and joystick_right.is_pressed:
-		rotation = joystick_right.output.angle()
+	if PC == false:
+		if joystick_right and joystick_right.is_pressed:
+			rotation = joystick_right.output.angle()
 		
 
 		
