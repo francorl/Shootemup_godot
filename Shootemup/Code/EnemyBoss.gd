@@ -54,19 +54,22 @@ func _on_area_detector_body_entered(body):
 
 # Get hit, or die.
 func hit():
-	health -= 1
+	health -= 1 
 	if health == 0:
-		
 		absolute_parent.Score += score_value
+		$Kill/DEAD.play("DEAD")
+		$Kill/DEAD.visible = true
 		
 		
 		#Spawn Loot
 		for i in loot_count:
+			
 			var temp = Loot.instantiate()
 			var offset_x = randf_range(-loot_range, loot_range)
 			var offset_y = randf_range(-loot_range, loot_range)
 			temp.position = self.position + Vector2(offset_x, offset_y)
 			add_sibling.call_deferred(temp)
+			
 		
 		
 		get_node("Kill").set_emitting(true)

@@ -3,21 +3,20 @@
 [ext_resource type="Script" path="res://Code/menu.gd" id="1_7mg68"]
 [ext_resource type="FontFile" uid="uid://cikx7o6snrdhd" path="res://Fuente/Dune_Rise.ttf" id="2_70ftq"]
 
-[sub_resource type="Environment" id="Environment_c45t4"]
+[sub_resource type="Environment" id="Environment_ntny5"]
 background_mode = 3
-ambient_light_energy = 0.0
 tonemap_mode = 3
-tonemap_exposure = 3.35
-tonemap_white = 1.47
+tonemap_exposure = 1.2
 glow_enabled = true
-glow_levels/1 = 15.0
-glow_levels/2 = 15.0
-glow_levels/3 = 15.0
-glow_levels/4 = 15.0
-glow_levels/5 = 15.0
-glow_intensity = 0.97
+glow_levels/1 = 1.5
+glow_levels/2 = 1.5
+glow_levels/3 = 0.0
+glow_levels/5 = 1.5
+glow_intensity = 0.3
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 2.0
 fog_enabled = true
-volumetric_fog_enabled = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygxqb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -31,6 +30,10 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 20
+expand_margin_left = 10.0
+expand_margin_top = 25.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
 shadow_color = Color(0, 0.415686, 0.415686, 0.247059)
 shadow_size = 3
 
@@ -59,7 +62,7 @@ size_flags_vertical = 4
 script = ExtResource("1_7mg68")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_c45t4")
+environment = SubResource("Environment_ntny5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -97,10 +100,6 @@ grow_vertical = 2
 scale = Vector2(0.278862, 0.487)
 theme_override_constants/separation = 75
 
-[node name="CanvasModulate" type="CanvasModulate" parent="ColorRect/VBoxContainer"]
-visible = false
-color = Color(5.39064e-06, 0.942089, 0.906504, 1)
-
 [node name="PLAY" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -127,8 +126,6 @@ theme_override_font_sizes/font_size = 100
 theme_override_styles/hover = SubResource("StyleBoxFlat_ygxqb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jut15")
 text = " SALIR "
-
-[node name="CanvasLayer" type="CanvasLayer" parent="ColorRect/VBoxContainer"]
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/PLAY" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/OPTIONS" to="." method="_on_play_pressed"]

@@ -551,17 +551,18 @@ z_index = -1
 position = Vector2(-7, 0)
 width = 15.0
 script = ExtResource("6_2ioy0")
-MAX_LENGTH = 50
+MAX_LENGTH = 25
 
 [node name="ShootExplosion" parent="." instance=ExtResource("7_iadsl")]
 visible = false
 position = Vector2(16, -1)
 
 [node name="ShootSpriteAnime" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(26, 0)
 scale = Vector2(0.0964116, -0.126634)
 sprite_frames = SubResource("SpriteFrames_m5qnn")
 animation = &"ShootAnim"
 autoplay = "ShootAnim"
-frame_progress = 0.10588
+frame_progress = 0.648218
 speed_scale = 2.0
