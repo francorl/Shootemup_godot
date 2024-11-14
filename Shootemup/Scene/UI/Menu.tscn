@@ -128,6 +128,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ygxqb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jut15")
 text = " SALIR "
 
+[node name="CanvasLayer" type="CanvasLayer" parent="ColorRect/VBoxContainer"]
+
 [connection signal="pressed" from="ColorRect/VBoxContainer/PLAY" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/OPTIONS" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/EXIT" to="." method="_on_play_pressed"]
