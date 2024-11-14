@@ -18,7 +18,7 @@ func _ready():
 	
 	var retry_label = $RETRY/Retry/Label
 	retry_label.text = "Has Muerto"
-	StarsBackground.emitting = true
+	StarsBackground.get_node("ParallaxLayer/StarsBackground").emitting = true
 	
 	
 
