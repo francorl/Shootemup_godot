@@ -492,7 +492,6 @@ animations = [{
 [node name="Character" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_g1m0b")
 Bullet = ExtResource("2_fsq17")
-PC = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.999971, 0.499991)
