@@ -44,7 +44,7 @@ func _ready():
 	Camera.set("position", Vector2(100, 0))
 	
 	if PC:
-		#print(PC)
+		print(PC)
 		joystick_left.use_input_actions = false
 		joystick_right.use_input_actions = false
 		
@@ -64,9 +64,9 @@ func _process(delta: float) -> void:
 	position += move_vector * speed * delta
 
 
-	if PC == false:
-		if joystick_right and joystick_right.is_pressed:
-			rotation = joystick_right.output.angle()
+	
+	if joystick_right and joystick_right.is_pressed:
+		rotation = joystick_right.output.angle()
 		
 
 		
@@ -106,7 +106,7 @@ func _physics_process(delta):
 		if weapon_timer >= 5:
 			weapon = false
 			weapon_timer = 0
-			#print("Weapon Deactivated")
+			print("Weapon Deactivated")
 			
 ######################################################
 
@@ -139,7 +139,7 @@ func _physics_process(delta):
 			bullet_instance2.global_position = get_node("BulletSpawn").global_position
 			bullet_instance2.set("area_direction", shoot_direction.rotated(deg_to_rad(15)))
 			bullet_instance2.rotation = shoot_direction.rotated(deg_to_rad(15)).angle() 
-			#print("Weapon Activated")
+			print("Weapon Activated")
 
 		
 		Camera.offset = Vector2(randf_range(-1, 1), randf_range(-1, 1))
@@ -172,7 +172,7 @@ func Respawn():
 
 func _on_timer_timeout() -> void:
 	
-	#printerr("Timer Stop")
+	printerr("Timer Stop")
 	weapon = false
-	#print("Weapon Deactivated")
+	print("Weapon Deactivated")
 	$Timer.stop()

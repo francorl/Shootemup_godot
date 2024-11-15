@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg7rpiubrhh1b"]
+
+[ext_resource type="Script" path="res://Code/CharacterMovement.gd" id="1_g1m0b"]
+[ext_resource type="PackedScene" uid="uid://c7hm7qkkm1rb0" path="res://Scene/bullet.tscn" id="2_fsq17"]
+[ext_resource type="AudioStream" uid="uid://bant2odl7yq3y" path="res://Sounds/Player_Kill.wav" id="3_3vefl"]
+[ext_resource type="Texture2D" uid="uid://lq40vccqbxk7" path="res://shootemup/spaceShips_001.png" id="3_xxxac"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mps6q"]
+size = Vector2(4.97533, 16.7342)
+
+[sub_resource type="QuadMesh" id="QuadMesh_yw87l"]
+size = Vector2(25, 25)
+
+[sub_resource type="Gradient" id="Gradient_mtu4j"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 0)
+
+[node name="Character" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_g1m0b")
+Bullet = ExtResource("2_fsq17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 0.5)
+rotation = -1.5708
+scale = Vector2(5.42677, 1.8525)
+shape = SubResource("RectangleShape2D_mps6q")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+rotation = 1.56639
+scale = Vector2(1.73939, 1.74104)
+mesh = SubResource("QuadMesh_yw87l")
+texture = ExtResource("3_xxxac")
+
+[node name="Gun" type="Sprite2D" parent="MeshInstance2D"]
+position = Vector2(0.0430555, -9.76416)
+rotation = -1.56554
+scale = Vector2(0.234153, 0.0625593)
+skew = -1.00136e-05
+
+[node name="BulletSpawn" type="Marker2D" parent="."]
+position = Vector2(36, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.25, 1.25)
+position_smoothing_enabled = true
+
+[node name="Explosive" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 450
+lifetime = 2.0
+one_shot = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 210.0
+angular_velocity_max = 360.0
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+color_ramp = SubResource("Gradient_mtu4j")
+
+[node name="Sound" type="AudioStreamPlayer" parent="Explosive"]
+stream = ExtResource("3_3vefl")
