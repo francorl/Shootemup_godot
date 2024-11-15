@@ -104,11 +104,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Character" parent="." node_paths=PackedStringArray("joystick_left", "joystick_right") instance=ExtResource("3_u7f8w")]
-position = Vector2(949, 994)
+position = Vector2(432, 764)
 joystick_left = NodePath("../Test/UI/Virtual joystick left")
 joystick_right = NodePath("../Test/UI/Virtual joystick right")
 speed = 350.0
-PC = true
 
 [node name="Spawner" parent="." instance=ExtResource("4_fw31k")]
 position = Vector2(1359, 236)
@@ -294,18 +293,17 @@ grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 
 [node name="Virtual joystick right" parent="Test/UI" instance=ExtResource("11_ekxqp")]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 12
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -450.0
-offset_top = -150.0
-offset_right = -150.0
-offset_bottom = 150.0
-grow_horizontal = 0
-grow_vertical = 2
+offset_left = 10.0
+offset_top = -91.0
+offset_right = 10.0
+offset_bottom = -91.0
+grow_horizontal = 2
 scale = Vector2(1.5, 1.5)
+size_flags_vertical = 8
+joystick_mode = 1
+visibility_mode = 2
 use_input_actions = false
 
 [node name="Control" parent="Test/UI" instance=ExtResource("12_2qlhy")]

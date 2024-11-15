@@ -23,6 +23,11 @@ StarsBackground="*res://Scene/Background/StarsBackground.tscn"
 
 [display]
 
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/handheld/orientation=6
 mouse_cursor/custom_image="res://Crosshair/512/652.png"
 
 [dotnet]
