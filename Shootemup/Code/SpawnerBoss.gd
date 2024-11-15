@@ -22,7 +22,7 @@ func _process(delta):
 	# Handle spawning
 		if timer >= actual_spawn_interval - 1 && !get_node("AnimationPlayer").is_playing():
 			get_node("AnimationPlayer").play("spawn")
-			#print("BOSS SPAWNED")
+			print("BOSS SPAWNED")
 			spawnboss = false
 	
 

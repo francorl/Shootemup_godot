@@ -21,6 +21,10 @@ config/icon="res://Image.png"
 GlobalVariables="*res://Code/GlobalVariables.gd"
 StarsBackground="*res://Scene/Background/StarsBackground.tscn"
 
+[display]
+
+mouse_cursor/custom_image="res://Crosshair/512/652.png"
+
 [dotnet]
 
 project/assembly_name="2d-shoot-em-up"

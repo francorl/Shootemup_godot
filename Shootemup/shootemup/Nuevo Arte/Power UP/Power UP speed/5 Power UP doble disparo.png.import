@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clkant0dbuoco"
-path="res://.godot/imported/5 Power UP doble disparo.png-61e8948c937c4dd4a361a539bcc35512.ctex"
+path="res://.godot/imported/5 Power UP doble disparo.png-151d160c3453608d39e089fde0440186.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shootemup/Nuevo Arte/Power UP/Power UP doble disparo/5 Power UP doble disparo.png"
-dest_files=["res://.godot/imported/5 Power UP doble disparo.png-61e8948c937c4dd4a361a539bcc35512.ctex"]
+source_file="res://shootemup/Nuevo Arte/Power UP/Power UP speed/5 Power UP doble disparo.png"
+dest_files=["res://.godot/imported/5 Power UP doble disparo.png-151d160c3453608d39e089fde0440186.ctex"]
 
 [params]
 
