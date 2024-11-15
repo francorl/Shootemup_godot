@@ -41,20 +41,20 @@ var timer = 0
 	
 func _ready():
 	
-	#Camera.set("position", Vector2(100, 0))
+	Camera.set("position", Vector2(100, 0))
 	
 	if PC:
 		print(PC)
-		#joystick_left.use_input_actions = false
-		#joystick_right.use_input_actions = false
+		joystick_left.use_input_actions = false
+		joystick_right.use_input_actions = false
 		
 		joystick_left.visible = false
 		joystick_right.visible = false
 	else:
-		#joystick_left.use_input_actions = true
-		#joystick_right.use_input_actions = true
+		joystick_left.use_input_actions = true
+		joystick_right.use_input_actions = true
 		
-		joystick_left.visible = true
+		joystick_left.visible = false
 		joystick_right.visible = true	
 	
 

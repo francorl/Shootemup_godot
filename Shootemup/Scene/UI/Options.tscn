@@ -114,10 +114,10 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_0ki17")
 theme_override_styles/normal = SubResource("StyleBoxFlat_w65xe")
 text = "VOLVER"
 
-[connection signal="pressed" from="ColorRect/VBoxContainer/VOLUME" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/VOLUME" to="." method="_on_resolution_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/DIFFICULT" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/VOLUME" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/DIFFICULT" to="." method="_on_resolution_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/DIFFICULT" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_resolution_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_back_pressed"]
