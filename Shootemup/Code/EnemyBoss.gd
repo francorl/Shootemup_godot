@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var player_name = "Character"
 @export var Loot: PackedScene
 var player
+
 # In the main scene, this goes to the very very top node! one node down, there should
 # be the character and the spawners
 
@@ -16,11 +17,26 @@ var player
 @onready var absolute_parent = get_parent()
 # Used to increase the score (Spawners should be the child of a "scene" node)
 @export var score_value = 1
+###################################################################
+@onready var lightning := $LightningBeam2D
 
+
+
+
+
+
+###################################################################
 # Animations
 @onready var eyeanimboss = $AnimatedSprite2D
 var animdelay = 0
 
+
+#func fire():
+	#var bullet =bullet_path.instantiate()
+	#bullet.dir=rotation 
+	#bullet.pos=$".".global_position
+	#bullet.rota=global_rotation
+	#get_parent().add_child(bullet)
 
 func _ready():
 	if absolute_parent.get_node_or_null(player_name) != null:
@@ -31,10 +47,12 @@ func _ready():
 func _process(delta):
 	
 	animdelay += 1
+	
 	print(animdelay)
 	# These 3 little lines of code handle movement! Don't ask me why velocity has to be set this way.
-	if player != null:
-		self.look_at(player.get("position"))
+	if player != null: 
+		var player_position = player.get("position")
+		#self.look_at(player.get("position"))
 		self.velocity = Vector2(0, 0)
 		self.position.x = move_toward(self.position.x, player.get("position").x, speed * delta)
 		self.position.y = move_toward(self.position.y, player.get("position").y, speed * delta)
@@ -42,8 +60,9 @@ func _process(delta):
 	
 	if animdelay == 400:
 		eyeanimboss.play("IdleAnim")
-		animdelay = 0	
-	
+		$LightningBeam2D.look_at(player.get("position"))
+		lightning.shoot()
+		animdelay = 0
 		
 	move_and_slide()
 
@@ -54,7 +73,7 @@ func _on_area_detector_body_entered(body):
 
 # Get hit, or die.
 func hit():
-	health -= 1
+	health -= 50
 	if health == 0:
 		
 		absolute_parent.Score += score_value

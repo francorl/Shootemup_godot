@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0bg7jeyskhrv"]
+[gd_scene load_steps=13 format=3 uid="uid://b0bg7jeyskhrv"]
 
 [ext_resource type="Script" path="res://Code/EnemyBoss.gd" id="1_hg1od"]
 [ext_resource type="PackedScene" uid="uid://c16xjmwoohnsq" path="res://Scene/Player/Coin.tscn" id="2_2jo15"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b84o2bhwvgtt1" path="res://shootemup/Alien_2.png" id="4_2j5sb"]
 [ext_resource type="Texture2D" uid="uid://bc4w3oide148k" path="res://shootemup/Alien_2_cerrado.png" id="5_84io6"]
 [ext_resource type="Texture2D" uid="uid://j4e83w7tg5qi" path="res://shootemup/Alien_2_tentaculos.png" id="6_aeld1"]
+[ext_resource type="PackedScene" uid="uid://c37705gsx84xu" path="res://Scene/LightningBeam/LightningBeam.tscn" id="7_wb1ni"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4i0x"]
 
@@ -37,22 +38,28 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="boss" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(8.16667, 8.25)
 motion_mode = 1
 script = ExtResource("1_hg1od")
 speed = 30.0
 health = 20
-player_name = "BOSS"
 Loot = ExtResource("2_2jo15")
 score_value = 100
 
+[node name="LightningBeam2D" parent="." instance=ExtResource("7_wb1ni")]
+z_index = 10
+position = Vector2(0.367347, -9.33334)
+scale = Vector2(0.206531, 0.200001)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(-0.489796, -2.54545)
+scale = Vector2(1, 1.44606)
 shape = SubResource("CircleShape2D_d4i0x")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 visible = false
+rotation = -0.380482
 mesh = SubResource("SphereMesh_xkpvd")
 
 [node name="AreaDetector" type="Area2D" parent="."]

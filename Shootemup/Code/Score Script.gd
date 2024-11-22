@@ -17,15 +17,15 @@ func _ready():
 	var button_name = OS.get_keycode_string(respawn_event.physical_keycode)
 	
 	var retry_label = $RETRY/Retry/Label
-	retry_label.text = "Has Muerto"
+	retry_label.text = "Toca para Jugar de nuevo"
+	retry_label.text = "Tus Puntos"
 	StarsBackground.emitting = true
 	
 	
 
 func _process(_delta):
 	$SCORE.get_node("Score").set("text", "Score: " + str(Score) + "\nCoins: " + str(Coin))
-	
-		
+	$RETRY/Retry.get_node("Score").set("text", "Score: " + str(Score) + "\nCoins: " + str(Coin))
 
 
 
