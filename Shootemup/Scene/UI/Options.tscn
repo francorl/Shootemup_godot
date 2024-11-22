@@ -1,39 +1,49 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm0kxypfeo4cw"]
+[gd_scene load_steps=6 format=3 uid="uid://cm0kxypfeo4cw"]
 
 [ext_resource type="Script" path="res://Code/options.gd" id="1_3o6lq"]
-[ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_pbbso"]
+[ext_resource type="FontFile" uid="uid://cikx7o6snrdhd" path="res://Fuente/Dune_Rise.ttf" id="2_ba304"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au1pu"]
-bg_color = Color(1, 1, 1, 0)
-border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-corner_detail = 1
+[sub_resource type="Environment" id="Environment_f1ya2"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 1.2
+glow_enabled = true
+glow_levels/1 = 1.5
+glow_levels/2 = 1.5
+glow_levels/3 = 0.0
+glow_levels/5 = 1.5
+glow_intensity = 0.3
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 2.0
+fog_enabled = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m44fx"]
-bg_color = Color(1, 1, 1, 0.0784314)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ki17"]
-bg_color = Color(1, 1, 1, 0.47451)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w65xe"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ljtj"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.106159, 0.897571, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 20
+expand_margin_left = 10.0
+expand_margin_top = 25.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+shadow_color = Color(0, 0.415686, 0.415686, 0.247059)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i4q5"]
+bg_color = Color(0, 0.439216, 0.423529, 0)
+border_color = Color(6.73831e-07, 0.545342, 0.573827, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 corner_detail = 1
 
 [node name="OPTIONS" type="Control"]
@@ -48,6 +58,9 @@ grow_vertical = 2
 scale = Vector2(4.56, 2)
 script = ExtResource("1_3o6lq")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f1ya2")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -60,14 +73,6 @@ grow_vertical = 2
 scale = Vector2(0.817164, 1)
 color = Color(0.0509804, 0.419608, 1, 1)
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect"]
-layout_mode = 0
-offset_left = -243.675
-offset_top = -311.0
-offset_right = 1036.33
-offset_bottom = 657.0
-scale = Vector2(0.385409, 0.662895)
-
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 8
@@ -75,49 +80,44 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -79.436
-offset_top = -63.0
-offset_right = 352.564
-offset_bottom = 174.0
+offset_left = -123.716
+offset_top = -110.0
+offset_right = 850.284
+offset_bottom = 340.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.44, 0.687)
-theme_override_constants/separation = 15
-
-[node name="VOLUME" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_pbbso")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0ki17")
-theme_override_styles/normal = SubResource("StyleBoxFlat_w65xe")
-text = "VOLUMEN"
+scale = Vector2(0.257393, 0.447)
+theme_override_constants/separation = 75
 
 [node name="DIFFICULT" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_pbbso")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0ki17")
-theme_override_styles/normal = SubResource("StyleBoxFlat_w65xe")
-text = "DIFICULTAD"
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_ba304")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxFlat_0ljtj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ljtj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5i4q5")
+text = "  DIFICULTAD  "
+
+[node name="VOLUME" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_ba304")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxFlat_0ljtj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ljtj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5i4q5")
+text = "  VOLUMEN  "
 
 [node name="BACK" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_pbbso")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxFlat_au1pu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_m44fx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0ki17")
-theme_override_styles/normal = SubResource("StyleBoxFlat_w65xe")
-text = "VOLVER"
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_ba304")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxFlat_0ljtj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ljtj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5i4q5")
+text = "  VOLVER  "
 
-[connection signal="pressed" from="ColorRect/VBoxContainer/VOLUME" to="." method="_on_resolution_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/VOLUME" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/DIFFICULT" to="." method="_on_resolution_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/DIFFICULT" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_resolution_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/VOLUME" to="." method="_on_volume_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_back_pressed"]

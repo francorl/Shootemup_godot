@@ -10,9 +10,11 @@ config_version=5
 
 [application]
 
-config/name="METAL SPACE"
+config/name="v4.5"
 run/main_scene="res://Scene/UI/Menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 boot_splash/image="res://Image.png"
 config/icon="res://Image.png"
 
@@ -24,8 +26,7 @@ StarsBackground="*res://Scene/Background/StarsBackground.tscn"
 [display]
 
 window/size/viewport_width=1080
-window/size/viewport_height=1920
-window/stretch/mode="viewport"
+window/size/viewport_height=2520
 window/stretch/aspect="expand"
 window/handheld/orientation=6
 mouse_cursor/custom_image="res://Crosshair/512/652.png"

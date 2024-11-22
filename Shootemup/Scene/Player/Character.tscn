@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://Code/CharacterMovement.gd" id="1_g1m0b"]
 [ext_resource type="PackedScene" uid="uid://c7hm7qkkm1rb0" path="res://Scene/Player/Bullet.tscn" id="2_fsq17"]
 [ext_resource type="AudioStream" uid="uid://bant2odl7yq3y" path="res://Sounds/Player_Kill.wav" id="3_3vefl"]
-[ext_resource type="Texture2D" uid="uid://1mvrocqkllnq" path="res://shootemup/nave_1.png" id="3_knohx"]
+[ext_resource type="Texture2D" uid="uid://wgacrggqcqf7" path="res://shootemup/ship_I.png" id="3_8ghk2"]
 [ext_resource type="PackedScene" uid="uid://5rklwbn3gx6f" path="res://Scene/Player/trail.tscn" id="5_jpwqu"]
 [ext_resource type="Script" path="res://Scene/Player/trail.gd" id="6_2ioy0"]
 [ext_resource type="PackedScene" uid="uid://dds5oxfjbqp6t" path="res://Scene/Player/ShootExplosion.tscn" id="7_iadsl"]
 [ext_resource type="Texture2D" uid="uid://csa2kryltdvcl" path="res://shootemup/Explosion/2D Explosion Animations/explosion 2.png" id="8_5ebwc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mps6q"]
-size = Vector2(4.97533, 14.0351)
+size = Vector2(4.97533, 10.993)
 
 [sub_resource type="QuadMesh" id="QuadMesh_yw87l"]
 size = Vector2(25, 25)
@@ -490,21 +490,22 @@ animations = [{
 }]
 
 [node name="Character" type="CharacterBody2D" groups=["Player"]]
-scale = Vector2(2.18928, 2.10574)
+scale = Vector2(2.86928, 2.90574)
 script = ExtResource("1_g1m0b")
 Bullet = ExtResource("2_fsq17")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.999971, 0.499991)
+position = Vector2(1.81778, 0.499981)
 rotation = -1.5708
 scale = Vector2(5.42677, 1.8525)
 shape = SubResource("RectangleShape2D_mps6q")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(6.27335, -0.344146)
 rotation = -1.5708
-scale = Vector2(2.54466, 2.09171)
+scale = Vector2(2.54466, 2.2982)
 mesh = SubResource("QuadMesh_yw87l")
-texture = ExtResource("3_knohx")
+texture = ExtResource("3_8ghk2")
 
 [node name="Gun" type="Sprite2D" parent="MeshInstance2D"]
 position = Vector2(0.0430555, -9.76416)
@@ -548,10 +549,10 @@ process_material = SubResource("ParticleProcessMaterial_3p7us")
 [node name="Trail" parent="." instance=ExtResource("5_jpwqu")]
 top_level = true
 z_index = -1
-position = Vector2(-7, 0)
-width = 15.0
+position = Vector2(-1, -2)
+width = 40.0
 script = ExtResource("6_2ioy0")
-MAX_LENGTH = 50
+MAX_LENGTH = 25
 
 [node name="ShootExplosion" parent="." instance=ExtResource("7_iadsl")]
 visible = false

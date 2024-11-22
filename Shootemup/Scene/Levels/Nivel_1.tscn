@@ -10,7 +10,7 @@
 [ext_resource type="Shader" path="res://Scene/Shaders/HUMO DE COTE.gdshader" id="8_3jtp4"]
 [ext_resource type="Texture2D" uid="uid://c4ueuan1n6el2" path="res://Image.png" id="9_vnls3"]
 [ext_resource type="Shader" path="res://Scene/Shaders/HUMO.gdshader" id="10_wljfb"]
-[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="11_ekxqp"]
+[ext_resource type="PackedScene" uid="uid://bq2sqb1u1l5ve" path="res://addons/virtual_joystick/test/test.tscn" id="11_27nfy"]
 [ext_resource type="PackedScene" uid="uid://bmll1ra0je8ko" path="res://Scene/UI/Pause.tscn" id="12_2qlhy"]
 
 [sub_resource type="Environment" id="Environment_ycaxx"]
@@ -53,10 +53,10 @@ environment = SubResource("Environment_ycaxx")
 
 [node name="Score" type="Label" parent="SCORE"]
 top_level = true
-offset_left = 79.0
-offset_top = 30.0
-offset_right = 238.0
-offset_bottom = 75.0
+offset_left = 218.0
+offset_top = 76.0
+offset_right = 377.0
+offset_bottom = 121.0
 theme_override_fonts/font = ExtResource("2_h1ose")
 theme_override_font_sizes/font_size = 30
 text = "SCORE:"
@@ -72,15 +72,34 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -1753.0
-offset_top = -1049.0
+offset_top = -1565.0
 offset_right = -1688.0
-offset_bottom = -1010.32
+offset_bottom = -1526.32
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(55.92, 54.724)
+scale = Vector2(58.32, 81.884)
 size_flags_horizontal = 6
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
+
+[node name="Score" type="Label" parent="RETRY/Retry"]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -20.0
+offset_right = -17.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.2, 3.36)
+theme_override_fonts/font = ExtResource("2_h1ose")
+theme_override_font_sizes/font_size = 30
+text = "SCORE:"
 
 [node name="Label" type="Label" parent="RETRY/Retry"]
 layout_mode = 1
@@ -89,13 +108,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.7296
-offset_top = -2.80246
-offset_right = 2854.27
-offset_bottom = 134.198
+offset_left = -34.9005
+offset_top = -4.5019
+offset_right = 2850.1
+offset_bottom = 132.499
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.0208364, 0.0264162)
+scale = Vector2(0.0224049, 0.0280977)
 theme_override_fonts/font = ExtResource("2_h1ose")
 theme_override_font_sizes/font_size = 500
 text = "texto en Score Script.gd -> retry_label.text = \"Press to retry\" "
@@ -107,24 +126,28 @@ vertical_alignment = 1
 position = Vector2(432, 764)
 joystick_left = NodePath("../Test/UI/Virtual joystick left")
 joystick_right = NodePath("../Test/UI/Virtual joystick right")
-speed = 350.0
+speed = 500.0
 
 [node name="Spawner" parent="." instance=ExtResource("4_fw31k")]
+visible = false
 position = Vector2(1359, 236)
 scale = Vector2(-1.54055, -1.50609)
 small_timer_randomization = true
 
 [node name="Spawner2" parent="." instance=ExtResource("4_fw31k")]
+visible = false
 position = Vector2(435, 268)
 small_timer_randomization = true
 spawn_interval = 4.0
 
 [node name="Spawner3" parent="." instance=ExtResource("4_fw31k")]
+visible = false
 position = Vector2(1686, 989)
 small_timer_randomization = true
 spawn_interval = 2.0
 
 [node name="SpawnerBoss" parent="." instance=ExtResource("4_fw31k")]
+visible = false
 position = Vector2(1008, 324)
 script = ExtResource("5_2bu8s")
 Enemy = ExtResource("6_tlbnx")
@@ -132,6 +155,7 @@ small_timer_randomization = true
 spawn_interval = 2.0
 
 [node name="Spawn Area" parent="." instance=ExtResource("7_35orc")]
+visible = false
 position = Vector2(970, 526)
 scale = Vector2(3.70301, 2.3104)
 power_spawn_rate = 10
@@ -146,6 +170,7 @@ scale = Vector2(-1.20312, 259.638)
 shape = SubResource("RectangleShape2D_dsddx")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Collision_Left"]
+modulate = Color(1, 0, 0, 1)
 position = Vector2(0.771118, -14.3717)
 rotation = 1.5708
 scale = Vector2(5000, 17.773)
@@ -182,6 +207,7 @@ scale = Vector2(-1.20312, 259.638)
 shape = SubResource("RectangleShape2D_dsddx")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Collision_Right"]
+modulate = Color(1, 0, 0, 1)
 position = Vector2(0.771118, -14.3717)
 rotation = 1.5708
 scale = Vector2(5000, 17.773)
@@ -218,6 +244,7 @@ scale = Vector2(1.82853, 0.757262)
 shape = SubResource("RectangleShape2D_dsddx")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Collision_Up"]
+modulate = Color(1, 0, 0, 1)
 position = Vector2(0.114706, -122.913)
 scale = Vector2(34.3637, 28.4299)
 mesh = SubResource("QuadMesh_sr6ys")
@@ -253,6 +280,7 @@ scale = Vector2(1.82853, 0.757262)
 shape = SubResource("RectangleShape2D_dsddx")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Collision_Down"]
+modulate = Color(1, 0, 0, 1)
 position = Vector2(0.114706, -122.913)
 scale = Vector2(34.3637, 28.4299)
 mesh = SubResource("QuadMesh_sr6ys")
@@ -278,35 +306,11 @@ rotation = 3.14159
 scale = Vector2(0.0482649, 0.107812)
 texture = ExtResource("9_vnls3")
 
-[node name="Test" type="Node2D" parent="."]
-position = Vector2(191, 351)
+[node name="Test" parent="." instance=ExtResource("11_27nfy")]
+position = Vector2(947, 1872)
+scale = Vector2(87.1794, 3.08347)
 
-[node name="UI" type="CanvasLayer" parent="Test"]
-
-[node name="Virtual joystick left" parent="Test/UI" instance=ExtResource("11_ekxqp")]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -150.0
-offset_bottom = 150.0
-grow_vertical = 2
-scale = Vector2(1.5, 1.5)
-
-[node name="Virtual joystick right" parent="Test/UI" instance=ExtResource("11_ekxqp")]
-anchors_preset = 12
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = -91.0
-offset_right = 10.0
-offset_bottom = -91.0
-grow_horizontal = 2
-scale = Vector2(1.5, 1.5)
-size_flags_vertical = 8
-joystick_mode = 1
-visibility_mode = 2
-use_input_actions = false
-
-[node name="Control" parent="Test/UI" instance=ExtResource("12_2qlhy")]
+[node name="Control" parent="Test/UI" index="0" instance=ExtResource("12_2qlhy")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -315,7 +319,28 @@ offset_right = 0.0
 grow_horizontal = 0
 
 [node name="PAUSA" parent="Test/UI/Control" index="0"]
-offset_left = -126.0
-offset_right = -26.0
+offset_left = -291.0
+offset_top = 55.0
+offset_right = -191.0
+offset_bottom = 155.0
 
+[node name="Virtual joystick left" parent="Test/UI" index="1"]
+modulate = Color(1, 1, 1, 0.364706)
+offset_top = -599.0
+offset_bottom = -299.0
+scale = Vector2(2, 2)
+
+[node name="Virtual joystick right" parent="Test/UI" index="2"]
+modulate = Color(1, 1, 1, 0.364706)
+offset_left = -600.0
+offset_top = -601.0
+offset_right = -300.0
+offset_bottom = -301.0
+scale = Vector2(2, 2)
+joystick_mode = 0
+
+[node name="Player" parent="Test" index="1"]
+texture = null
+
+[editable path="Test"]
 [editable path="Test/UI/Control"]

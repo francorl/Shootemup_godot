@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export_group("Player Things")
 @export var player_name = "Character"
 var player
+
+
 # In the main scene, this goes to the very very top node! one node down, there should
 # be the character and the spawners
 @onready var absolute_parent = get_parent()
@@ -17,7 +19,9 @@ func _ready():
 	if absolute_parent.get_node_or_null(player_name) != null:
 		player = absolute_parent.get_node(player_name)
 		
+		
 
+		
 func _process(delta):
 	# These 3 little lines of code handle movement! Don't ask me why velocity has to be set this way.
 	if player != null:

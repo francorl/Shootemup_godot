@@ -1,13 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5no0ce3urdfy"]
+[gd_scene load_steps=6 format=3 uid="uid://b5no0ce3urdfy"]
 
 [ext_resource type="Script" path="res://Code/levels.gd" id="1_7wv76"]
-[ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_p2l27"]
+[ext_resource type="FontFile" uid="uid://cikx7o6snrdhd" path="res://Fuente/Dune_Rise.ttf" id="2_5b8j0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtm2w"]
-bg_color = Color(0.68, 0, 0.0113332, 1)
+[sub_resource type="Environment" id="Environment_24n43"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 1.2
+glow_enabled = true
+glow_levels/1 = 1.5
+glow_levels/2 = 1.5
+glow_levels/3 = 0.0
+glow_levels/5 = 1.5
+glow_intensity = 0.3
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 2.0
+fog_enabled = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jhp1"]
-bg_color = Color(0.678431, 0, 0.0117647, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0jr1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.106159, 0.897571, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 20
+expand_margin_left = 10.0
+expand_margin_top = 25.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+shadow_color = Color(0, 0.415686, 0.415686, 0.247059)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2uob"]
+bg_color = Color(0, 0.439216, 0.423529, 0)
+border_color = Color(6.73831e-07, 0.545342, 0.573827, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
 
 [node name="LEVELS" type="Control"]
 process_mode = 3
@@ -34,13 +71,8 @@ grow_vertical = 2
 scale = Vector2(0.817164, 1)
 color = Color(0.0509804, 0.419608, 1, 1)
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect"]
-layout_mode = 0
-offset_left = -243.675
-offset_top = -311.0
-offset_right = 1036.33
-offset_bottom = 657.0
-scale = Vector2(0.385409, 0.662895)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ColorRect"]
+environment = SubResource("Environment_24n43")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
@@ -49,43 +81,44 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -84.5349
-offset_top = -63.0
-offset_right = 352.465
-offset_bottom = 174.0
+offset_left = -94.464
+offset_top = -110.0
+offset_right = 705.536
+offset_bottom = 340.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.407796, 0.687)
-theme_override_constants/separation = 15
+scale = Vector2(0.246658, 0.447609)
+theme_override_constants/separation = 75
 
-[node name="LEVEL_1" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="NIVEL_1" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_p2l27")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_gtm2w")
-text = "NIVEL 1"
-flat = true
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5b8j0")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxFlat_j0jr1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j0jr1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_y2uob")
+text = "  NIVEL 1  "
 
-[node name="LEVEL_2" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="NIVEL_2" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_p2l27")
-theme_override_font_sizes/font_size = 50
-disabled = true
-text = "NIVEL 2"
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5b8j0")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxFlat_j0jr1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j0jr1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_y2uob")
+text = "  NIVEL 2  "
 
 [node name="BACK" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_p2l27")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_0jhp1")
-text = "VOLVER"
-flat = true
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5b8j0")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxFlat_j0jr1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j0jr1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_y2uob")
+text = "  VOLVER  "
 
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_1" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_1" to="." method="_on_volume_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_1" to="." method="_on_level_1_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_1" to="." method="_on_levels_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_2" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/LEVEL_2" to="." method="_on_resolution_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/NIVEL_1" to="." method="_on_nivel_1_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BACK" to="." method="_on_back_pressed"]

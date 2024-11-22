@@ -1,0 +1,385 @@
+[gd_scene load_steps=25 format=3 uid="uid://cefuctbs0dtfe"]
+
+[ext_resource type="Script" path="res://Code/Score Script.gd" id="1_pmvc3"]
+[ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_soh0j"]
+[ext_resource type="PackedScene" uid="uid://bg7rpiubrhh1b" path="res://Scene/Player/Character.tscn" id="3_n6db6"]
+[ext_resource type="Shader" path="res://Scene/Shaders/vignette.gdshader" id="4_q7j38"]
+[ext_resource type="PackedScene" uid="uid://chluf4qb455d5" path="res://Scene/Background/Spawner.tscn" id="5_50d7b"]
+[ext_resource type="PackedScene" uid="uid://b0bg7jeyskhrv" path="res://Scene/Enemy/Boss.tscn" id="6_1x4bt"]
+[ext_resource type="Script" path="res://Code/SpawnerBoss.gd" id="7_oxcgu"]
+[ext_resource type="PackedScene" uid="uid://dqq6h8h061orv" path="res://Scene/Background/Spawn_Area.tscn" id="8_4bgk2"]
+[ext_resource type="Shader" path="res://Scene/Shaders/HUMO DE COTE.gdshader" id="9_xjkbm"]
+[ext_resource type="Texture2D" uid="uid://c4ueuan1n6el2" path="res://Image.png" id="10_fgcmq"]
+[ext_resource type="Shader" path="res://Scene/Shaders/HUMO.gdshader" id="11_4vuer"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="12_8iwx0"]
+[ext_resource type="PackedScene" uid="uid://bmll1ra0je8ko" path="res://Scene/UI/Pause.tscn" id="13_b6fp7"]
+[ext_resource type="Texture2D" uid="uid://rn1te1w1wrb1" path="res://shootemup/VFX/noise_combined.png" id="14_ra88v"]
+[ext_resource type="Texture2D" uid="uid://d02mscfp7n16d" path="res://shootemup/VFX/spotlight_3.png" id="15_njidr"]
+
+[sub_resource type="Environment" id="Environment_ycaxx"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 1.2
+glow_enabled = true
+glow_levels/1 = 1.5
+glow_levels/2 = 1.5
+glow_levels/3 = 0.0
+glow_levels/5 = 1.5
+glow_intensity = 0.3
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 2.0
+fog_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_lwp0b"]
+line_spacing = 0.0
+font_size = 50
+shadow_size = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqqx6"]
+shader = ExtResource("4_q7j38")
+shader_parameter/color = Color(0.0433016, 0.0412701, 0.0536715, 1)
+shader_parameter/multiplier = 0.251
+shader_parameter/softness = 0.48
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsddx"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_sr6ys"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_317ol"]
+shader = ExtResource("9_xjkbm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_40y0y"]
+shader = ExtResource("11_4vuer")
+
+[sub_resource type="Shader" id="1"]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise_img;
+uniform float speed = 1.0;
+uniform vec4 smoke_color : source_color;
+
+void fragment(){
+	vec2 uv1 = vec2(UV.x + TIME*speed, UV.y);
+	vec2 uv2 = vec2(UV.x - TIME*speed, UV.y);
+	vec2 uv3 = vec2(UV.x, UV.y + TIME*speed);
+	
+	
+	float noise_r = texture( noise_img, uv1 ).r;
+	float noise_g = texture( noise_img, uv2 ).g;
+	float noise_b = texture( noise_img, uv3 ).b;
+	
+	vec3 new_color = vec3(noise_r, noise_g, noise_b);
+	
+	float new_alpha = noise_r * noise_g * noise_b;
+	
+	COLOR.rgb = smoke_color.rgb;//texture(TEXTURE, UV).rgb;
+	COLOR.a = clamp(new_alpha * 5.0 * texture(TEXTURE, UV).a, 0.0, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a50dq"]
+shader = SubResource("1")
+shader_parameter/speed = 0.02
+shader_parameter/smoke_color = Color(3, 0.270588, 0.894118, 1)
+shader_parameter/noise_img = ExtResource("14_ra88v")
+
+[node name="Main Scene" type="Node2D"]
+script = ExtResource("1_pmvc3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ycaxx")
+
+[node name="SCORE" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="SCORE"]
+top_level = true
+offset_left = 79.0
+offset_top = 30.0
+offset_right = 238.0
+offset_bottom = 75.0
+theme_override_fonts/font = ExtResource("2_soh0j")
+theme_override_font_sizes/font_size = 30
+text = "SCORE:"
+
+[node name="RETRY" type="CanvasLayer" parent="."]
+
+[node name="Retry" type="ColorRect" parent="RETRY"]
+visible = false
+top_level = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1753.0
+offset_top = -1049.0
+offset_right = -1688.0
+offset_bottom = -1010.32
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(55.92, 54.724)
+size_flags_horizontal = 6
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="RETRY/Retry"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.7296
+offset_top = -2.80246
+offset_right = 2854.27
+offset_bottom = 134.198
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.0208364, 0.0264162)
+theme_override_fonts/font = ExtResource("2_soh0j")
+theme_override_font_sizes/font_size = 500
+text = "texto en Score Script.gd -> retry_label.text = \"Press to retry\" "
+label_settings = SubResource("LabelSettings_lwp0b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character" parent="." node_paths=PackedStringArray("joystick_left", "joystick_right") instance=ExtResource("3_n6db6")]
+position = Vector2(432, 764)
+scale = Vector2(2.16704, 2.115)
+joystick_left = NodePath("../Test/UI/Virtual joystick left")
+joystick_right = NodePath("../Test/UI/Virtual joystick right")
+speed = 350.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_sqqx6")
+offset_left = -965.0
+offset_top = -642.0
+offset_right = -925.0
+offset_bottom = -602.0
+scale = Vector2(96.522, 58.2706)
+
+[node name="SpawnerBoss" parent="." instance=ExtResource("5_50d7b")]
+position = Vector2(1496, 709)
+scale = Vector2(0.972705, 1)
+script = ExtResource("7_oxcgu")
+Enemy = ExtResource("6_1x4bt")
+small_timer_randomization = true
+
+[node name="Spawn Area" parent="." instance=ExtResource("8_4bgk2")]
+position = Vector2(970, 526)
+scale = Vector2(3.70301, 2.3104)
+power_spawn_rate = 10
+
+[node name="Collision_Left" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(-506, 524)
+scale = Vector2(3.76, 0.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Left"]
+position = Vector2(-11.7023, 0)
+scale = Vector2(-1.20312, 259.638)
+shape = SubResource("RectangleShape2D_dsddx")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Collision_Left"]
+position = Vector2(0.771118, -14.3717)
+rotation = 1.5708
+scale = Vector2(5000, 17.773)
+mesh = SubResource("QuadMesh_sr6ys")
+
+[node name="TextureRect4" type="TextureRect" parent="Collision_Left"]
+visible = false
+material = SubResource("ShaderMaterial_317ol")
+offset_left = -86.7558
+offset_top = -11.7242
+offset_right = 419.244
+offset_bottom = 410.276
+scale = Vector2(0.181551, 0.0549947)
+texture = ExtResource("10_fgcmq")
+
+[node name="TextureRect5" type="TextureRect" parent="Collision_Left"]
+visible = false
+material = SubResource("ShaderMaterial_317ol")
+offset_left = -9.00292
+offset_top = -10.1824
+offset_right = 496.997
+offset_bottom = 411.818
+scale = Vector2(0.181551, 0.0472856)
+texture = ExtResource("10_fgcmq")
+flip_h = true
+
+[node name="Collision_Right" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(2422, 524)
+scale = Vector2(3.76, 0.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Right"]
+position = Vector2(5.31921, 0)
+scale = Vector2(-1.20312, 259.638)
+shape = SubResource("RectangleShape2D_dsddx")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Collision_Right"]
+position = Vector2(0.771118, -14.3717)
+rotation = 1.5708
+scale = Vector2(5000, 17.773)
+mesh = SubResource("QuadMesh_sr6ys")
+
+[node name="TextureRect4" type="TextureRect" parent="Collision_Right"]
+visible = false
+material = SubResource("ShaderMaterial_317ol")
+offset_left = -86.7558
+offset_top = -11.7242
+offset_right = 419.244
+offset_bottom = 410.276
+scale = Vector2(0.181551, 0.0549947)
+texture = ExtResource("10_fgcmq")
+
+[node name="TextureRect5" type="TextureRect" parent="Collision_Right"]
+visible = false
+material = SubResource("ShaderMaterial_317ol")
+offset_left = -9.00292
+offset_top = -10.1824
+offset_right = 496.997
+offset_bottom = 411.818
+scale = Vector2(0.181551, 0.0472856)
+texture = ExtResource("10_fgcmq")
+flip_h = true
+
+[node name="Collision_Up" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(947, -59)
+scale = Vector2(87.1794, 3.08347)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Up"]
+position = Vector2(-0.0573532, -117.076)
+scale = Vector2(1.82853, 0.757262)
+shape = SubResource("RectangleShape2D_dsddx")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Collision_Up"]
+position = Vector2(0.114706, -122.913)
+scale = Vector2(34.3637, 28.4299)
+mesh = SubResource("QuadMesh_sr6ys")
+
+[node name="TextureRect" type="TextureRect" parent="Collision_Up"]
+visible = false
+material = SubResource("ShaderMaterial_40y0y")
+offset_left = -11.6963
+offset_top = -164.749
+offset_right = 494.304
+offset_bottom = 257.251
+scale = Vector2(0.0482649, 0.107812)
+texture = ExtResource("10_fgcmq")
+
+[node name="TextureRect2" type="TextureRect" parent="Collision_Up"]
+visible = false
+material = SubResource("ShaderMaterial_40y0y")
+offset_left = 12.3092
+offset_top = -74.2701
+offset_right = 518.309
+offset_bottom = 347.73
+rotation = 3.14159
+scale = Vector2(0.0482649, 0.107812)
+texture = ExtResource("10_fgcmq")
+
+[node name="Collision_Down" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(947, 1872)
+scale = Vector2(87.1794, 3.08347)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Down"]
+position = Vector2(-0.0573532, -117.076)
+scale = Vector2(1.82853, 0.757262)
+shape = SubResource("RectangleShape2D_dsddx")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Collision_Down"]
+position = Vector2(0.114706, -122.913)
+scale = Vector2(34.3637, 28.4299)
+mesh = SubResource("QuadMesh_sr6ys")
+
+[node name="TextureRect" type="TextureRect" parent="Collision_Down"]
+visible = false
+material = SubResource("ShaderMaterial_40y0y")
+offset_left = -11.6963
+offset_top = -164.749
+offset_right = 494.304
+offset_bottom = 257.251
+scale = Vector2(0.0482649, 0.107812)
+texture = ExtResource("10_fgcmq")
+
+[node name="TextureRect2" type="TextureRect" parent="Collision_Down"]
+visible = false
+material = SubResource("ShaderMaterial_40y0y")
+offset_left = 12.3092
+offset_top = -74.2701
+offset_right = 518.309
+offset_bottom = 347.73
+rotation = 3.14159
+scale = Vector2(0.0482649, 0.107812)
+texture = ExtResource("10_fgcmq")
+
+[node name="Test" type="Node2D" parent="."]
+position = Vector2(191, 351)
+
+[node name="UI" type="CanvasLayer" parent="Test"]
+
+[node name="Virtual joystick left" parent="Test/UI" instance=ExtResource("12_8iwx0")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -150.0
+offset_bottom = 150.0
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+
+[node name="Virtual joystick right" parent="Test/UI" instance=ExtResource("12_8iwx0")]
+anchors_preset = 12
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = -91.0
+offset_right = 10.0
+offset_bottom = -91.0
+grow_horizontal = 2
+scale = Vector2(1.5, 1.5)
+size_flags_vertical = 8
+joystick_mode = 1
+visibility_mode = 2
+use_input_actions = false
+
+[node name="Control" parent="Test/UI" instance=ExtResource("13_b6fp7")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_right = 0.0
+grow_horizontal = 0
+
+[node name="PAUSA" parent="Test/UI/Control" index="0"]
+offset_left = -126.0
+offset_right = -26.0
+
+[node name="Fire2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_a50dq")
+position = Vector2(-526, 437)
+rotation = 1.489
+scale = Vector2(10.9553, 8.38563)
+texture = ExtResource("15_njidr")
+
+[node name="Fire3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_a50dq")
+position = Vector2(-832, 1878)
+rotation = 1.489
+scale = Vector2(16.2245, 7.79315)
+texture = ExtResource("15_njidr")
+
+[node name="Fire" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_a50dq")
+position = Vector2(-615, -415)
+scale = Vector2(5.33237, 7.45166)
+texture = ExtResource("15_njidr")
+
+[editable path="Test/UI/Control"]
