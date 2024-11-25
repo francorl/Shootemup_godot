@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0bg7jeyskhrv"]
+[gd_scene load_steps=21 format=3 uid="uid://b0bg7jeyskhrv"]
 
 [ext_resource type="Script" path="res://Code/EnemyBoss.gd" id="1_hg1od"]
 [ext_resource type="PackedScene" uid="uid://c16xjmwoohnsq" path="res://Scene/Player/Coin.tscn" id="2_2jo15"]
@@ -7,6 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://bc4w3oide148k" path="res://shootemup/Alien_2_cerrado.png" id="5_84io6"]
 [ext_resource type="Texture2D" uid="uid://j4e83w7tg5qi" path="res://shootemup/Alien_2_tentaculos.png" id="6_aeld1"]
 [ext_resource type="PackedScene" uid="uid://c37705gsx84xu" path="res://Scene/LightningBeam/LightningBeam.tscn" id="7_wb1ni"]
+[ext_resource type="Texture2D" uid="uid://dh0rl6yanim4a" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/1.png" id="8_t48td"]
+[ext_resource type="Texture2D" uid="uid://bdhsn0hkhwwn" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/2.png" id="9_qxpen"]
+[ext_resource type="Texture2D" uid="uid://cum3voh0fyd0o" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/3.png" id="10_66p6a"]
+[ext_resource type="Texture2D" uid="uid://c5b686ux8ssra" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/4.png" id="11_juk0n"]
+[ext_resource type="Texture2D" uid="uid://cdu6ku35d2tf5" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/5.png" id="12_rwwf2"]
+[ext_resource type="Texture2D" uid="uid://b4hw5ewwr23l8" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/6.png" id="13_7lsjd"]
+[ext_resource type="Texture2D" uid="uid://bumy8bnbdentt" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/7.png" id="14_atrv6"]
+[ext_resource type="Texture2D" uid="uid://cjaddx2njv64s" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/8.png" id="15_he2xe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4i0x"]
 
@@ -21,7 +29,7 @@ radius = 12.0
 offsets = PackedFloat32Array(0, 0.503311, 1)
 colors = PackedColorArray(0.742612, 0, 0.133068, 1, 0.999997, 0.367348, 0.389703, 1, 1, 0.387377, 0.324754, 0)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_p16o6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fy16k"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -33,13 +41,43 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_aeld1")
 }],
-"loop": true,
+"loop": false,
 "name": &"IdleAnim",
-"speed": 2.0
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_t48td")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qxpen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_66p6a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_juk0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rwwf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7lsjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_atrv6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_he2xe")
+}],
+"loop": false,
+"name": &"ShootAnim",
+"speed": 5.0
 }]
 
-[node name="boss" type="CharacterBody2D" groups=["Enemy"]]
-scale = Vector2(8.16667, 8.25)
+[node name="Boss" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(18.4815, 19.5129)
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_hg1od")
 speed = 30.0
@@ -48,11 +86,18 @@ Loot = ExtResource("2_2jo15")
 score_value = 100
 
 [node name="LightningBeam2D" parent="." instance=ExtResource("7_wb1ni")]
-z_index = 10
-position = Vector2(0.367347, -9.33334)
-scale = Vector2(0.206531, 0.200001)
+position = Vector2(-0.367347, -8.24242)
+scale = Vector2(0.188369, 0.174575)
+flashes = 20
+bounces_max = 0
+player_name = "CharacterBody2D"
+
+[node name="JumpArea" parent="LightningBeam2D" index="0"]
+position = Vector2(-2.37154, 3.2367e-05)
+scale = Vector2(3.36516, 3.28735)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.489796, -2.54545)
 scale = Vector2(1, 1.44606)
 shape = SubResource("CircleShape2D_d4i0x")
@@ -65,7 +110,6 @@ mesh = SubResource("SphereMesh_xkpvd")
 [node name="AreaDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetector"]
-visible = false
 shape = SubResource("CircleShape2D_r4kwt")
 
 [node name="Kill" type="CPUParticles2D" parent="."]
@@ -89,10 +133,12 @@ color_ramp = SubResource("Gradient_j60ij")
 [node name="Sound" type="AudioStreamPlayer2D" parent="Kill"]
 stream = ExtResource("2_u0jx8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="BossAnim" type="AnimatedSprite2D" parent="."]
+z_index = -1
 scale = Vector2(0.0294458, 0.0275777)
-sprite_frames = SubResource("SpriteFrames_p16o6")
+sprite_frames = SubResource("SpriteFrames_fy16k")
 animation = &"IdleAnim"
-frame_progress = 0.252397
 
 [connection signal="body_entered" from="AreaDetector" to="." method="_on_area_detector_body_entered"]
+
+[editable path="LightningBeam2D"]

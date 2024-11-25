@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://bg7rpiubrhh1b"]
+[gd_scene load_steps=79 format=3 uid="uid://bg7rpiubrhh1b"]
 
 [ext_resource type="Script" path="res://Code/CharacterMovement.gd" id="1_g1m0b"]
 [ext_resource type="PackedScene" uid="uid://c7hm7qkkm1rb0" path="res://Scene/Player/Bullet.tscn" id="2_fsq17"]
@@ -8,9 +8,6 @@
 [ext_resource type="Script" path="res://Scene/Player/trail.gd" id="6_2ioy0"]
 [ext_resource type="PackedScene" uid="uid://dds5oxfjbqp6t" path="res://Scene/Player/ShootExplosion.tscn" id="7_iadsl"]
 [ext_resource type="Texture2D" uid="uid://csa2kryltdvcl" path="res://shootemup/Explosion/2D Explosion Animations/explosion 2.png" id="8_5ebwc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mps6q"]
-size = Vector2(4.97533, 10.993)
 
 [sub_resource type="QuadMesh" id="QuadMesh_yw87l"]
 size = Vector2(25, 25)
@@ -490,15 +487,16 @@ animations = [{
 }]
 
 [node name="Character" type="CharacterBody2D" groups=["Player"]]
-scale = Vector2(2.86928, 2.90574)
+scale = Vector2(1.09887, 1.07645)
+collision_mask = 3
 script = ExtResource("1_g1m0b")
 Bullet = ExtResource("2_fsq17")
+PC = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.81778, 0.499981)
-rotation = -1.5708
-scale = Vector2(5.42677, 1.8525)
-shape = SubResource("RectangleShape2D_mps6q")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(3.48519, -0.344146)
+scale = Vector2(2.74138, 1.58209)
+polygon = PackedVector2Array(-4.19538, -10.4413, 9.15356, -0.435053, -3.68685, 10.2237, -7.24657, 0.217526)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(6.27335, -0.344146)
@@ -550,7 +548,7 @@ process_material = SubResource("ParticleProcessMaterial_3p7us")
 top_level = true
 z_index = -1
 position = Vector2(-1, -2)
-width = 40.0
+width = 15.0
 script = ExtResource("6_2ioy0")
 MAX_LENGTH = 25
 

@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @onready var Camera = get_node("Camera2D")
 @onready var absolute_parent = get_parent()
+@onready var healthbar = $"../Test/UI/Health"
 
 @export var Bullet: PackedScene
 @export var joystick_left: VirtualJoystick
@@ -72,6 +73,7 @@ func _process(delta: float) -> void:
 		
 func _physics_process(delta):
 	
+	print(healthbar.value)
 	
 	timer += delta
 	
@@ -110,7 +112,7 @@ func _physics_process(delta):
 			
 ######################################################
 
-
+	
 
 
 	if die:
@@ -157,6 +159,7 @@ func Die():
 	get_node("Explosive/Sound").play()
 	get_node("MeshInstance2D").visible = false
 	Camera.position = Vector2(0, 0)
+	
 	die = true
 	respawn = true
 	position = Vector2(0, 0)
@@ -165,7 +168,25 @@ func Die():
 	joystick_left._reset()
 	joystick_right._reset()
 	$"../RETRY/Retry".show()
+	
+func Hit():
+	#await get_tree().create_timer(0.2).timeout
+	healthbar.change_health(10)
+	Camera.offset = Vector2(randf_range(-1, 1), randf_range(-3, 3))
+	if healthbar.value == 0:
+		self.Die()
 
+func HitBossLightning():
+	
+	#await get_tree().create_timer(0.5).timeout
+	healthbar.change_health(35)
+	Camera.offset = Vector2(randf_range(-1, 1), randf_range(-3, 3))
+	
+	if healthbar.value == 0:
+		self.Die()
+		
+		
+		
 func Respawn():
 	get_tree().reload_current_scene()
 	

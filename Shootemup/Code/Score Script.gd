@@ -8,6 +8,8 @@ extends Node2D
 var Score = 0
 var Coin = 0
 
+
+
 func _ready():
 
 	$RETRY/Retry.hide()

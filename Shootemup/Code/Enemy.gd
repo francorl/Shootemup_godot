@@ -35,7 +35,7 @@ func _process(delta):
 # Destroy the player
 func _on_area_detector_body_entered(body):
 	if body.name == player_name && body.get("die") != true:
-		body.Die()
+		body.Hit()
 
 # Get hit, or die.
 func hit():
