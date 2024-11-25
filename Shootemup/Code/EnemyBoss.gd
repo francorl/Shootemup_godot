@@ -27,8 +27,10 @@ var player
 
 ###################################################################
 # Animations
-@onready var eyeanimboss = $AnimatedSprite2D
+@onready var bossanim = $BossAnim
+
 var animdelay = 0
+var shoot_animdelay = 0
 
 
 #func fire():
@@ -47,8 +49,8 @@ func _ready():
 func _process(delta):
 	
 	animdelay += 1
-	
-	print(animdelay)
+	shoot_animdelay += 1
+	#print(animdelay)
 	# These 3 little lines of code handle movement! Don't ask me why velocity has to be set this way.
 	if player != null: 
 		var player_position = player.get("position")
@@ -59,10 +61,16 @@ func _process(delta):
 	
 	
 	if animdelay == 400:
-		eyeanimboss.play("IdleAnim")
+		bossanim.play("IdleAnim")
+		
+		animdelay = 0
+		
+		#
+	if shoot_animdelay == 300:
+		bossanim.play("ShootAnim")
 		$LightningBeam2D.look_at(player.get("position"))
 		lightning.shoot()
-		animdelay = 0
+		shoot_animdelay = 0  	
 		
 	move_and_slide()
 

@@ -18,7 +18,7 @@ glow_hdr_threshold = 0.0
 glow_hdr_luminance_cap = 2.0
 fog_enabled = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygxqb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njylw"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 1
 border_width_top = 1
@@ -37,7 +37,7 @@ expand_margin_bottom = 10.0
 shadow_color = Color(0, 0.415686, 0.415686, 0.247059)
 shadow_size = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jut15"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02tes"]
 bg_color = Color(0, 0.439216, 0.423529, 0)
 border_color = Color(6.73831e-07, 0.545342, 0.573827, 0)
 corner_radius_top_left = 2
@@ -76,47 +76,52 @@ grow_vertical = 2
 scale = Vector2(0.817164, 1)
 color = Color(0.0509804, 0.419608, 1, 1)
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect"]
-layout_mode = 2
-offset_left = -113.25
-offset_top = -110.0
-offset_right = 767.75
-offset_bottom = 340.0
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.838
+offset_top = -102.0
+offset_right = 759.162
+offset_bottom = 348.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.270048, 0.499999)
+scale = Vector2(0.278862, 0.487)
 theme_override_constants/separation = 75
 
-[node name="PLAY" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="PLAY" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_70ftq")
 theme_override_font_sizes/font_size = 100
-theme_override_styles/focus = SubResource("StyleBoxFlat_ygxqb")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ygxqb")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jut15")
+theme_override_styles/focus = SubResource("StyleBoxFlat_njylw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_njylw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_02tes")
 text = "    JUGAR    "
 
-[node name="OPTIONS" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="OPTIONS" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_70ftq")
 theme_override_font_sizes/font_size = 100
-theme_override_styles/focus = SubResource("StyleBoxFlat_ygxqb")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ygxqb")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jut15")
+theme_override_styles/focus = SubResource("StyleBoxFlat_njylw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_njylw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_02tes")
 text = "  OPCIONES  "
 
-[node name="EXIT" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="EXIT" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_70ftq")
 theme_override_font_sizes/font_size = 100
-theme_override_styles/focus = SubResource("StyleBoxFlat_ygxqb")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ygxqb")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jut15")
+theme_override_styles/focus = SubResource("StyleBoxFlat_njylw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_njylw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_02tes")
 text = " SALIR "
 
-[connection signal="pressed" from="ColorRect/VBoxContainer2/PLAY" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/OPTIONS" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/EXIT" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/OPTIONS" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/EXIT" to="." method="_on_exit_pressed"]

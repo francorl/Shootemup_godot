@@ -8,6 +8,10 @@
 
 config_version=5
 
+[addons]
+
+universal_fade/patterns_directory="res://addons/UniversalFade/Patterns"
+
 [application]
 
 config/name="v4.5"
@@ -26,7 +30,7 @@ StarsBackground="*res://Scene/Background/StarsBackground.tscn"
 [display]
 
 window/size/viewport_width=1080
-window/size/viewport_height=2520
+window/size/viewport_height=720
 window/stretch/aspect="expand"
 window/handheld/orientation=6
 mouse_cursor/custom_image="res://Crosshair/512/652.png"
