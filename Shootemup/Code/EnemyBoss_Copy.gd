@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name State
 
 @export_group("Stats")
 @export var speed = 100.0
@@ -34,10 +34,17 @@ var animdelay = 0
 var shoot_animdelay = 0
 
 
+#func fire():
+	#var bullet =bullet_path.instantiate()
+	#bullet.dir=rotation 
+	#bullet.pos=$".".global_position
+	#bullet.rota=global_rotation
+	#get_parent().add_child(bullet)
 
 func _ready():
 	if absolute_parent.get_node_or_null(player_name) != null:
 		player = absolute_parent.get_node(player_name)
+
 	
 	
 func _process(delta):
@@ -54,24 +61,24 @@ func _process(delta):
 		self.position.y = move_toward(self.position.y, player.get("position").y, speed * delta)
 	
 	
-	#if animdelay == 400:
-		#bossanim.play("IdleAnim")
+	if animdelay == 400:
+		bossanim.play("IdleAnim")
+		
+		animdelay = 0
+		
 		#
-		#animdelay = 0
-		#
-		##
-	#if shoot_animdelay == 1000:
-		#bossanim.play("ShootAnim")
-		#$LightningBeam2D.look_at(player.get("position"))
-		#lightning.shoot()
-		#shoot_animdelay = 0  	
+	if shoot_animdelay == 1000:
+		bossanim.play("ShootAnim")
+		$LightningBeam2D.look_at(player.get("position"))
+		lightning.shoot()
+		shoot_animdelay = 0  	
 		
 	move_and_slide()
 
 # Destroy the player
-#func _on_area_detector_body_entered(body):
-	#if body.name == player_name && body.get("die") != true:
-		#body.Die()
+func _on_area_detector_body_entered(body):
+	if body.name == player_name && body.get("die") != true:
+		body.Die()
 
 # Get hit, or die.
 func hit():

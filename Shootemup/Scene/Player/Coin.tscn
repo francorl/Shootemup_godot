@@ -1,12 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://c16xjmwoohnsq"]
+[gd_scene load_steps=14 format=3 uid="uid://c16xjmwoohnsq"]
 
 [ext_resource type="Script" path="res://Code/Collectible.gd" id="1_dyylg"]
 [ext_resource type="Texture2D" uid="uid://cwq803c5bpb7q" path="res://shootemup/Moneda_1.png" id="2_ctu4i"]
+[ext_resource type="Texture2D" uid="uid://3kunfgumwnhu" path="res://shootemup/Nuevo Arte/Moneda/1 Coin.png" id="3_blws0"]
+[ext_resource type="Texture2D" uid="uid://bj8uwhyoq6h1f" path="res://shootemup/Nuevo Arte/Moneda/2 Coin.png" id="4_0ohem"]
+[ext_resource type="Texture2D" uid="uid://p77beqjm4du8" path="res://shootemup/Nuevo Arte/Moneda/3 Coin.png" id="5_ac4iy"]
+[ext_resource type="Texture2D" uid="uid://cx02sacn860gr" path="res://shootemup/Nuevo Arte/Moneda/4 Coin.png" id="6_s467x"]
+[ext_resource type="Texture2D" uid="uid://cqt6hf8xe3tbo" path="res://shootemup/Nuevo Arte/Moneda/5 Coin.png" id="7_qowco"]
+[ext_resource type="Texture2D" uid="uid://b6b4nfrw4bsey" path="res://shootemup/Nuevo Arte/Moneda/6 Coin.png" id="8_jiuga"]
+[ext_resource type="Texture2D" uid="uid://b41amd60m73em" path="res://shootemup/Nuevo Arte/Moneda/7 Coin.png" id="9_hfol6"]
+[ext_resource type="Texture2D" uid="uid://cna42qekyq7gk" path="res://shootemup/Nuevo Arte/Moneda/8 Coin.png" id="10_ekv37"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_cxbv7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5u2yj"]
 radius = 9.5
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6agdc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_blws0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0ohem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ac4iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s467x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qowco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jiuga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hfol6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ekv37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_blws0")
+}],
+"loop": false,
+"name": &"CoinAnim",
+"speed": 5.0
+}]
 
 [node name="Collectible" type="Area2D"]
 script = ExtResource("1_dyylg")
@@ -20,5 +63,10 @@ texture = ExtResource("2_ctu4i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.84, 1.89478)
 shape = SubResource("CircleShape2D_5u2yj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_6agdc")
+animation = &"CoinAnim"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
