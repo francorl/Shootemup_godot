@@ -1,18 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://dyqku4b80noy4"]
+[gd_scene load_steps=21 format=3 uid="uid://dyqku4b80noy4"]
 
 [ext_resource type="Script" path="res://Code/Score Script.gd" id="1_bjeuc"]
 [ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_h1ose"]
 [ext_resource type="PackedScene" uid="uid://bg7rpiubrhh1b" path="res://Scene/Player/Character.tscn" id="3_u7f8w"]
 [ext_resource type="PackedScene" uid="uid://chluf4qb455d5" path="res://Scene/Background/Spawner.tscn" id="4_fw31k"]
-[ext_resource type="Script" path="res://Code/SpawnerBoss.gd" id="5_2bu8s"]
-[ext_resource type="PackedScene" uid="uid://b0bg7jeyskhrv" path="res://Scene/Enemy/Boss.tscn" id="6_tlbnx"]
+[ext_resource type="Script" path="res://Code/SpawnerLevelBoss.gd" id="5_yb8yp"]
 [ext_resource type="PackedScene" uid="uid://dqq6h8h061orv" path="res://Scene/Background/Spawn_Area.tscn" id="7_35orc"]
 [ext_resource type="Shader" path="res://Scene/Shaders/HUMO DE COTE.gdshader" id="8_3jtp4"]
 [ext_resource type="Texture2D" uid="uid://c4ueuan1n6el2" path="res://Image.png" id="9_vnls3"]
 [ext_resource type="Shader" path="res://Scene/Shaders/HUMO.gdshader" id="10_wljfb"]
 [ext_resource type="PackedScene" uid="uid://bq2sqb1u1l5ve" path="res://addons/virtual_joystick/test/test.tscn" id="11_27nfy"]
 [ext_resource type="PackedScene" uid="uid://bmll1ra0je8ko" path="res://Scene/UI/Pause.tscn" id="12_2qlhy"]
-[ext_resource type="Script" path="res://Scene/Levels/healthbar.gd" id="13_euc8j"]
+[ext_resource type="Script" path="res://Code/healthbar.gd" id="13_euc8j"]
 
 [sub_resource type="Environment" id="Environment_ycaxx"]
 background_mode = 3
@@ -136,24 +135,24 @@ joystick_right = NodePath("../Test/UI/Virtual joystick right")
 speed = 500.0
 
 [node name="Spawner" parent="." instance=ExtResource("4_fw31k")]
-position = Vector2(2200, -204)
+position = Vector2(2056, -199.939)
 scale = Vector2(-1.54055, -1.50609)
 small_timer_randomization = true
 
 [node name="Spawner2" parent="." instance=ExtResource("4_fw31k")]
-position = Vector2(-96, -172)
+position = Vector2(-240, -167.939)
 small_timer_randomization = true
 spawn_interval = 4.0
 
 [node name="Spawner3" parent="." instance=ExtResource("4_fw31k")]
-position = Vector2(1996, 1081)
+position = Vector2(1852, 1085.06)
 small_timer_randomization = true
 spawn_interval = 2.0
 
 [node name="SpawnerBoss" parent="." instance=ExtResource("4_fw31k")]
 position = Vector2(1533, 332)
-script = ExtResource("5_2bu8s")
-Enemy = ExtResource("6_tlbnx")
+script = ExtResource("5_yb8yp")
+Enemy = null
 small_timer_randomization = true
 spawn_interval = 2.0
 

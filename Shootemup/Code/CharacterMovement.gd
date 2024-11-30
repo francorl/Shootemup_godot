@@ -33,12 +33,6 @@ var timer = 0
 
 
 
-
-
-
-
-
-
 	
 func _ready():
 	
@@ -73,7 +67,7 @@ func _process(delta: float) -> void:
 		
 func _physics_process(delta):
 	
-	print(healthbar.value)
+	
 	
 	timer += delta
 	
@@ -153,7 +147,9 @@ func _physics_process(delta):
 		
 	
 	move_and_slide()
-
+	add_to_group("Player")
+	
+	
 func Die():
 	get_node("Explosive").set_emitting(true)
 	get_node("Explosive/Sound").play()
@@ -171,19 +167,19 @@ func Die():
 	
 func Hit():
 	#await get_tree().create_timer(0.2).timeout
-	healthbar.change_health(10)
+	#healthbar.change_health(10)
 	Camera.offset = Vector2(randf_range(-1, 1), randf_range(-3, 3))
-	if healthbar.value == 0:
-		self.Die()
+	#if healthbar.value == 0:
+		#self.Die()
 
 func HitBossLightning():
 	
 	#await get_tree().create_timer(0.5).timeout
-	healthbar.change_health(35)
+	#healthbar.change_health(10)
 	Camera.offset = Vector2(randf_range(-1, 1), randf_range(-3, 3))
 	
-	if healthbar.value == 0:
-		self.Die()
+	#if healthbar.value == 0:
+		#self.Die()
 		
 		
 		

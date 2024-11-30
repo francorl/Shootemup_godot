@@ -19,7 +19,7 @@ func _process(delta):
 	
 	if GlobalVariables.Score == 0 and spawnboss:
 		
-	 
+		#get_tree().change_scene_to_file ("res://Scene/UI/Nivel_1_Boss.tscn")
 		if timer >= actual_spawn_interval - 1 && !get_node("AnimationPlayer").is_playing():
 			get_node("AnimationPlayer").play("spawn")
 			print("BOSS SPAWNED")

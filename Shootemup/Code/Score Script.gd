@@ -27,7 +27,7 @@ func _ready():
 
 func _process(_delta):
 	$SCORE.get_node("Score").set("text", "Score: " + str(Score) + "\nCoins: " + str(Coin))
-	$RETRY/Retry.get_node("Score").set("text", "Score: " + str(Score) + "\nCoins: " + str(Coin))
+	#$RETRY/Retry.get_node("Score").set("text", "Score: " + str(Score) + "\nCoins: " + str(Coin))
 
 
 

@@ -150,6 +150,12 @@ joystick_left = NodePath("../Test/UI/Virtual joystick left")
 joystick_right = NodePath("../Test/UI/Virtual joystick right")
 speed = 350.0
 
+[node name="MeshInstance2D" parent="Character" index="1"]
+scale = Vector2(1.28257, 1.22444)
+
+[node name="Camera2D" parent="Character" index="3"]
+zoom = Vector2(0.7, 0.7)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 follow_viewport_enabled = true
@@ -164,7 +170,7 @@ offset_bottom = -602.0
 scale = Vector2(96.522, 58.2706)
 
 [node name="SpawnerBoss" parent="." instance=ExtResource("5_50d7b")]
-position = Vector2(1496, 709)
+position = Vector2(1782, 733)
 scale = Vector2(0.972705, 1)
 script = ExtResource("7_oxcgu")
 Enemy = ExtResource("6_1x4bt")
@@ -382,4 +388,5 @@ position = Vector2(-615, -415)
 scale = Vector2(5.33237, 7.45166)
 texture = ExtResource("15_njidr")
 
+[editable path="Character"]
 [editable path="Test/UI/Control"]
