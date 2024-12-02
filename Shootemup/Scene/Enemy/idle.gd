@@ -1,37 +1,50 @@
 extends State
 
-#idle
+var can_transition: bool = false
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	pass 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
 	pass
 	
 
-
-func enter():
-	super.enter()
+#
+#func enter():
+	#super.enter()
 	#await play_animation("IdleAnim")
-	
-	
-	
- 
+	#can_transition = true
+	#
+	#
+ #
 #func play_animation(anim_name):
-		#bossanim.play(anim_name)
-	
+	#bossanim.play(anim_name)
+	#await wait_for_animation_finish()
+	#
+	#
+#func wait_for_animation_finish():	
+	#return await wait_until_last_frame()	
+	#
+	#
+#func wait_until_last_frame() -> bool:
+#
+	#var total_frames = bossanim.sprite_frames.get_frame_count(bossanim.animation)
+	#while bossanim.frame < total_frames - 1:
+		#await bossanim.frame_changed  
+	#return true  	
+	#
 	
 var player_entered: bool = false:
 	set(value):
 		player_entered = value
-		#collision.set_deferred("disabled", value)
-		
+	
 func transition():
 	if player_entered:
 		get_parent().change_state("LightningBeam")
+		
  
 
 func _on_area_detector_body_entered(body):
