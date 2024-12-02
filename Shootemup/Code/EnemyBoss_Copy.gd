@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name State
+
 
 @export_group("Stats")
 @export var speed = 100.0
