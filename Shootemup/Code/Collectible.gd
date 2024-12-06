@@ -3,7 +3,9 @@ extends Area2D
 @onready var absolute_parent = get_parent().get_node(".")
 
 var animdelay = 0
-	
+var new_color = Color(0.5, 0.2, 0.8, 1.0)
+
+
 
 func _process(delta: float) -> void:
 	GlobalVariables.Score = absolute_parent.Score

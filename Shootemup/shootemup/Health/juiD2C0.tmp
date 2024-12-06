@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://dikvtch8vbwoh"]
+
+[ext_resource type="Script" path="res://shootemup/Health/juicy_bar.gd" id="1_3kqk4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puqx2"]
+bg_color = Color(0.247059, 0.247059, 0.356863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f202e"]
+bg_color = Color(0.803602, 0.634067, 0.133211, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jl3ae"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rn88c"]
+bg_color = Color(0.109305, 0.537138, 1, 1)
+
+[sub_resource type="Environment" id="Environment_jcp1q"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 1.2
+glow_enabled = true
+glow_levels/1 = 1.5
+glow_levels/2 = 1.5
+glow_levels/3 = 0.0
+glow_levels/5 = 1.5
+glow_intensity = 0.3
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 2.0
+fog_enabled = true
+
+[node name="JuicyBarContainer" type="Control" node_paths=PackedStringArray("top_layer_bar", "bottom_layer_bar")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 646.0
+scale = Vector2(1.16, 1)
+script = ExtResource("1_3kqk4")
+max_value = 200.0
+bottom_layer_bar_time = 0.3
+top_layer_bar = NodePath("TopLayer")
+bottom_layer_bar = NodePath("BottomLayer")
+
+[node name="BottomLayer" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 236.0
+offset_right = 778.0
+offset_bottom = 266.0
+theme_override_styles/background = SubResource("StyleBoxFlat_puqx2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_f202e")
+max_value = 5000.0
+value = 5000.0
+show_percentage = false
+
+[node name="TopLayer" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 236.0
+offset_right = 778.0
+offset_bottom = 266.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_jl3ae")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rn88c")
+max_value = 5000.0
+value = 5000.0
+show_percentage = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jcp1q")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 380.181
+offset_top = 261.615
+offset_right = 420.181
+offset_bottom = 301.615
+rotation = -0.0585591
+scale = Vector2(9.99136, 0.707815)
+color = Color(0, 0, 0, 1)

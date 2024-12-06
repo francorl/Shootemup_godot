@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 @onready var Camera = get_node("Camera2D")
 @onready var absolute_parent = get_parent()
-@onready var healthbar = $"../Test/UI/Health"
+@onready var healthbar = $"../SCORE/HealthBar"
 
 @export var Bullet: PackedScene
 @export var joystick_left: VirtualJoystick
@@ -12,6 +12,9 @@ extends CharacterBody2D
 @export var speed: float = 100
 @export var fire_rate = 0.2
 @export var PC = false
+
+
+
 const SPEED = 300.0
 
 
@@ -36,7 +39,8 @@ var timer = 0
 	
 func _ready():
 	
-	#Camera.set("position", Vector2(100, 0))
+	add_to_group("Player")
+	Camera.set("position", Vector2(50, 0))
 	
 	if PC:
 		print(PC)
@@ -67,8 +71,15 @@ func _process(delta: float) -> void:
 		
 func _physics_process(delta):
 	
-	
-	
+	if joystick_right and joystick_right.is_pressed:
+		shoot_direction = joystick_right.output.normalized()
+	else:
+		if PC:
+			shoot_direction = (get_global_mouse_position() - global_position).normalized()
+			self.look_at(get_global_mouse_position())
+		else:
+			shoot_direction = Vector2(cos(rotation), sin(rotation)).normalized()
+
 	timer += delta
 	
 	if joystick_right and joystick_right.is_pressed:
@@ -144,10 +155,7 @@ func _physics_process(delta):
 	
 
 
-		
-	
-	move_and_slide()
-	add_to_group("Player")
+	move_and_collide(velocity * delta)
 	
 	
 func Die():
@@ -165,12 +173,26 @@ func Die():
 	joystick_right._reset()
 	$"../RETRY/Retry".show()
 	
-func Hit():
-	#await get_tree().create_timer(0.2).timeout
-	#healthbar.change_health(10)
-	Camera.offset = Vector2(randf_range(-1, 1), randf_range(-3, 3))
-	#if healthbar.value == 0:
+func Hit(damage: int):
+	print("HIT")
+	await get_tree().create_timer(0.2).timeout
+	healthbar.change_current_value(healthbar.current_value - damage)
+	
+	var shake_duration = 0.3  
+	var shake_intensity = 5  
+	var shake_timer = 0
+	while shake_timer < shake_duration:
+		Camera.offset = Vector2(
+			randf_range(-shake_intensity, shake_intensity), 
+			randf_range(-shake_intensity, shake_intensity)
+		)
+		await get_tree().create_timer(0.05).timeout
+		shake_timer += 0.05
+	Camera.offset = Vector2.ZERO  
+
+	#if healthbar.current_value == 0:
 		#self.Die()
+
 
 func HitBossLightning():
 	

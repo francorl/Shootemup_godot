@@ -5,13 +5,11 @@ var can_transition: bool = false
 
 func enter():
 	super.enter()
-	# Reproducir la animación de disparo
-	await play_animation("ShootAnim")
+
 	
-	# Una vez finalizada la animación, ejecutar la lógica de LightningBeam
-	pivot.get_node("LightningBeam2D").shoot()
+	await play_animation("Death")
+	boss_root.deathparticle_boss()
 	
-	# Habilitar la transición tras completar todas las tareas
 	can_transition = true
 
 # Reproducir una animación y esperar a que termine
@@ -30,21 +28,10 @@ func wait_until_last_frame() -> bool:
 		await bossanim.frame_changed
 	return true
 
-# Ajustar la rotación hacia el objetivo
-func set_target():
-	pivot.rotation = (owner.direction - pivot.position).angle()
 	
 # Transición de estado
 func transition():
-	# Asegurar que la transición solo ocurre cuando esté permitido
-		
-	match true:
-
-		can_transition:
-			can_transition = false  
-			get_parent().change_state("SpawnSkill")
-		
 	
-		health_zero:
-			can_transition = false 
-			get_parent().change_state("Death")
+	if can_transition:
+		can_transition = false  
+		print("BOSS MUERTO")

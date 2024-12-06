@@ -1,13 +1,18 @@
-[gd_scene load_steps=25 format=3 uid="uid://b0bg7jeyskhrv"]
+[gd_scene load_steps=34 format=3 uid="uid://b0bg7jeyskhrv"]
 
 [ext_resource type="Script" path="res://Code/EnemyBoss.gd" id="1_hg1od"]
 [ext_resource type="PackedScene" uid="uid://c16xjmwoohnsq" path="res://Scene/Player/Coin.tscn" id="2_2jo15"]
 [ext_resource type="AudioStream" uid="uid://br1gutaatb6bu" path="res://Sounds/Kill.wav" id="2_u0jx8"]
 [ext_resource type="Texture2D" uid="uid://b84o2bhwvgtt1" path="res://shootemup/Alien_2.png" id="4_2j5sb"]
 [ext_resource type="Texture2D" uid="uid://bc4w3oide148k" path="res://shootemup/Alien_2_cerrado.png" id="5_84io6"]
+[ext_resource type="Texture2D" uid="uid://bvy5hd88fsi5n" path="res://shootemup/Enemy Boss/EXPLOSION/1 Explocion BOSS.png" id="5_u37cf"]
 [ext_resource type="Texture2D" uid="uid://j4e83w7tg5qi" path="res://shootemup/Alien_2_tentaculos.png" id="6_aeld1"]
+[ext_resource type="Texture2D" uid="uid://bocjm2ejsefcb" path="res://shootemup/Enemy Boss/EXPLOSION/2 Explocion BOSS.png" id="6_k8e75"]
+[ext_resource type="Texture2D" uid="uid://bp4umqvqnxrsg" path="res://shootemup/Enemy Boss/EXPLOSION/3 Explocion BOSS.png" id="7_siru6"]
 [ext_resource type="PackedScene" uid="uid://c37705gsx84xu" path="res://Scene/LightningBeam/LightningBeam.tscn" id="7_wb1ni"]
+[ext_resource type="Texture2D" uid="uid://5e0b43g7vysk" path="res://shootemup/Enemy Boss/EXPLOSION/4 Explocion BOSS.png" id="8_0ihx6"]
 [ext_resource type="Texture2D" uid="uid://dh0rl6yanim4a" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/1.png" id="8_t48td"]
+[ext_resource type="Texture2D" uid="uid://cido0145renel" path="res://shootemup/Enemy Boss/EXPLOSION/5 Explocion BOSS.png" id="9_det7j"]
 [ext_resource type="Texture2D" uid="uid://bdhsn0hkhwwn" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/2.png" id="9_qxpen"]
 [ext_resource type="Texture2D" uid="uid://cum3voh0fyd0o" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/3.png" id="10_66p6a"]
 [ext_resource type="Texture2D" uid="uid://c5b686ux8ssra" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS Animacion/4.png" id="11_juk0n"]
@@ -18,8 +23,12 @@
 [ext_resource type="Script" path="res://Scene/Enemy/state_machine.gd" id="16_2qup1"]
 [ext_resource type="Script" path="res://Scene/Enemy/idle.gd" id="17_tshp0"]
 [ext_resource type="Script" path="res://Scene/Enemy/lightning_beam.gd" id="18_atfh0"]
-[ext_resource type="Script" path="res://Code/State.gd" id="18_ukeyx"]
-[ext_resource type="Script" path="res://Scene/Enemy/invisible.gd" id="19_8x0af"]
+[ext_resource type="Script" path="res://Scene/Enemy/spawnskill.gd" id="19_8x0af"]
+[ext_resource type="Texture2D" uid="uid://f6dtnkpswryl" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS sangrado/1 sangrado.png" id="21_g7c0p"]
+[ext_resource type="Texture2D" uid="uid://dlg586rtp4sha" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS sangrado/2 sangrado.png" id="22_448w4"]
+[ext_resource type="Texture2D" uid="uid://dm0ji6qt2p5k4" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS sangrado/3 sangrado.png" id="23_5x87r"]
+[ext_resource type="Texture2D" uid="uid://cfrr002gly4uo" path="res://shootemup/Nuevo Arte/Aliens/BOSS/BOSS sangrado/4 sangrado.png" id="24_osbac"]
+[ext_resource type="Script" path="res://Scene/Enemy/death.gd" id="25_000df"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4i0x"]
 
@@ -33,19 +42,60 @@ colors = PackedColorArray(0.742612, 0, 0.133068, 1, 0.999997, 0.367348, 0.389703
 [sub_resource type="SpriteFrames" id="SpriteFrames_fy16k"]
 animations = [{
 "frames": [{
-"duration": 4.0,
+"duration": 1.0,
+"texture": ExtResource("5_u37cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u37cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u37cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k8e75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k8e75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k8e75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_siru6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_siru6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_siru6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0ihx6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0ihx6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_det7j")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("4_2j5sb")
 }, {
-"duration": 4.0,
+"duration": 1.0,
 "texture": ExtResource("5_84io6")
 }, {
-"duration": 4.0,
+"duration": 1.0,
 "texture": ExtResource("4_2j5sb")
 }, {
-"duration": 4.0,
+"duration": 1.0,
 "texture": ExtResource("6_aeld1")
 }, {
-"duration": 4.0,
+"duration": 1.0,
 "texture": ExtResource("4_2j5sb")
 }],
 "loop": true,
@@ -80,15 +130,31 @@ animations = [{
 "loop": false,
 "name": &"ShootAnim",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_g7c0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_448w4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_5x87r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_osbac")
+}],
+"loop": false,
+"name": &"SpawnAnim",
+"speed": 5.0
 }]
 
 [node name="Boss" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(37.0631, 37.6828)
-collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_hg1od")
 speed = 30.0
-health = 20
+health = 1000
 Loot = ExtResource("2_2jo15")
 score_value = 100
 
@@ -112,8 +178,6 @@ target_position = Vector2(541.724, 1.66353)
 rotation = -0.293687
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-light_mask = 2
 position = Vector2(-0.489796, -2.54545)
 scale = Vector2(1, 1.44606)
 shape = SubResource("CircleShape2D_d4i0x")
@@ -150,7 +214,7 @@ stream = ExtResource("2_u0jx8")
 z_index = -1
 scale = Vector2(0.0294458, 0.0275777)
 sprite_frames = SubResource("SpriteFrames_fy16k")
-animation = &"IdleAnim"
+animation = &"ShootAnim"
 autoplay = "IdleAnim"
 
 [node name="StateMachine" type="Node2D" parent="."]
@@ -162,11 +226,14 @@ script = ExtResource("17_tshp0")
 [node name="LightningBeam" type="Node2D" parent="StateMachine"]
 script = ExtResource("18_atfh0")
 
-[node name="Dash" type="Node2D" parent="StateMachine"]
+[node name="SpawnSkill" type="Node2D" parent="StateMachine"]
 script = ExtResource("19_8x0af")
 
 [node name="Death" type="Node2D" parent="StateMachine"]
-script = ExtResource("18_ukeyx")
+script = ExtResource("25_000df")
+
+[node name="TargetSpawnSkill" type="Node2D" parent="."]
+position = Vector2(0, 4.61749)
 
 [connection signal="body_entered" from="AreaDetector" to="StateMachine/Idle" method="_on_area_detector_body_entered"]
 

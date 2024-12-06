@@ -17,12 +17,12 @@ func _process(delta):
 	
 	timer += delta
 	
-	if GlobalVariables.Score == 1 and levelboss:
+	if GlobalVariables.Score == 100 and levelboss:
 		
-		await Fade.fade_out().finished
-		
-		get_tree().change_scene_to_file ("res://Scene/Boss/Nivel_1_Boss.tscn")
-		Fade.fade_in(2)
+		#await Fade.fade_out().finished
+		#
+		#get_tree().change_scene_to_file ("res://Scene/Boss/Nivel_1_Boss.tscn")
+		#Fade.fade_in(2)
 		levelboss = false
 	## Handle spawning
 		#if timer >= actual_spawn_interval - 1 && !get_node("AnimationPlayer").is_playing():

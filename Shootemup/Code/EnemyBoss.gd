@@ -76,6 +76,7 @@ func _process(delta):
 # Get hit, or die.
 func hit():
 	health -= 50
+	print(health)
 	if health == 0:
 		
 		absolute_parent.Score += score_value
@@ -90,8 +91,11 @@ func hit():
 			add_sibling.call_deferred(temp)
 		
 		
+		
+func deathparticle_boss():
+	
 		get_node("Kill").set_emitting(true)
 		get_node("Kill/Sound").play()
 		get_node("Kill").reparent(get_parent().get_parent())
-		self.queue_free()
+		self.queue_free()		
 		

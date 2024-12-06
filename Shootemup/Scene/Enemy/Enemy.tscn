@@ -1,19 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://rxrmy77myb60"]
+[gd_scene load_steps=7 format=3 uid="uid://rxrmy77myb60"]
 
 [ext_resource type="Script" path="res://Code/Enemy.gd" id="1_shqbb"]
 [ext_resource type="AudioStream" uid="uid://br1gutaatb6bu" path="res://Sounds/Kill.wav" id="2_q7vin"]
 [ext_resource type="Texture2D" uid="uid://bv5msgvutl3ur" path="res://shootemup/Alien_1.png" id="3_amke7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4i0x"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_e0ife"]
-
-[sub_resource type="Gradient" id="Gradient_oqex7"]
-offsets = PackedFloat32Array(0, 0.544304, 1)
-colors = PackedColorArray(0.611765, 0.0901961, 0.231373, 1, 0.904989, 0.0368826, 0.263953, 1, 1, 0.0196078, 0.27451, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wh273"]
-gradient = SubResource("Gradient_oqex7")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r4kwt"]
 radius = 12.0
@@ -26,17 +17,17 @@ colors = PackedColorArray(0.742612, 0, 0.133068, 1, 0.999997, 0.367348, 0.389703
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_shqbb")
+speed = 300.0
+health = 2
+min_damage = 5
+max_damage = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.414, 2.0639)
 shape = SubResource("CircleShape2D_d4i0x")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-rotation = 3.08036
-scale = Vector2(22.3294, 22.5972)
-mesh = SubResource("SphereMesh_e0ife")
-texture = SubResource("GradientTexture1D_wh273")
-
 [node name="AreaDetector" type="Area2D" parent="."]
+scale = Vector2(2.14033, 1.68438)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetector"]
 shape = SubResource("CircleShape2D_r4kwt")
@@ -67,4 +58,8 @@ rotation = -1.57052
 scale = Vector2(0.30458, 0.336996)
 texture = ExtResource("3_amke7")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="AreaDetector" to="." method="_on_area_detector_body_entered"]
+[connection signal="body_exited" from="AreaDetector" to="." method="_on_area_detector_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
