@@ -1,7 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c16xjmwoohnsq"]
 
 [ext_resource type="Script" path="res://Code/Collectible.gd" id="1_dyylg"]
-[ext_resource type="Texture2D" uid="uid://cwq803c5bpb7q" path="res://shootemup/Moneda_1.png" id="2_ctu4i"]
 [ext_resource type="Texture2D" uid="uid://3kunfgumwnhu" path="res://shootemup/Nuevo Arte/Moneda/1 Coin.png" id="3_blws0"]
 [ext_resource type="Texture2D" uid="uid://bj8uwhyoq6h1f" path="res://shootemup/Nuevo Arte/Moneda/2 Coin.png" id="4_0ohem"]
 [ext_resource type="Texture2D" uid="uid://p77beqjm4du8" path="res://shootemup/Nuevo Arte/Moneda/3 Coin.png" id="5_ac4iy"]
@@ -11,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b41amd60m73em" path="res://shootemup/Nuevo Arte/Moneda/7 Coin.png" id="9_hfol6"]
 [ext_resource type="Texture2D" uid="uid://cna42qekyq7gk" path="res://shootemup/Nuevo Arte/Moneda/8 Coin.png" id="10_ekv37"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_cxbv7"]
+[sub_resource type="SphereMesh" id="SphereMesh_2j24x"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_17n32"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5u2yj"]
 radius = 9.5
@@ -55,16 +56,17 @@ animations = [{
 script = ExtResource("1_dyylg")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(-1, -1)
-scale = Vector2(60, 60)
-mesh = SubResource("QuadMesh_cxbv7")
-texture = ExtResource("2_ctu4i")
+position = Vector2(1.19209e-07, 0)
+scale = Vector2(35.5488, 36.2839)
+mesh = SubResource("SphereMesh_2j24x")
+texture = SubResource("ImageTexture_17n32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.84, 1.89478)
 shape = SubResource("CircleShape2D_5u2yj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 scale = Vector2(0.02, 0.02)
 sprite_frames = SubResource("SpriteFrames_6agdc")
 animation = &"CoinAnim"

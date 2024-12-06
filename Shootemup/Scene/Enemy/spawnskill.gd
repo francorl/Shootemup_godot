@@ -6,10 +6,7 @@ var can_transition: bool = false
 func enter():
 	super.enter()
 	# Reproducir la animación de disparo
-	await play_animation("ShootAnim")
-	
-	# Una vez finalizada la animación, ejecutar la lógica de LightningBeam
-	pivot.get_node("LightningBeam2D").shoot()
+	await play_animation("SpawnSkill")
 	
 	# Habilitar la transición tras completar todas las tareas
 	can_transition = true
@@ -36,13 +33,12 @@ func set_target():
 	
 # Transición de estado
 func transition():
-	# Asegurar que la transición solo ocurre cuando esté permitido
-		
+	
 	match true:
 
 		can_transition:
 			can_transition = false  
-			get_parent().change_state("SpawnSkill")
+			get_parent().change_state("Idle")
 		
 	
 		health_zero:

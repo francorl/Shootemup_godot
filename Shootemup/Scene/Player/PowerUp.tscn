@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsu8nbvtd4bvq"]
+[gd_scene load_steps=4 format=3 uid="uid://bsu8nbvtd4bvq"]
 
 [ext_resource type="Script" path="res://Code/powerable.gd" id="1_w7icu"]
-[ext_resource type="Texture2D" uid="uid://b7v2im3pciobs" path="res://shootemup/Power UP/Power UP doble disparo.png" id="2_tdscm"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_ehs8n"]
+[sub_resource type="SphereMesh" id="SphereMesh_72fx8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5u2yj"]
 radius = 10.7143
@@ -13,9 +12,8 @@ script = ExtResource("1_w7icu")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(-8.9407e-07, 2.02656e-06)
-scale = Vector2(60, 60)
-mesh = SubResource("QuadMesh_ehs8n")
-texture = ExtResource("2_tdscm")
+scale = Vector2(35.086, 34.9528)
+mesh = SubResource("SphereMesh_72fx8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.68, 1.64)
