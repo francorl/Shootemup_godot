@@ -1,8 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://rxrmy77myb60"]
+[gd_scene load_steps=10 format=3 uid="uid://rxrmy77myb60"]
 
 [ext_resource type="Script" path="res://Code/Enemy.gd" id="1_shqbb"]
 [ext_resource type="AudioStream" uid="uid://br1gutaatb6bu" path="res://Sounds/Kill.wav" id="2_q7vin"]
 [ext_resource type="Texture2D" uid="uid://bv5msgvutl3ur" path="res://shootemup/Alien_1.png" id="3_amke7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gnjyn"]
+
+[sub_resource type="Gradient" id="Gradient_7j5my"]
+offsets = PackedFloat32Array(0.0731707)
+colors = PackedColorArray(0.517647, 0, 0.0117647, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d2s4k"]
+gradient = SubResource("Gradient_7j5my")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4i0x"]
 
@@ -15,6 +24,7 @@ colors = PackedColorArray(0.742612, 0, 0.133068, 1, 0.999997, 0.367348, 0.389703
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_shqbb")
 speed = 300.0
@@ -22,14 +32,23 @@ health = 2
 min_damage = 5
 max_damage = 10
 
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(42.8023, 41.4311)
+mesh = SubResource("SphereMesh_gnjyn")
+texture = SubResource("GradientTexture1D_d2s4k")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2.414, 2.0639)
+visible = false
+scale = Vector2(2.10019, 1.97265)
 shape = SubResource("CircleShape2D_d4i0x")
 
 [node name="AreaDetector" type="Area2D" parent="."]
+visible = false
 scale = Vector2(2.14033, 1.68438)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetector"]
+visible = false
+scale = Vector2(0.827066, 0.970376)
 shape = SubResource("CircleShape2D_r4kwt")
 
 [node name="Kill" type="CPUParticles2D" parent="."]
@@ -54,6 +73,7 @@ color_ramp = SubResource("Gradient_j60ij")
 stream = ExtResource("2_q7vin")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 rotation = -1.57052
 scale = Vector2(0.30458, 0.336996)
 texture = ExtResource("3_amke7")

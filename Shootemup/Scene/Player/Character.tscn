@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://bg7rpiubrhh1b"]
+[gd_scene load_steps=81 format=3 uid="uid://bg7rpiubrhh1b"]
 
 [ext_resource type="Script" path="res://Code/CharacterMovement.gd" id="1_g1m0b"]
 [ext_resource type="PackedScene" uid="uid://c7hm7qkkm1rb0" path="res://Scene/Player/Bullet.tscn" id="2_fsq17"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scene/Player/trail.gd" id="6_2ioy0"]
 [ext_resource type="PackedScene" uid="uid://dds5oxfjbqp6t" path="res://Scene/Player/ShootExplosion.tscn" id="7_iadsl"]
 [ext_resource type="Texture2D" uid="uid://csa2kryltdvcl" path="res://shootemup/Explosion/2D Explosion Animations/explosion 2.png" id="8_5ebwc"]
+[ext_resource type="AudioStream" uid="uid://br1gutaatb6bu" path="res://Sounds/Kill.wav" id="9_mmq0o"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_yw87l"]
 size = Vector2(25, 25)
@@ -486,12 +487,14 @@ animations = [{
 "speed": 120.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_6tk3d"]
+offsets = PackedFloat32Array(0, 0.503311, 1)
+colors = PackedColorArray(0.742612, 0, 0.133068, 1, 0.999997, 0.367348, 0.389703, 1, 1, 0.387377, 0.324754, 0)
+
 [node name="Character" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.09887, 1.07645)
-collision_mask = 3
 script = ExtResource("1_g1m0b")
 Bullet = ExtResource("2_fsq17")
-PC = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(3.48519, -0.344146)
@@ -564,3 +567,24 @@ animation = &"ShootAnim"
 autoplay = "ShootAnim"
 frame_progress = 0.10588
 speed_scale = 2.0
+
+[node name="CharaHit" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 110.0
+angular_velocity_max = 360.0
+linear_accel_min = -200.0
+linear_accel_max = -200.0
+scale_amount_min = 5.0
+scale_amount_max = 8.0
+color_ramp = SubResource("Gradient_6tk3d")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="CharaHit"]
+stream = ExtResource("9_mmq0o")

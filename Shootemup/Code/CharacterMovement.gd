@@ -189,9 +189,11 @@ func Hit(damage: int):
 		await get_tree().create_timer(0.05).timeout
 		shake_timer += 0.05
 	Camera.offset = Vector2.ZERO  
+	
+	get_node("CharaHit").set_emitting(true)
 
-	#if healthbar.current_value == 0:
-		#self.Die()
+	if healthbar.current_value == 0:
+		self.Die()
 
 
 func HitBossLightning():
