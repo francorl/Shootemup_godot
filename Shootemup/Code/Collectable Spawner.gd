@@ -8,7 +8,7 @@ extends Area2D
 
 var power_timer = 0
 var coinage
-# This is found in the debug shape of CollisionShape2D for a representation
+
 
 @onready var SquareSizeX = get_node("CollisionShape2D").get_shape().get_rect().size.x / 2
 @onready var SquareSizeY = get_node("CollisionShape2D").get_shape().get_rect().size.y / 2

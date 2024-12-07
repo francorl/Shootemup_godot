@@ -31,15 +31,20 @@ func _physics_process(delta):
 	if player != null:
 	
 		self.look_at(player.position)
-		var direction = (player.position - self.position).normalized()
+		#self.velocity = Vector2(0, 0)
+		#self.position.x = move_toward(self.position.x, player.get("position").x, speed * delta)
+		#self.position.y = move_toward(self.position.y, player.get("position").y, speed * delta)
+		var direction = (player.position - self.position).normalized() 
 		target_velocity = direction * speed
 
 		self.velocity = self.velocity.lerp(target_velocity, 0.1)
 
-		move_and_slide()
+		move_and_collide(velocity * delta)
 
 func _on_area_detector_body_entered(body: Node2D) -> void:
 	if body.name == player_name and body.get("die") != true:
+		var damage = randi_range(min_damage, max_damage)
+		player.Hit(damage)
 		timer.start()	
 
 func _on_area_detector_body_exited(body: Node2D) -> void:

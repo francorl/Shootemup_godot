@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_h1ose"]
 [ext_resource type="PackedScene" uid="uid://bg7rpiubrhh1b" path="res://Scene/Player/Character.tscn" id="3_u7f8w"]
 [ext_resource type="PackedScene" uid="uid://chluf4qb455d5" path="res://Scene/Background/Spawner.tscn" id="4_fw31k"]
-[ext_resource type="Texture2D" uid="uid://iy2ir7urtyav" path="res://shootemup/Health/Cumman_verde.png" id="5_3ug4a"]
+[ext_resource type="Texture2D" uid="uid://cpsihpkturd7j" path="res://shootemup/Health/Cumman_verde1.png" id="5_7vk31"]
 [ext_resource type="Script" path="res://Code/HealthBar/health_bar.gd" id="5_k0rfb"]
 [ext_resource type="Script" path="res://Code/SpawnerLevelBoss.gd" id="5_yb8yp"]
 [ext_resource type="PackedScene" uid="uid://dqq6h8h061orv" path="res://Scene/Background/Spawn_Area.tscn" id="7_35orc"]
@@ -74,16 +74,15 @@ text = "SCORE:"
 
 [node name="HealthBar" type="Control" parent="SCORE" node_paths=PackedStringArray("top_layer_bar", "bottom_layer_bar")]
 layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 74.5
-offset_top = 49.0
-offset_right = 3275.5
-offset_bottom = 3241.0
+anchor_left = 0.611
+anchor_right = 0.611
+offset_left = -59.88
+offset_top = 46.0
+offset_right = 677.12
+offset_bottom = 840.0
 grow_horizontal = 2
 rotation = 3.14159
-scale = Vector2(0.189, -0.181)
+scale = Vector2(0.249, -0.249)
 script = ExtResource("5_k0rfb")
 top_layer_bar = NodePath("TopLayer")
 bottom_layer_bar = NodePath("BottomLayer")
@@ -97,7 +96,7 @@ fill_mode = 4
 radial_initial_angle = 51.4
 radial_fill_degrees = 263.2
 texture_under = ExtResource("13_84tpe")
-texture_progress = ExtResource("5_3ug4a")
+texture_progress = ExtResource("5_7vk31")
 
 [node name="TopLayer" type="TextureProgressBar" parent="SCORE/HealthBar"]
 layout_mode = 0
@@ -179,18 +178,12 @@ speed = 500.0
 [node name="Spawner" parent="." instance=ExtResource("4_fw31k")]
 position = Vector2(2056, -199.939)
 scale = Vector2(-1.54055, -1.50609)
-small_timer_randomization = true
-spawn_interval = 1.0
 
 [node name="Spawner2" parent="." instance=ExtResource("4_fw31k")]
 position = Vector2(-240, -167.939)
-small_timer_randomization = true
-spawn_interval = 2.0
 
 [node name="Spawner3" parent="." instance=ExtResource("4_fw31k")]
 position = Vector2(1852, 1085.06)
-small_timer_randomization = true
-spawn_interval = 1.0
 
 [node name="SpawnerBoss" parent="." instance=ExtResource("4_fw31k")]
 position = Vector2(1533, 332)
@@ -200,7 +193,6 @@ small_timer_randomization = true
 spawn_interval = 2.0
 
 [node name="Spawn Area" parent="." instance=ExtResource("7_35orc")]
-visible = false
 position = Vector2(970, 526)
 scale = Vector2(3.70301, 2.3104)
 power_spawn_rate = 10
