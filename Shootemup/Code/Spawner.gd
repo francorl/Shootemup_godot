@@ -3,7 +3,8 @@ extends Marker2D
 @export var Enemy: PackedScene
 @export var small_timer_randomization: bool = false
 
-@export var spawn_interval = 2.5
+@export var spawn_interval = 0
+
 var actual_spawn_interval = spawn_interval
 var timer = 0
 

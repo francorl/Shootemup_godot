@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dyqku4b80noy4"]
+[gd_scene load_steps=26 format=3 uid="uid://dyqku4b80noy4"]
 
 [ext_resource type="Script" path="res://Code/Score Script.gd" id="1_bjeuc"]
 [ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_h1ose"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Code/SpawnerLevelBoss.gd" id="5_yb8yp"]
 [ext_resource type="PackedScene" uid="uid://dqq6h8h061orv" path="res://Scene/Background/Spawn_Area.tscn" id="7_35orc"]
 [ext_resource type="Shader" path="res://Scene/Shaders/HUMO DE COTE.gdshader" id="8_3jtp4"]
+[ext_resource type="PackedScene" uid="uid://ct05s8vrgf6io" path="res://Scene/Enemy/Bigger_Enemy.tscn" id="9_1avb5"]
 [ext_resource type="Texture2D" uid="uid://c4ueuan1n6el2" path="res://Image.png" id="9_vnls3"]
 [ext_resource type="Shader" path="res://Scene/Shaders/HUMO.gdshader" id="10_wljfb"]
 [ext_resource type="PackedScene" uid="uid://bq2sqb1u1l5ve" path="res://addons/virtual_joystick/test/test.tscn" id="11_27nfy"]
@@ -176,16 +177,32 @@ joystick_right = NodePath("../Test/UI/Virtual joystick right")
 speed = 500.0
 
 [node name="Spawner" parent="." instance=ExtResource("4_fw31k")]
-position = Vector2(2056, -199.939)
+position = Vector2(2077, -113)
 scale = Vector2(-1.54055, -1.50609)
+spawn_interval = 5
+
+[node name="SpawnerBiggerEnemy" parent="." instance=ExtResource("4_fw31k")]
+position = Vector2(-143, 1097)
+scale = Vector2(-1.54055, -1.50609)
+Enemy = ExtResource("9_1avb5")
+spawn_interval = 20
+
+[node name="SpawnerBiggerEnemy2" parent="." instance=ExtResource("4_fw31k")]
+position = Vector2(1978, 452)
+scale = Vector2(-1.54055, -1.50609)
+Enemy = ExtResource("9_1avb5")
+spawn_interval = 25
 
 [node name="Spawner2" parent="." instance=ExtResource("4_fw31k")]
 position = Vector2(-240, -167.939)
+spawn_interval = 6
 
 [node name="Spawner3" parent="." instance=ExtResource("4_fw31k")]
-position = Vector2(1852, 1085.06)
+position = Vector2(1870, 1202)
+spawn_interval = 8
 
 [node name="SpawnerBoss" parent="." instance=ExtResource("4_fw31k")]
+visible = false
 position = Vector2(1533, 332)
 script = ExtResource("5_yb8yp")
 Enemy = null

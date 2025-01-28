@@ -495,6 +495,7 @@ colors = PackedColorArray(0.742612, 0, 0.133068, 1, 0.999997, 0.367348, 0.389703
 scale = Vector2(1.09887, 1.07645)
 script = ExtResource("1_g1m0b")
 Bullet = ExtResource("2_fsq17")
+PC = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(3.48519, -0.344146)
