@@ -1,6 +1,9 @@
 extends Control
 
+
+
 func _ready():
+
 	$PAUSA/CanvasLayer/VBoxContainer/Masterslider.value = db_to_linear(AudioServer.get_bus_volume_db(0))
 	$PAUSA/CanvasLayer/VBoxContainer/MUSICSlider.value = db_to_linear(AudioServer.get_bus_volume_db(1))
 	$PAUSA/CanvasLayer/VBoxContainer/SFXSlider3.value = db_to_linear(AudioServer.get_bus_volume_db(2))
@@ -30,3 +33,21 @@ func _on_music_slider_mouse_exited():
 	release_focus()
 func _on_sfx_slider_3_mouse_exited():
 	release_focus()
+
+
+func _on_button_pressed() -> void:
+	
+	#$Inventory_Btn/Main.visible = !$Inventory_Btn/Main.visible
+	#get_tree().paused = is_paused
+	#get_tree().paused = true
+	$Inventory_Btn/CanvasLayer.visible = true
+	$Inventory_Btn.visible = false
+	
+	
+
+
+func _on_close_inventory_btn_pressed() -> void:
+	#get_tree().paused = false	
+	$Inventory_Btn/CanvasLayer.visible = false
+	$Inventory_Btn.visible = true
+	

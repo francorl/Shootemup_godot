@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmll1ra0je8ko"]
+[gd_scene load_steps=13 format=3 uid="uid://bmll1ra0je8ko"]
 
 [ext_resource type="Script" path="res://Code/boton_de_pausa.gd" id="1_m4myl"]
 [ext_resource type="FontFile" uid="uid://qoyi83m54thk" path="res://Fuente/Dune_Rise.otf" id="2_vrik0"]
 [ext_resource type="Texture2D" uid="uid://dj4absx05ry2q" path="res://shootemup/pause_25dp_E8EAED.png" id="3_p305k"]
 [ext_resource type="FontFile" uid="uid://cikx7o6snrdhd" path="res://Fuente/Dune_Rise.ttf" id="4_vymmk"]
+[ext_resource type="PackedScene" uid="uid://bp6050jx68738" path="res://Assets/Inventory/main.tscn" id="5_inxh3"]
+[ext_resource type="PackedScene" uid="uid://bgc7bfs3whjaw" path="res://Assets/Inventory/slot_container.tscn" id="6_0k2i4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3noe4"]
 bg_color = Color(1, 1, 1, 0)
@@ -198,6 +200,70 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qg26d")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1ujqf")
 text = "  MENU  "
 
+[node name="Inventory_Btn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_right = -32.0
+offset_bottom = 8.0
+grow_horizontal = 0
+scale = Vector2(14.09, 14.09)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Inventory_Btn"]
+visible = false
+
+[node name="Main" parent="Inventory_Btn/CanvasLayer" instance=ExtResource("5_inxh3")]
+offset_left = 152.0
+offset_top = 25.0
+offset_right = 152.0
+offset_bottom = 25.0
+scale = Vector2(0.645286, 0.694233)
+
+[node name="HBoxContainer" parent="Inventory_Btn/CanvasLayer/Main" index="0"]
+offset_left = -253.306
+offset_top = -158.229
+offset_right = 176.694
+offset_bottom = -65.2291
+scale = Vector2(1.16789, 0.908977)
+
+[node name="CloseInventory_Btn" type="Button" parent="Inventory_Btn/CanvasLayer/Main"]
+layout_mode = 2
+offset_left = 212.309
+offset_top = 31.6896
+offset_right = 262.309
+offset_bottom = 124.69
+scale = Vector2(1.41123, 0.963484)
+theme_override_font_sizes/font_size = 51
+text = "X"
+
+[node name="Skill_1" parent="." instance=ExtResource("6_0k2i4")]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(1.48427, 1.41028)
+
+[node name="Skill_2" parent="." instance=ExtResource("6_0k2i4")]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 94.0
+offset_right = 66.0
+offset_bottom = 158.0
+scale = Vector2(1.43094, 1.34971)
+
+[node name="Skill_3" parent="." instance=ExtResource("6_0k2i4")]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 184.0
+offset_right = 65.0
+offset_bottom = 248.0
+scale = Vector2(1.43177, 1.2568)
+
 [connection signal="pressed" from="PAUSA" to="." method="_on_pausa_pressed"]
 [connection signal="pressed" from="PAUSA/CanvasLayer/VBoxContainer/VOLVER" to="." method="_on_volver_pressed"]
 [connection signal="pressed" from="PAUSA/CanvasLayer/VBoxContainer/MENU" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Inventory_Btn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Inventory_Btn/CanvasLayer/Main/CloseInventory_Btn" to="." method="_on_close_inventory_btn_pressed"]
+
+[editable path="Inventory_Btn/CanvasLayer/Main"]
