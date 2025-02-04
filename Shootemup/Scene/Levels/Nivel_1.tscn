@@ -382,6 +382,30 @@ offset_top = 55.0
 offset_right = -191.0
 offset_bottom = 155.0
 
+[node name="Inventory_Btn" parent="Test/UI/Control" index="1"]
+offset_left = -956.0
+offset_top = 50.0
+offset_right = -948.0
+offset_bottom = 58.0
+
+[node name="Skill_1" parent="Test/UI/Control" index="2"]
+offset_left = -1039.0
+offset_top = -2.0
+offset_right = -975.0
+offset_bottom = 62.0
+
+[node name="Skill_2" parent="Test/UI/Control" index="3"]
+offset_left = -1037.0
+offset_top = 92.0
+offset_right = -973.0
+offset_bottom = 156.0
+
+[node name="Skill_3" parent="Test/UI/Control" index="4"]
+offset_left = -1038.0
+offset_top = 182.0
+offset_right = -974.0
+offset_bottom = 246.0
+
 [node name="Virtual joystick left" parent="Test/UI" index="1"]
 modulate = Color(1, 1, 1, 0.364706)
 offset_top = -599.0
@@ -422,3 +446,4 @@ texture = null
 
 [editable path="Test"]
 [editable path="Test/UI/Control"]
+[editable path="Test/UI/Control/Inventory_Btn/Main"]
